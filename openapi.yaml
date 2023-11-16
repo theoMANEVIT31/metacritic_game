@@ -1,0 +1,660 @@
+openapi: 3.0.1
+info:
+  description: "Metacritique"
+  version: "1.0.6"
+  title: "Projet final"
+
+tags:
+  - name: "Metacritique"
+    description: "gestion des critiques liees aux tests"
+
+paths:
+  /tests:
+    get:
+      tags:
+        - Tests
+      summary: get all tests
+      description: Returns all the tests mayde by editors
+      operationId: "getTests" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Tests'
+
+    post:
+      tags:
+        - Tests
+      summary: Add test
+      description: Add test
+      operationId: "addTest" 
+      requestBody:
+        $ref: '#/components/requestBodies/Test'
+      responses:
+        '200':
+          description: test response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Tests'
+
+  /tests/{id}:
+    get:
+      tags:
+        - Tests
+      summary: Get test by id
+      description: Returns a test by his id
+      operationId: "getTestById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: test response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Tests'
+                 
+    delete:
+      tags:
+        - Tests
+      summary: Delete test by id
+      description: Delete a test by his id
+      operationId: "DeleteTestById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: test response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Tests'
+
+    put:
+      tags:
+        - Tests
+      summary: Update test by id
+      description: Update a test by his id
+      operationId: "updateTest" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      requestBody:
+        $ref: '#/components/requestBodies/Test'
+      responses:
+        '200':
+          description: rentals response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Tests'
+  
+  /critiqueE:
+    get:
+      tags:
+        - Critiques Editor
+      summary: get all critiques from editors
+      description: Returns all the critiques mayde by editors
+      operationId: "getCritiquesE" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesE'
+
+    post:
+      tags:
+        - Critiques Editor
+      summary: Add critique
+      description: Add critique by a editor
+      operationId: "addCritiqueE" 
+      requestBody:
+        $ref: '#/components/requestBodies/CritiqueE'
+      responses:
+        '200':
+          description: test response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesE'
+
+  /critiquesE/{id}:
+    get:
+      tags:
+        - Critiques Editor
+      summary: Get critique by id
+      description: Returns a critique made by a editor by his id 
+      operationId: "getCritiqueEById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: critique response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesE'
+                 
+    delete:
+      tags:
+        - Critiques Editor
+      summary: Delete critique by id
+      description: Delete a critique made by a editor by his id
+      operationId: "DeleteCritiquesEById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: test response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesE'
+
+    put:
+      tags:
+        - Critiques Editor
+      summary: Update critiques by id
+      description: Update a critique made by a editor by his id
+      operationId: "updateCritiqueE" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      requestBody:
+        $ref: '#/components/requestBodies/CritiqueE'
+      responses:
+        '200':
+          description: rentals response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesE'
+  
+  /critiqueU:
+    get:
+      tags:
+        - Critiques User
+      summary: get all critiques from user
+      description: Returns all the critiques mayde by user
+      operationId: "getCritiquesU" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesU'
+
+    post:
+      tags:
+        - Critiques User
+      summary: Add critique
+      description: Add critique by a user
+      operationId: "addCritiqueU" 
+      requestBody:
+        $ref: '#/components/requestBodies/CritiqueU'
+      responses:
+        '200':
+          description: test response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesU'
+
+  /critiquesU/{id}:
+    get:
+      tags:
+        - Critiques User
+      summary: Get critique by id
+      description: Returns a critique made by a user by his id 
+      operationId: "getCritiqueUById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: critique response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesU'
+                 
+                 
+    delete:
+      tags:
+        - Critiques User
+      summary: Delete critique by id
+      description: Delete a critique made by a user by his id
+      operationId: "DeleteCritiquesUById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: critique response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesU'
+
+    put:
+      tags:
+        - Critiques User
+      summary: Update critiques by id
+      description: Update a critique made by a user by his id
+      operationId: "updateCritiqueU" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      requestBody:
+        $ref: '#/components/requestBodies/CritiqueU'
+      responses:
+        '200':
+          description: critique response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CritiquesU'
+
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Get all users
+      description: Returns all users
+      operationId: "getUsers" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+
+    post:
+      tags:
+        - Users
+      summary: Add user
+      description: Add user
+      operationId: "addUser" 
+      requestBody:
+        $ref: '#/components/requestBodies/User'
+      responses:
+        '200':
+          description: users response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+
+  /users/{id}:
+    put:
+      tags:
+        - Users
+      summary: Update user by id
+      description: Update a user by his id
+      operationId: "updateUser"
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      requestBody:
+        $ref: '#/components/requestBodies/User'
+      responses:
+        '200':
+          description: users response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+
+    delete:
+      tags:
+        - Users
+      summary: Delete user by id
+      description: Delete a user by his id
+      operationId: "DeleteUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: users response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+
+    get:
+      tags:
+        - Users
+      summary: Get user by id
+      description: Returns a user by id
+      operationId: "getUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: users response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+
+  /editors:
+    get:
+      tags:
+        - Editors
+      summary: Get all editors
+      description: Returns all editors
+      operationId: "getEditors" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Editors'
+
+    post:
+      tags:
+        - Editors
+      summary: Add editor
+      description: Add editor
+      operationId: "addEditor" 
+      requestBody:
+        $ref: '#/components/requestBodies/Editor'
+      responses:
+        '200':
+          description: editors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Editors'
+
+  /editors/{id}:
+    put:
+      tags:
+        - Editors
+      summary: Update editor by id
+      description: Update a editor by his id
+      operationId: "updateEditor"
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      requestBody:
+        $ref: '#/components/requestBodies/Editor'
+      responses:
+        '200':
+          description: editors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Editors'
+
+    delete:
+      tags:
+        - Editors
+      summary: Delete editor by id
+      description: Delete a editor by his id
+      operationId: "DeleteEditorById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: editors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Editors'
+
+    get:
+      tags:
+        - Editors
+      summary: Get user by id
+      description: Returns a user by id
+      operationId: "getEditorById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: editors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Editors'
+
+      
+
+
+components:
+  parameters:
+    idInPath:
+      required: true
+      name: id
+      in: path
+      schema:
+        type: integer
+    
+  requestBodies:
+    Test:
+      description: A JSON object containing a book
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/Tests'
+    
+    CritiqueE:
+      description: A JSON object containing a book
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/CritiquesE'
+
+    CritiqueU:
+      description: A JSON object containing a book
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/CritiquesU'
+
+    Editor:
+      description: A JSON object containing a book
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/Editors'
+    
+    User:
+      description: A JSON object containing a book
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/Users'
+
+  schemas:
+    Tests:
+      type: object
+      properties:
+        idt:
+          type: integer
+          format: int64
+          example: 1
+        idU:
+          type: integer
+          format: int64
+          example: 2
+        idE:
+          type: integer
+          format: int64
+          example: 3
+        noteE:
+          type: integer
+          format: int64
+          example: 4
+        noteU:
+          type: integer
+          format: int64
+          example: 5
+        description:
+          type: string
+          example: bon jeu 
+        titre:
+          type: string
+          example: the hobbit
+        date:
+          type: string
+          example: 11/02/2002
+
+    CritiquesE:
+      type: object
+      properties:
+        idc:
+          type: integer
+          format: int64
+          example: 1
+        idt:
+          type: integer
+          format: int64
+          example: 2
+        idE:
+          type: integer
+          format: int64
+          example: 3
+        description:
+          type: string
+          example: il est bon
+
+    CritiquesU:
+      type: object
+      properties:
+        idc:
+          type: integer
+          format: int64
+          example: 1
+        idt:
+          type: integer
+          format: int64
+          example: 2
+        idU:
+          type: integer
+          format: int64
+          example: 3
+        description:
+          type: string
+          example: il est pas bon
+    Users:
+      type: object
+      properties:
+        idU:
+          type: integer
+          format: int64
+          example: 3
+        name:
+          type: string
+          example: Oui
+    Editors:
+      type: object
+      properties:
+        idE:
+          type: integer
+          format: int64
+          example: 3
+        name:
+          type: string
+          example: Non
+
+  examples:
+    Tests:
+      summary: An example of a test
+      value:
+        idt: 1
+        idc: 2
+        ide: 3
+        noteE: 15
+        noteU: 10
+        titre: "Persona 5"
+        description: "très bon jeu"
+        date: "11-02-2002"
+
+    CritiquesE:
+      summary: An example of a critique made by a editor
+      value:
+        idc: 2
+        idt: 1
+        ide: 3
+        description: "bonne maniabilité"
+
+    CritiquesU:
+      summary: An example of a critique made by a user
+      value:
+        idc: 2
+        idt: 1
+        idu: 3
+        description: "mauvaise maniabilité"
+
+    Users:
+      summary: An example of a user
+      value:
+        idu: 3
+        name: "SoloLeveling"
+
+    Editors:
+      summary: An example of a editor
+      value:
+        ide: 3
+        name: "TheGreatReview"
+
+
+
