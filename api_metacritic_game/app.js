@@ -22,6 +22,9 @@ app.use(
 )
 
 // Déclaration des routers principaux qui utilisent les sous-routers
+
+
+/*
 const criticsEditorsRouter = require('./routers/criticsEditors')
 app.use('/criticsEditors', criticsEditorsRouter);
 
@@ -31,11 +34,10 @@ app.use('/criticsUsers', criticsUsersRouter);
 const editorsRouter = require('./routers/editors')
 app.use('/editors', editorsRouter);
 
-const reviewRouter = require('./routers/reviews')
-app.use('/reviews', reviewRouter)
+const reviewsRouter = require('./routers/reviews')
+app.use('/reviews', reviewsRouter)
+*/
 
-const loginRouter = require('./routers/login')
-app.use('/login', loginRouter)
 
 // Par défaut quand on appellera "/" on veut servir en statique la doc OpenAPI
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))

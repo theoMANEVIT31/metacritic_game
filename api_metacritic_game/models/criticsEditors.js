@@ -1,23 +1,26 @@
-const { DataTypes } = require('sequelize')
+const { DataTypes } = require("sequelize");
 
 module.exports = (instance) => {
-    return instance.define('criticEditor', {
-        idc: {
-            primaryKey: true,
-            type: DataTypes.INTEGER
-        },
-        idt: {
-            primaryKey: true,
-            type: DataTypes.INTEGER
-        },
-        idE: {
-            primaryKey: true,
-            type: DataTypes.INTEGER
-        },
-        description: {
-            type: DataTypes.STRING,  
-        }
-    }, {
-        timestamps: false
-    })
-}
+  return instance.define(
+    "criticsEditor",
+    {
+      idC: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+      },
+      idE: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+    },
+    {
+      timestamps: false,
+    }
+  );
+};
