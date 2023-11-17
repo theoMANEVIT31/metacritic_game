@@ -1,26 +1,36 @@
-const { Sequelize } = require('sequelize')
-const dbConfig = require('../db.config')
+const { Sequelize } = require("sequelize");
+const dbConfig = require("../db.config");
 
-const instance = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
+const instance = new Sequelize(
+  dbConfig.database,
+  dbConfig.username,
+  dbConfig.password,
+  {
     host: dbConfig.hostname,
     port: dbConfig.port,
-    dialect: "mysql"
-})
+    dialect: "mysql",
+  }
+);
 
-// 1 seul module.exports mais plusieurs exports, équivalence:
-// exports.instance = instance
+// Import des modèles
+const Users = require("./users")(instance);
+const Reviews = require("./reviews")(instance);
+const CriticsEditors = require("./criticsEditors")(instance);
+const CriticsUsers = require("./criticsUsers")(instance);
+const Editors = require("./editors")(instance);
 
+// Définition des associations
+CriticsUsers.belongsTo(Users, { foreignKey: "idU" });
+CriticsUsers.belongsTo(Reviews, { foreignKey: "idR" });
+Reviews.belongsTo(CriticsEditors, { foreignKey: "idC" });
+CriticsEditors.belongsTo(Editors, { foreignKey: "idE" });
+
+// Export des modèles et de l'instance Sequelize
 module.exports = {
-    instance,
-    users: require('./users')(instance),
-    reviews: require('./reviews')(instance),
-    criticsEditors: require('./criticsEditors')(instance),
-    criticsUsers: require('./criticsUsers')(instance),
-    editors: require('./editors')(instance)
-}
-
-// Define associations between models
-instance.models.criticsEditors.belongsTo(instance.models.reviews)
-instance.models.v.belongsTo(instance.models.reviews)
-instance.models.users.belongsTo(instance.models.criticsUsers)
-instance.models.editors.belongsTo(instance.models.criticsEditors)
+  instance,
+  Users,
+  Reviews,
+  CriticsEditors,
+  CriticsUsers,
+  Editors,
+};
