@@ -22,9 +22,6 @@ app.use(
 )
 
 // Déclaration des routers principaux qui utilisent les sous-routers
-
-
-/*
 const criticsEditorsRouter = require('./routers/criticsEditors')
 app.use('/criticsEditors', criticsEditorsRouter);
 
@@ -36,7 +33,7 @@ app.use('/editors', editorsRouter);
 
 const reviewsRouter = require('./routers/reviews')
 app.use('/reviews', reviewsRouter)
-*/
+
 
 
 // Par défaut quand on appellera "/" on veut servir en statique la doc OpenAPI

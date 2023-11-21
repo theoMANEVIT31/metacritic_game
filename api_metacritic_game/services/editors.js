@@ -1,4 +1,4 @@
-const editorsService = require('./editors')
+const criticsEditorsService = require('./criticsEditors')
 
 
 exports.getEditors = () => {
@@ -28,7 +28,7 @@ exports.putEditorById = (idE) => {
 exports.deleteEditorById = function deleteEditorBy(idE) {
     const editorIndex = editors.findIndex(o => o.idE === parseInt(idE))
     if (editorIndex > -1) {
-        criticsEditors.deleteCriticsEditorsForEditor(idE)
+        criticsEditorsService.deleteCriticsEditorById(idE)
         editors.splice(editorIndex, 1)
         return true
     } else {
