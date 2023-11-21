@@ -1,6 +1,5 @@
-const express = require('express'),
-    router = express.Router(),
-    usersController = require('../controllers/users');
+const router = require('express').Router()
+const usersController = require('../controllers/users')
 
 
 router.get('/', usersController.getUsers);

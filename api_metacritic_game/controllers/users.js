@@ -1,28 +1,29 @@
 const express = require('express'),
       router = express.Router();
 
-const usersService = require('../services/users');
+const usersServices = require('../services/users');
 
 router.get('/', async (req, res) => {
-   const users = await usersService.getUsers();
+   const users = await usersServices.getUsers();
    res.json({success: true, data: users});
 });
 
 router.post('/', (req, res) => {
    try {
-      usersService.addUsers(req.body.idU, req.body.name);
+      usersServices.addUsers(req.body.idU, req.body.name);
       res.status(201).json({success: true, message: `User has been added`});
    } catch (e) {
       res.status(400).json({success: false, message: 'User has not been added', error: e.message});
    }
 });
 
-/*
+
 router.put('/:idU', (req, res) => {
     usersService.putUserById(req.params.idU);
     res.json({success: true, message: 'User has been modified'});
  });
 
+ /*
 router.delete('/:idU', (req, res) => {
    usersService.deleteUserById(req.params.idU);
    res.json({success: true, message: 'User has been deleted'});

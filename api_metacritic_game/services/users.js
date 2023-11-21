@@ -1,4 +1,4 @@
-const usersService = require('./users')
+//const criticsUsersServices = require('./criticsUsers')
 
 
 exports.getUsers = () => {
@@ -19,22 +19,21 @@ exports.addUsers = (idU, name) => {
     }
 }
 
-/*
 exports.putUserById = (idU) => {
     return users.find(o => o.idU === parseInt(idU))
 }
-*/
 
+/*
 exports.deleteUserById = function deleteUserBy(idU) {
     const userIndex = users.findIndex(o => o.idU === parseInt(idU))
     if (userIndex > -1) {
-        criticsUsers.deleteCriticsUsersForUser(idU)
+        criticsUsersServices.deleteCriticsUserById(idU)
         users.splice(userIndex, 1)
         return true
     } else {
         throw new Error('User not found')
     }
-}
+}*/
 
 exports.getUserById = (idU) => {
     return users.find(o => o.idU === parseInt(idU))
