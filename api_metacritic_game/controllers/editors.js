@@ -1,41 +1,26 @@
-const express = require('express'),
-      router = express.Router();
-
 const editorsService = require('../services/editors');
+const createError = require('http-errors')
 
-router.get('/', async (req, res) => {
-   const editors = await editorsService.getEditors();
-   res.json({success: true, data: editors});
-});
 
-router.post('/', (req, res) => {
-   try {
-    editorsService.addEditors(req.body.idE, req.body.name);
-      res.status(201).json({success: true, message: `Editor has been added`});
-   } catch (e) {
-      res.status(400).json({success: false, message: 'Editor has not been added', error: e.message});
+exports.getEditors = async (req, res) => {
+   const editors = await editorsService.getEditors()
+   res.json({data: editors})
+}
+
+exports.addEditor = (req, res, next) => {
+   const editorCreated = editorsService.addEditor(req.body.idE, req.body.name)
+   if (editorCreated) {
+      res.status(201).json({idE: editorCreated.idE})
+   } else {
+      next(createError(400, "Error when creating this editor, verify your args"))
    }
-});
+}
 
-/*
-router.put('/:idE', (req, res) => {
-    editorsService.putEditorById(req.params.idE);
-    res.json({success: true, message: 'Editor has been modified'});
- });
-
-router.delete('/:idE', (req, res) => {
-   editorsService.deleteEditorById(req.params.idE);
-   res.json({success: true, message: 'Editor has been deleted'});
-});
-*/
-
-router.get('/:idE', (req, res) => {
-    const editor = editorsService.getEditorById(req.params.idE);
-    if (editor) {
-       res.json({success: true, data: editor});
-    } else {
-       res.status(404).json({success: false, message: 'Editor not found for this id'});
-    }
- });
-
-module.exports = router;
+exports.getEditorById = async (req, res, next) => {
+   const editor = await editorsService.getEditorById(req.params.idE)
+   if (editor) {
+      res.json({data: editor})
+   } else {
+      next(createError(404, "no editor found for this idE"))
+   }
+}

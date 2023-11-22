@@ -3,12 +3,10 @@ const express = require('express'),
     reviewsController = require('../controllers/reviews');
 
 
-router.get('/', reviewsController.getEditors);
-router.post('/', reviewsController.addEditors);
+router.get('/', reviewsController.getReviews);
+router.post('/', reviewsController.addReview);
 
-router.get('/:idR', reviewsController.getEditorById);
-router.delete('/:idR', reviewsController.deleteEditorById);
-router.put('/:idR', reviewsController.putEditorById);
+router.get('/:idR', reviewsController.getReviewById);
 
 
 module.exports = router;

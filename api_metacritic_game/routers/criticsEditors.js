@@ -4,11 +4,9 @@ const express = require('express'),
 
 
 router.get('/', criticsEditorsController.getCriticsEditors);
-router.post('/', criticsEditorsController.addCriticsEditors);
+router.post('/', criticsEditorsController.addCriticsEditor);
 
 router.get('/:idC', criticsEditorsController.getCriticsEditorById);
-router.delete('/:idC', criticsEditorsController.deleteCriticsEditorById);
-router.put('/:idC', criticsEditorsController.putCriticsEditorById);
 
 
 module.exports = router;

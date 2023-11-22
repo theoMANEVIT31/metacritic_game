@@ -5,14 +5,14 @@ module.exports = (instance) => {
     "users",
     {
       idU: {
-        primaryKey: true,
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        allowNull: false,   
+        primaryKey: true,
+        allowNull: false,
       },
       name: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
+        type: DataTypes.STRING,
+        allowNull: false
       },
     },
     {

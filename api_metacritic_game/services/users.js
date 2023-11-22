@@ -1,40 +1,17 @@
-//const criticsUsersServices = require('./criticsUsers')
+const db = require('../models');
 
-
-exports.getUsers = () => {
-    return users
+exports.getUsers = async () => {
+    return await db.users.findAll();
 }
 
-exports.addUsers = (idU, name) => {
-    if (idU != null && name != null) {
-        const userById = module.exports.getUserById(idU)
-        if (!userById) {
-            users.push({idU, name})
-            return true
-        } else {
-            throw new Error('A user with this id already exists')
+exports.addUser = (idU, name) => {
+    return db.users.create({idU, name});
+}
+
+exports.getUserById = async (idU) => {
+    return await db.users.findOne({
+        where: {
+            idU
         }
-    } else {
-        throw new Error('All parameters are required')
-    }
-}
-
-exports.putUserById = (idU) => {
-    return users.find(o => o.idU === parseInt(idU))
-}
-
-/*
-exports.deleteUserById = function deleteUserBy(idU) {
-    const userIndex = users.findIndex(o => o.idU === parseInt(idU))
-    if (userIndex > -1) {
-        criticsUsersServices.deleteCriticsUserById(idU)
-        users.splice(userIndex, 1)
-        return true
-    } else {
-        throw new Error('User not found')
-    }
-}*/
-
-exports.getUserById = (idU) => {
-    return users.find(o => o.idU === parseInt(idU))
+    });
 }

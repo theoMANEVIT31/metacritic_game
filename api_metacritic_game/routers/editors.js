@@ -4,10 +4,8 @@ const express = require('express'),
 
 
 router.get('/', editorsController.getEditors);
-router.post('/', editorsController.addEditors);
+router.post('/', editorsController.addEditor);
 
-router.put('/:idE', editorsController.putEditorById);
-router.delete('/:idE', editorsController.deleteEditorById);
 router.get('/:idE', editorsController.getEditorById);
 
 

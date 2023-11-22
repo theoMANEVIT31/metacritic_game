@@ -1,41 +1,17 @@
-const reviewsService = require('./reviews')
+const db = require('../models');
 
-
-exports.getCriticsEditors = () => {
-    return criticsEditors
+exports.getCriticsEditors = async () => {
+    return await db.criticsEditors.findAll();
 }
 
-exports.addCriticsEditors = (idE, name) => {
-    if (idE != null && name != null) {
-        const criticsEditorById = module.exports.getCriticsEditorById(idE)
-        if (!criticsEditorById) {
-            criticsEditors.push({idE, name})
-            return true
-        } else {
-            throw new Error('A criticsEditor with this id already exists')
+exports.addCriticsEditor = (idC, description, idE) => {
+    return db.criticsEditors.create({idC, description, idE});
+}
+
+exports.getCriticsEditorById = async (idC) => {
+    return await db.criticsEditors.findOne({
+        where: {
+            idC
         }
-    } else {
-        throw new Error('All parameters are required')
-    }
-}
-
-/*
-exports.putCriticsEditorById = (idE) => {
-    return criticsEditors.find(o => o.idE === parseInt(idE))
-}
-*/
-
-exports.deleteCriticsEditorById = function deleteCriticsEditorBy(idE) {
-    const criticsEditorIndex = criticsEditors.findIndex(o => o.idE === parseInt(idE))
-    if (criticsEditorIndex > -1) {
-        reviewsService.deleteReviewById(idR)
-        criticsEditors.splice(criticsEditorIndex, 1)
-        return true
-    } else {
-        throw new Error('criticsEditor not found')
-    }
-}
-
-exports.getCriticsEditorById = (idE) => {
-    return criticsEditors.find(o => o.idE === parseInt(idE))
+    });
 }

@@ -11,7 +11,7 @@ module.exports = (instance) => {
         allowNull: false,
       },
       name: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         allowNull: false,
       },
     },
