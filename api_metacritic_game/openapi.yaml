@@ -35,7 +35,7 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/Review'
       responses:
-        '200':
+        '201':
           description: review response
 
   /reviews/{id}:
@@ -115,7 +115,7 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/CriticsEditor'
       responses:
-        '200':
+        '201':
           description: criticsEditors response
 
 
@@ -197,7 +197,7 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/CriticsUser'
       responses:
-        '200':
+        '201':
           description: criticsUsers response
          
 
@@ -283,7 +283,7 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/User'
       responses:
-        '200':
+        '201':
           description: users response
          
 
@@ -365,7 +365,7 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/Editor'
       responses:
-        '200':
+        '201':
           description: editors response
 
   /editors/{id}:
