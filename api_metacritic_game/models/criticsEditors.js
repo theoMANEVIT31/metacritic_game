@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (instance) => {
   return instance.define(
-    "criticsEditor",
+    "criticsEditors",
     {
       idC: {
         primaryKey: true,
@@ -11,7 +11,7 @@ module.exports = (instance) => {
         allowNull: false,
       },
       description: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       idE: {

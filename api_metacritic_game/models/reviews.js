@@ -5,9 +5,9 @@ module.exports = (instance) => {
     "reviews",
     {
       idR: {
-        primaryKey: true,
         type: DataTypes.INTEGER,
         autoIncrement: true,
+        primaryKey: true,
         allowNull: false,
       },
       noteE: {
@@ -19,15 +19,15 @@ module.exports = (instance) => {
         allowNull: false,
       },
       description: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       titre: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       date: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       idC: {

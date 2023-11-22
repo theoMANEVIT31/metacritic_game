@@ -12,25 +12,16 @@ const instance = new Sequelize(
   }
 );
 
-// Import des modèles
-const Users = require("./users")(instance);
-const Reviews = require("./reviews")(instance);
-const CriticsEditors = require("./criticsEditors")(instance);
-const CriticsUsers = require("./criticsUsers")(instance);
-const Editors = require("./editors")(instance);
-
-// Définition des associations
-CriticsUsers.belongsTo(Users, { foreignKey: "idU" });
-CriticsUsers.belongsTo(Reviews, { foreignKey: "idR" });
-Reviews.belongsTo(CriticsEditors, { foreignKey: "idC" });
-CriticsEditors.belongsTo(Editors, { foreignKey: "idE" });
-
-// Export des modèles et de l'instance Sequelize
 module.exports = {
   instance,
-  Users,
-  Reviews,
-  CriticsEditors,
-  CriticsUsers,
-  Editors,
-};
+  users: require('./users')(instance),
+  reviews: require('./reviews')(instance),
+  criticsEditors: require('./criticsEditors')(instance),
+  criticsUsers: require('./criticsUsers')(instance),
+  editors: require('./editors')(instance)
+}
+
+instance.models.criticsUsers.belongsTo(instance.models.users, { foreignKey: "idU" });
+instance.models.criticsUsers.belongsTo(instance.models.reviews, { foreignKey: "idR" });
+instance.models.reviews.belongsTo(instance.models.criticsEditors, { foreignKey: "idC" });
+instance.models.criticsEditors.belongsTo(instance.models.editors, { foreignKey: "idE" });
