@@ -14,11 +14,11 @@ const instance = new Sequelize(
 
 module.exports = {
   instance,
-  users: require('./users')(instance),
-  reviews: require('./reviews')(instance),
-  criticsEditors: require('./criticsEditors')(instance),
-  criticsUsers: require('./criticsUsers')(instance),
-  editors: require('./editors')(instance)
+  users: require('./usersModel')(instance),
+  reviews: require('./reviewsModel')(instance),
+  criticsEditors: require('./criticsEditorsModel')(instance),
+  criticsUsers: require('./criticsUsersModel')(instance),
+  editors: require('./editorsModel')(instance)
 }
 
 instance.models.criticsUsers.belongsTo(instance.models.users, { foreignKey: "idU" });

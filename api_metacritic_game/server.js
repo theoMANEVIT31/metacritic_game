@@ -1,4 +1,4 @@
-const db = require('./models/index');
+const db = require('./models/indexModel');
 const app = require('./app');
 
 db.instance.sync({force: true}).then(async () => {

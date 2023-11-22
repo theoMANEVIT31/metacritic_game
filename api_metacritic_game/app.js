@@ -17,19 +17,19 @@ app.use(
     })
 )
 
-const criticsEditorsRouter = require('./routers/criticsEditors')
+const criticsEditorsRouter = require('./routers/criticsEditorsRouter')
 app.use('/criticsEditors', criticsEditorsRouter);
 
-const criticsUsersRouter = require('./routers/criticsUsers')
+const criticsUsersRouter = require('./routers/criticsUsersRouter')
 app.use('/criticsUsers', criticsUsersRouter);
 
-const editorsRouter = require('./routers/editors')
+const editorsRouter = require('./routers/editorsRouter')
 app.use('/editors', editorsRouter);
 
-const reviewsRouter = require('./routers/reviews')
+const reviewsRouter = require('./routers/reviewsRouter')
 app.use('/reviews', reviewsRouter)
 
-const usersRouter = require('./routers/users')
+const usersRouter = require('./routers/usersRouter')
 app.use('/users', usersRouter)
 
 
