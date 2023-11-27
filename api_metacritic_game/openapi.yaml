@@ -446,7 +446,7 @@ components:
     
   requestBodies:
     Review:
-      description: A JSON object containing a book
+      description: A JSON object containing a review
       required: true
       content:
         application/json:
@@ -454,7 +454,7 @@ components:
             $ref: '#/components/schemas/Reviews'
     
     CriticsEditor:
-      description: A JSON object containing a book
+      description: A JSON object containing a critic from an editor
       required: true
       content:
         application/json:
@@ -462,7 +462,7 @@ components:
             $ref: '#/components/schemas/CriticsEditors'
 
     CriticsUser:
-      description: A JSON object containing a book
+      description: A JSON object containing a critic from an user
       required: true
       content:
         application/json:
@@ -470,7 +470,7 @@ components:
             $ref: '#/components/schemas/CriticsUsers'
 
     Editor:
-      description: A JSON object containing a book
+      description: A JSON object containing an editor
       required: true
       content:
         application/json:
@@ -478,7 +478,7 @@ components:
             $ref: '#/components/schemas/Editors'
     
     User:
-      description: A JSON object containing a book
+      description: A JSON object containing an user
       required: true
       content:
         application/json:
@@ -555,6 +555,13 @@ components:
         name:
           type: string
           example: Oui
+        hashedPassword:
+          type: string
+          example: $2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2
+        email:
+          type: string
+          example: johnDoe@gmail.com
+        
     Editors:
       type: object
       properties:

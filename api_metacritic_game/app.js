@@ -17,21 +17,23 @@ app.use(
     })
 )
 
+const registerRouter = require('./routers/registerRouter')
+app.use('/register', registerRouter)
+
 const criticsEditorsRouter = require('./routers/criticsEditorsRouter')
-app.use('/criticsEditors', criticsEditorsRouter);
+app.use('/criticsEditors', criticsEditorsRouter)
 
 const criticsUsersRouter = require('./routers/criticsUsersRouter')
-app.use('/criticsUsers', criticsUsersRouter);
+app.use('/criticsUsers', criticsUsersRouter)
 
 const editorsRouter = require('./routers/editorsRouter')
-app.use('/editors', editorsRouter);
+app.use('/editors', editorsRouter)
 
 const reviewsRouter = require('./routers/reviewsRouter')
 app.use('/reviews', reviewsRouter)
 
 const usersRouter = require('./routers/usersRouter')
 app.use('/users', usersRouter)
-
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
