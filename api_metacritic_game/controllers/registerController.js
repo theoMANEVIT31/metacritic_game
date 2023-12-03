@@ -1,8 +1,10 @@
-var bcrypt  = require('bcrypt')
-// var jwt     = require('jsonwebtoken')
-const db    = require('../models/indexModel')
-const regexEmail = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/
-const regexPseudo = /^[\w\-]+$/
+var bcrypt    = require('bcrypt')
+var jwt       = require('jsonwebtoken')
+var waterfall = require ('async-waterfall')
+var db        = require('../models/indexModel')
+
+const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/
+const PSEUDO_REGEX = /^[\w\-]+$/
 
 exports.signUp = async (req, res) => {
   const email   = req.body.email
@@ -17,16 +19,15 @@ exports.signUp = async (req, res) => {
       success: false,
       message: 'This user already have an account'
     })
-  if(!regexEmail.test(email)) return res.status(400).json({
+  if(!EMAIL_REGEX.test(email)) return res.status(400).json({
       success: false,
       message: 'Email not valid'
     })
-  if(!regexPseudo.test(name)) return res.status(400).json({
+  if(!PSEUDO_REGEX.test(name)) return res.status(400).json({
       success: false,
       message: 'Name can contains only alphanumeric character and \'_\' and \'-\''
     })
   
-
   bcrypt.hash(password, 10)  // 10 = saltRound
     .then(hash => {
       db.users.create({
@@ -46,6 +47,70 @@ exports.signUp = async (req, res) => {
     }))
 }
 
-exports.signIn = (req, res) => {
-    
+exports.signIn = async (req, res) => {
+  const email   = req.body.email
+  const password= req.body.password
+
+  if(!email || !password) return res.status(400).json({
+    success: false,
+    message: 'Email and password are required'
+  })
+
+  waterfall([
+    async function(callback) {
+      await db.users.findOne({where: {email: email}})
+        .then(function(user) {
+          callback(null, user)
+        })
+        .catch(function(err) {
+          return res.status(500).json({
+            success: false,
+            error: 'An error occured during user recovery'
+          })
+        })
+    },
+    function(user, callback) {
+      if(user){
+        bcrypt.compare(password, user.hashedPassword, function(errBcrypt, resBcrypt) {
+          callback(null, user, resBcrypt)
+        })
+      } else {
+        return res.status(404).json({
+          success: false,
+          error: 'This user doesn\'t exist'
+        })
+      }
+    },
+    function(user, resBcrypt, callback) {
+      if(resBcrypt){
+        callback(user)
+      } else {
+        return res.status(401).json({
+          success: false,
+          error: 'Invalid password'
+        })
+      }
+    },
+  ], function(user) {
+    if(user){
+      require('dotenv').config();
+      res.status(200).json({
+        success: true,
+        userId: user.id,
+        token: jwt.sign({
+            id: user.id,
+        }, 
+        process.env.JWT_SIGN_SECRET,
+        {
+          expiresIn: '1h'
+        }
+        )
+      })
+    } else {
+      return res.status(500).json({
+        success: false,
+        error: 'An error occured during user\'s login'
+      })
+    }
+  })
 }
