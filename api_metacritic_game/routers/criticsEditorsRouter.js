@@ -9,4 +9,5 @@ router.put('/', criticsEditorsController.putCriticsEditor);
 router.get('/:idC', criticsEditorsController.getCriticsEditorById);
 router.delete('/:idC', criticsEditorsController.deleteCriticsEditorById);
 
+
 module.exports = router;

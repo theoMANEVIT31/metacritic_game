@@ -36,7 +36,7 @@ exports.putCriticsEditor = (req, res, next) => {
 
 exports.deleteCriticsEditorById = (req, res, next) => {
    try {
-      criticsEditorsService.deleteUserById(req.params.idC)
+      criticsEditorsService.deleteCriticsEditorById(req.params.idC)
       res.status(204).send()
    } catch(e) {
       next(createError(404, `The criticsEditor with id '${idC}' doesn't exists, it cannot be deleted`))

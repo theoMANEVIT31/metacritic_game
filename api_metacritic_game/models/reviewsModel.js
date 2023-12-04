@@ -32,7 +32,7 @@ module.exports = (instance) => {
       },
       idC: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {

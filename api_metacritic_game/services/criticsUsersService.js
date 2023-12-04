@@ -26,11 +26,17 @@ exports.putCriticsUser = async (idR, idU, description) => {
     });
 }
 
-exports.deleteCriticsUserById = async (idR,idU) => {
-    return await db.criticsUsers.destroy({
+exports.deleteCriticsUserById = async (idR, idU) => {
+    try {
+      return await db.criticsUsers.destroy({
         where: {
-            idR,
-            idU
-        }
-    });
-}
+          idR,
+          idU,
+        },
+      });
+    } catch (error) {
+      throw new Error(
+        `Une erreur s'est produite lors de la suppression de l'utilisateur de critiques : ${error}`
+      );
+    }
+  };

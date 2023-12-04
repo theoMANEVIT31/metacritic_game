@@ -26,9 +26,9 @@ exports.getCriticsUserById = async (req, res, next) => {
 }
 
 exports.putCriticsUser = (req, res, next) => {
-   const userUpdated = usersService.putUser(req.body.idR, req.body.idU, req.body.description)
-   if (userUpdated) {
-      res.status(201).json({idR: criticsUserCreated.idR, idU: criticsUserCreated.idU})
+   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idR, req.body.idU, req.body.description)
+   if (criticsUserUpdated) {
+      res.status(201).json({idR: criticsUserUpdated.idR, idU: criticsUserUpdated.idU})
    } else {
       next(createError(400, "Error when updating this criticsUser, verify your args"))
    }
@@ -36,7 +36,7 @@ exports.putCriticsUser = (req, res, next) => {
 
 exports.deleteCriticsUserById = (req, res, next) => {
    try {
-      usersService.deleteUserById(req.params.idU)
+      criticsUsersService.deleteCriticsUserById(req.params.idR, req.params.idU)
       res.status(204).send()
    } catch(e) {
       next(createError(404, `The criticsUser with idU '${idU}' and/or idR '${idR}'  doesn't exists, it cannot be deleted`))
