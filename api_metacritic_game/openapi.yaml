@@ -35,8 +35,32 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/Review'
       responses:
-        '201':
+        '200':
           description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+
+    put:
+      tags:
+        - Reviews
+      summary: Update review by id
+      description: Update a review by his id
+      operationId: "updateReview" 
+      requestBody:
+        $ref: '#/components/requestBodies/Review'
+      responses:
+        '200':
+          description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
 
   /reviews/{id}:
     get:
@@ -65,20 +89,6 @@ paths:
       operationId: "DeleteReviewById" 
       parameters:
         - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: review response
-    
-    put:
-      tags:
-        - Reviews
-      summary: Update review by id
-      description: Update a review by his id
-      operationId: "updateReview" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      requestBody:
-        $ref: '#/components/requestBodies/Review'
       responses:
         '200':
           description: review response
@@ -115,9 +125,32 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/CriticsEditor'
       responses:
-        '201':
+        '200':
           description: criticsEditors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
 
+    put:
+      tags:
+        - Critics Editor
+      summary: Update Critics by id
+      description: Update a Critic made by a editor by his id
+      operationId: "updateCriticE" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsEditor'
+      responses:
+        '200':
+          description: rentals response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
 
   /criticsEditors/{id}:
     get:
@@ -149,21 +182,6 @@ paths:
       responses:
         '200':
           description: criticsEditors response
-          
-
-    put:
-      tags:
-        - Critics Editor
-      summary: Update Critics by id
-      description: Update a Critic made by a editor by his id
-      operationId: "updateCriticE" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      requestBody:
-        $ref: '#/components/requestBodies/CriticsEditor'
-      responses:
-        '200':
-          description: rentals response
           content:
             application/json:
               schema:
@@ -197,11 +215,34 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/CriticsUser'
       responses:
-        '201':
+        '200':
           description: criticsUsers response
-         
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
 
-  /criticsUsers/{idU}/{idR}:
+    put:
+      tags:
+        - Critics User
+      summary: Update Critics by id
+      description: Update a Critic made by a user by his id
+      operationId: "updateCriticUser" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsUser'
+      responses:
+        '200':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+
+  /criticsUsers/{id}:
     get:
       tags:
         - Critics User
@@ -209,8 +250,7 @@ paths:
       description: Returns a Critic made by a user by his id 
       operationId: "getCriticUserById" 
       parameters:
-        - $ref: '#/components/parameters/idUserInPath'
-        - $ref: '#/components/parameters/idReviewInPath'
+        - $ref: '#/components/parameters/idInPath'
       responses:
         '200':
           description: criticsUsers response
@@ -229,24 +269,7 @@ paths:
       description: Delete a Critic made by a user by his id
       operationId: "DeleteCriticUserById" 
       parameters:
-        - $ref: '#/components/parameters/idUserInPath'
-        - $ref: '#/components/parameters/idReviewInPath'
-      responses:
-        '200':
-          description: criticsUsers response
-          
-
-    put:
-      tags:
-        - Critics User
-      summary: Update Critics by id
-      description: Update a Critic made by a user by his id
-      operationId: "updateCriticUser" 
-      parameters:
-        - $ref: '#/components/parameters/idUserInPath'
-        - $ref: '#/components/parameters/idReviewInPath'
-      requestBody:
-        $ref: '#/components/requestBodies/CriticsUser'
+        - $ref: '#/components/parameters/idInPath'
       responses:
         '200':
           description: criticsUsers response
@@ -283,19 +306,21 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/User'
       responses:
-        '201':
+        '200':
           description: users response
-         
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
 
-  /users/{id}:
     put:
       tags:
         - Users
       summary: Update user by id
       description: Update a user by his id
       operationId: "updateUser"
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
       requestBody:
         $ref: '#/components/requestBodies/User'
       responses:
@@ -308,6 +333,7 @@ paths:
                 items:
                  $ref: '#/components/schemas/Users'
 
+  /users/{id}:
     delete:
       tags:
         - Users
@@ -319,7 +345,12 @@ paths:
       responses:
         '200':
           description: users response
-         
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
 
     get:
       tags:
@@ -365,18 +396,21 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/Editor'
       responses:
-        '201':
+        '200':
           description: editors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Editors'
 
-  /editors/{id}:
     put:
       tags:
         - Editors
       summary: Update editor by id
       description: Update a editor by his id
       operationId: "updateEditor"
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
       requestBody:
         $ref: '#/components/requestBodies/Editor'
       responses:
@@ -389,6 +423,7 @@ paths:
                 items:
                  $ref: '#/components/schemas/Editors'
 
+  /editors/{id}:
     delete:
       tags:
         - Editors
@@ -400,7 +435,12 @@ paths:
       responses:
         '200':
           description: editors response
-
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Editors'
 
     get:
       tags:
@@ -431,18 +471,6 @@ components:
       in: path
       schema:
         type: integer
-    idUserInPath:
-      required: true
-      name: idU
-      in: path
-      schema:
-        type: integer
-    idReviewInPath:
-      required: true
-      name: idR
-      in: path
-      schema:
-        type: integer
     
   requestBodies:
     Review:
@@ -451,7 +479,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Reviews'
+            $ref: '#/components/examples/Reviews'
     
     CriticsEditor:
       description: A JSON object containing a book
@@ -459,7 +487,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CriticsEditors'
+            $ref: '#/components/examples/CriticsEditors'
 
     CriticsUser:
       description: A JSON object containing a book
@@ -467,7 +495,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CriticsUsers'
+            $ref: '#/components/examples/CriticsUsers'
 
     Editor:
       description: A JSON object containing a book
@@ -475,7 +503,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Editors'
+            $ref: '#/components/examples/Editors'
     
     User:
       description: A JSON object containing a book
@@ -483,7 +511,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Users'
+            $ref: '#/components/examples/Users'
 
   schemas:
     Reviews:
@@ -565,3 +593,44 @@ components:
         name:
           type: string
           example: Non
+
+  examples:
+    Reviews:
+      summary: An example of a review
+      value:
+        idR: 1
+        noteE: 15
+        noteU: 10
+        description: "très bon jeu"
+        titre: "Persona 5"
+        date: "11-02-2002"
+        idC: 2
+
+    CriticsEditors:
+      summary: An example of a Critic made by a editor
+      value:
+        idC: 2
+        description: "bonne maniabilité"
+        idE: 3
+
+    CriticsUsers:
+      summary: An example of a Critic made by a user
+      value:
+        idR: 2
+        idU: 3
+        description: "mauvaise maniabilité"
+
+    Users:
+      summary: An example of a user
+      value:
+        idU: 3
+        name: "SoloLeveling"
+
+    Editors:
+      summary: An example of a editor
+      value:
+        idE: 3
+        name: "TheGreatReview"
+
+
+
