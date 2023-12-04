@@ -15,3 +15,19 @@ exports.getEditorById = async (idE) => {
         }
     });
 }
+
+exports.putEditor = async (idE, name) => {
+    return await db.editors.update({ name: name },{
+        where: {
+            idE
+        }
+    });
+}
+
+exports.deleteEditorById = async (idE) => {
+    return await db.editors.destroy({
+        where: {
+            idE
+        }
+    });
+}

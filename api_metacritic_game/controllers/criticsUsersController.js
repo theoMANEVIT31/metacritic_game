@@ -24,3 +24,21 @@ exports.getCriticsUserById = async (req, res, next) => {
       next(createError(404, "no criticsUser found for this idR and idU"))
    }
 }
+
+exports.putCriticsUser = (req, res, next) => {
+   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idR, req.body.idU, req.body.description)
+   if (criticsUserUpdated) {
+      res.status(201).json({idR: criticsUserUpdated.idR, idU: criticsUserUpdated.idU})
+   } else {
+      next(createError(400, "Error when updating this criticsUser, verify your args"))
+   }
+}
+
+exports.deleteCriticsUserById = (req, res, next) => {
+   try {
+      criticsUsersService.deleteCriticsUserById(req.params.idR, req.params.idU)
+      res.status(204).send()
+   } catch(e) {
+      next(createError(404, `The criticsUser with idU '${idU}' and/or idR '${idR}'  doesn't exists, it cannot be deleted`))
+   }
+}
