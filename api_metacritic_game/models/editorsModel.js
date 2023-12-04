@@ -10,7 +10,16 @@ module.exports = (instance) => {
         autoIncrement: true,
         allowNull: false,
       },
-      name: {
+      pseudo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      hashedPassword: {
         type: DataTypes.STRING,
         allowNull: false,
       },

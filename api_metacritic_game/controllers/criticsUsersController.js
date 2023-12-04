@@ -8,7 +8,7 @@ exports.getCriticsUsers = async (req, res) => {
 }
 
 exports.addCriticsUser = (req, res, next) => {
-   const criticsUserCreated = criticsUsersService.addCriticsUser(req.body.idR, req.body.idU, req.body.description)
+   const criticsUserCreated = criticsUsersService.addCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU)
    if (criticsUserCreated) {
       res.status(201).json({idR: criticsUserCreated.idR, idU: criticsUserCreated.idU})
    } else {
@@ -26,7 +26,7 @@ exports.getCriticsUserById = async (req, res, next) => {
 }
 
 exports.putCriticsUser = (req, res, next) => {
-   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idR, req.body.idU, req.body.description)
+   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU)
    if (criticsUserUpdated) {
       res.status(201).json({idR: criticsUserUpdated.idR, idU: criticsUserUpdated.idU})
    } else {

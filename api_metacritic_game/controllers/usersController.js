@@ -8,7 +8,7 @@ exports.getUsers = async (req, res) => {
 }
 
 exports.addUser = (req, res, next) => {
-   const userCreated = usersService.addUser(req.body.idU, req.body.name)
+   const userCreated = usersService.addUser(req.body.pseudo, req.body.hashedPassword, req.body.email)
    if (userCreated) {
       res.status(201).json({idU: userCreated.idU})
    } else {
@@ -26,7 +26,7 @@ exports.getUserById = async (req, res, next) => {
 }
 
 exports.putUser = (req, res, next) => {
-   const userUpdated = usersService.putUser(req.body.idU, req.body.name)
+   const userUpdated = usersService.putUser(req.body.pseudo, req.body.hashedPassword, req.body.email)
    if (userUpdated) {
       res.status(201).json({idU: userUpdated.idU})
    } else {

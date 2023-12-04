@@ -5,15 +5,26 @@ module.exports = (instance) => {
     "criticsUsers",
     {
       idR: {
+        type: DataTypes.INTEGER,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        allowNull: false,
       },
       idU: {
+        type: DataTypes.INTEGER,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        allowNull: false,
       },
-      description: {
-        type: DataTypes.STRING
+      comment: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      NoteU: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      date: {
+        type: DataTypes.DATE,
+        allowNull: false,
       },
     },
     {

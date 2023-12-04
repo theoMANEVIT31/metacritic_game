@@ -1,33 +1,36 @@
-const db = require('../models/indexModel');
+const db = require("../models/indexModel");
 
 exports.getEditors = async () => {
-    return await db.editors.findAll();
-}
+  return await db.editors.findAll();
+};
 
-exports.addEditor = (idE, name) => {
-    return db.editors.create({idE, name});
-}
+exports.addEditor = (pseudo, hashedPassword, email) => {
+  return db.editors.create({pseudo, hashedPassword, email});
+};
 
 exports.getEditorById = async (idE) => {
-    return await db.editors.findOne({
-        where: {
-            idE
-        }
-    });
-}
+  return await db.editors.findOne({
+    where: {
+      idE,
+    },
+  });
+};
 
-exports.putEditor = async (idE, name) => {
-    return await db.editors.update({ name: name },{
-        where: {
-            idE
-        }
-    });
-}
+exports.putEditor = async (pseudo, hashedPassword, email) => {
+  return await db.editors.update(
+    { pseudo: pseudo, hashedPassword: hashedPassword, email: email},
+    {
+      where: {
+        idE,
+      },
+    }
+  );
+};
 
 exports.deleteEditorById = async (idE) => {
-    return await db.editors.destroy({
-        where: {
-            idE
-        }
-    });
-}
+  return await db.editors.destroy({
+    where: {
+      idE,
+    },
+  });
+};

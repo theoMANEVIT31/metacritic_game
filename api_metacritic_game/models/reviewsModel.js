@@ -10,24 +10,20 @@ module.exports = (instance) => {
         primaryKey: true,
         allowNull: false,
       },
-      noteE: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      noteU: {
-        type: DataTypes.INTEGER,
+      avgU: {
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       description: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      titre: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      date: {
-        type: DataTypes.STRING,
+      release: {
+        type: DataTypes.DATE,
         allowNull: false,
       },
       idC: {

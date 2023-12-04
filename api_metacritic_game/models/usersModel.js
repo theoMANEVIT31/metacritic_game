@@ -10,9 +10,9 @@ module.exports = (instance) => {
         primaryKey: true,
         allowNull: false,
       },
-      name: {
+      pseudo: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       hashedPassword: {
         type: DataTypes.STRING,

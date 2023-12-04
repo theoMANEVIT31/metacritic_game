@@ -4,14 +4,12 @@ exports.getReviews = async () => {
   return await db.reviews.findAll();
 };
 
-exports.addReview = (idR, noteE, noteU, description, titre, date, idC) => {
+exports.addReview = (avgU, description, title, release, idC) => {
   return db.reviews.create({
-    idR,
-    noteE,
-    noteU,
+    avgU,
     description,
-    titre,
-    date,
+    title,
+    release,
     idC,
   });
 };
@@ -24,22 +22,13 @@ exports.getReviewById = async (idR) => {
   });
 };
 
-exports.putReview = async (
-  idR,
-  noteE,
-  noteU,
-  description,
-  titre,
-  date,
-  idC
-) => {
+exports.putReview = async (avgU, description, title, release, idC) => {
   return await db.reviews.update(
     {
-      noteE: noteE,
-      noteU: noteU,
+      avgU: avgU,
       description: description,
-      titre: titre,
-      date: date,
+      title: title,
+      release: release,
       idC: idC,
     },
     {

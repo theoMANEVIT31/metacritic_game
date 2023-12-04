@@ -8,7 +8,7 @@ exports.getEditors = async (req, res) => {
 }
 
 exports.addEditor = (req, res, next) => {
-   const editorCreated = editorsService.addEditor(req.body.idE, req.body.name)
+   const editorCreated = editorsService.addEditor(req.body.idE, req.body.pseudo, req.body.email, req.body.hashedPassword)
    if (editorCreated) {
       res.status(201).json({idE: editorCreated.idE})
    } else {
@@ -26,7 +26,7 @@ exports.getEditorById = async (req, res, next) => {
 }
 
 exports.putEditor = (req, res, next) => {
-   const editorUpdated = editorsService.putEditor(req.body.idE, req.body.name)
+   const editorUpdated = editorsService.putEditor(req.body.idE, req.body.pseudo, req.body.email, req.body.hashedPassword)
    if (editorUpdated) {
       res.status(201).json({idE: editorUpdated.idE})
    } else {

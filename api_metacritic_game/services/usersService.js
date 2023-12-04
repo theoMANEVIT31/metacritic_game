@@ -4,8 +4,8 @@ exports.getUsers = async () => {
     return await db.users.findAll();
 }
 
-exports.addUser = (idU, name) => {
-    return db.users.create({idU, name});
+exports.addUser = (pseudo, hashedPassword, email) => {
+    return db.users.create({pseudo, hashedPassword, email});
 }
 
 exports.getUserById = async (idU) => {
@@ -16,8 +16,8 @@ exports.getUserById = async (idU) => {
     });
 }
 
-exports.putUser = async (idU, name) => {
-    return await db.users.update({ name: name },{
+exports.putUser = async (pseudo, hashedPassword, email) => {
+    return await db.users.update({ pseudo: pseudo, hashedPassword: hashedPassword, email: email},{
         where: {
             idU
         }

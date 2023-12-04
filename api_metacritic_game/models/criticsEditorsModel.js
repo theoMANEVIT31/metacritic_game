@@ -10,8 +10,16 @@ module.exports = (instance) => {
         autoIncrement: true,
         allowNull: false,
       },
-      description: {
+      evaluation: {
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      noteE: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      date: {
+        type: DataTypes.DATE,
         allowNull: false,
       },
       idE: {
