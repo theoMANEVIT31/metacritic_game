@@ -15,3 +15,19 @@ exports.getReviewById = async (idR) => {
         }
     });
 }
+
+exports.putReview = async (idR, noteE, noteU, description, titre, date, idC) => {
+    return await db.reviews.update({ noteE: noteE , noteU: noteU, description: description, titre: titre, date: date, idC: idC},{
+        where: {
+            idR
+        }
+    });
+}
+
+exports.deleteReviewById = async (idR) => {
+    return await db.reviews.destroy({
+        where: {
+            idR
+        }
+    });
+}

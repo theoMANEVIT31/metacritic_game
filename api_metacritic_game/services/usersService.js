@@ -15,3 +15,19 @@ exports.getUserById = async (idU) => {
         }
     });
 }
+
+exports.putUser = async (idU, name) => {
+    return await db.users.update({ name: name },{
+        where: {
+            idU
+        }
+    });
+}
+
+exports.deleteUserById = async (idU) => {
+    return await db.users.destroy({
+        where: {
+            idU
+        }
+    });
+}

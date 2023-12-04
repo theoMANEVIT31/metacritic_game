@@ -24,3 +24,21 @@ exports.getUserById = async (req, res, next) => {
       next(createError(404, "no user found for this idU"))
    }
 }
+
+exports.putUser = (req, res, next) => {
+   const userUpdated = usersService.putUser(req.body.idU, req.body.name)
+   if (userUpdated) {
+      res.status(201).json({idU: userUpdated.idU})
+   } else {
+      next(createError(400, "Error when updating this user, verify your args"))
+   }
+}
+
+exports.deleteUserById = (req, res, next) => {
+   try {
+      usersService.deleteUserById(req.params.idU)
+      res.status(204).send()
+   } catch(e) {
+      next(createError(404, `The user with id '${idU}' doesn't exists, it cannot be deleted`))
+   }
+}

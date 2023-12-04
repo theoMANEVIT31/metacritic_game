@@ -15,3 +15,19 @@ exports.getCriticsEditorById = async (idC) => {
         }
     });
 }
+
+exports.putCriticsEditor = async (idC, description, idE) => {
+    return await db.criticsEditors.update({ description: description,idE: idE },{
+        where: {
+            idC
+        }
+    });
+}
+
+exports.deleteCriticsEditorById = async (idC) => {
+    return await db.criticsEditors.destroy({
+        where: {
+            idC
+        }
+    });
+}

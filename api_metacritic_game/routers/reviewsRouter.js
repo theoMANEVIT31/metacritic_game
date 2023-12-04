@@ -5,8 +5,8 @@ const express = require('express'),
 
 router.get('/', reviewsController.getReviews);
 router.post('/', reviewsController.addReview);
-
+router.put('/', reviewsController.putReview);
 router.get('/:idR', reviewsController.getReviewById);
-
+router.delete('/:idR', reviewsController.deleteReviewById);
 
 module.exports = router;
