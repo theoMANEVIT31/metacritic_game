@@ -1,10 +1,13 @@
 var bcrypt    = require('bcrypt')
 var jwt       = require('jsonwebtoken')
+var createError = require ('http-errors')
 var waterfall = require ('async-waterfall')
 var db        = require('../models/indexModel')
+var sequelize = require('sequelize')
 
-const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/
-const PSEUDO_REGEX = /^[\w\-]+$/
+const EMAIL_REGEX = /^[\w\W][^()<>@,;:"?|ç%&]+@[a-zA-Z]+\.[a-z]{2,3}$/
+const EMAIL_REGEX_FROM_WEB = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const PSEUDO_REGEX = /^[\w\-_]+$/
 
 exports.signUp = async (req, res) => {
   const email   = req.body.email
@@ -15,10 +18,6 @@ exports.signUp = async (req, res) => {
       success: false,
       message: 'Name, email and password are required'
     })
-  if(await db.users.findOne({where: {email: email}}))return res.status(400).json({
-      success: false,
-      message: 'This user already have an account'
-    })
   if(!EMAIL_REGEX.test(email)) return res.status(400).json({
       success: false,
       message: 'Email not valid'
@@ -27,24 +26,57 @@ exports.signUp = async (req, res) => {
       success: false,
       message: 'Name can contains only alphanumeric character and \'_\' and \'-\''
     })
-  
-  bcrypt.hash(password, 10)  // 10 = saltRound
-    .then(hash => {
-      db.users.create({
-          name: name,
-          email: email,
-          hashedPassword: hash
-      })
-        .then(() => res.status(201).json({
+
+  waterfall([
+    async function(callback) {
+      await db.users.findOne({where: {email: email}})
+        .then(function(user) {
+          callback(null, user)
+        })
+        .catch(function(err) {
+          return res.status(500).json({
+            success: false,
+            error: 'An error occured during user\'s recovery'
+          })
+        })
+    },
+    function(user, callback) {
+      if(!user){
+        require('dotenv').config();
+        bcrypt.hash(password, 10, function(err, bcryptPassword){
+          console.log(bcryptPassword)
+          callback(null, user, bcryptPassword)
+        })
+      } else {
+        return res.status(400).json({
+          success: false,
+          error: 'An error occured during user\'s creation'
+        })
+      }
+    },
+    function(user, bcryptPassword, callback) {
+      if(bcryptPassword) {
+        callback(user, bcryptPassword)
+      } else {
+        return res.status(500).json({
+          success: false,
+          error: 'An error occured during hashing password'
+        })
+      }
+    },
+  ], function(user, bcryptPassword) {
+      if(db.users.create({name: name, email: email, hashedPassword: bcryptPassword})) {
+        return res.status(201).json({
+          success: true,
           message: 'User created !'
-      }))
-        .catch(error => res.status(400).json({
-          error: 'An error occured during user\'s creation !'
-      }))
-    })
-    .catch(error => res.status(500).json({
-      error: 'An error occured during hashing password !'
-    }))
+        })
+      } else {
+        return res.status(500).json({
+          success: false,
+          error: 'An error occured during user\'s creation'
+        })
+      }
+  })
 }
 
 exports.signIn = async (req, res) => {
@@ -58,14 +90,16 @@ exports.signIn = async (req, res) => {
 
   waterfall([
     async function(callback) {
-      await db.users.findOne({where: {email: email}})
+      await db.users.findOne({where:
+        sequelize.where(sequelize.fn('BINARY', sequelize.col('email')), email)
+      })
         .then(function(user) {
           callback(null, user)
         })
         .catch(function(err) {
           return res.status(500).json({
             success: false,
-            error: 'An error occured during user recovery'
+            error: 'An error occured during user\'s recovery'
           })
         })
     },
