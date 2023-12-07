@@ -3,9 +3,19 @@ const createError = require('http-errors')
 
 exports.getAllTitles = async (req, res, next) => {
   try {
-    const titles = await titleServices.getAllTitles(); // Obtenez la liste de tous les titres de jeu depuis le service approprié
+    const titles = await titleServices.getAllTitles();
 
-    res.json(titles); // Renvoyez les titres de jeu sous forme de réponse JSON
+    res.json(titles); 
+  } catch (error) {
+    next(createError(400, "Failed to fetch game titles"))
+  }
+};
+
+exports.getTitleById = async (req, res, next) => {
+  try {
+    const titles = await titleServices.getTitleById(req.params.idT); 
+
+    res.json(titles);
   } catch (error) {
     next(createError(400, "Failed to fetch game titles"))
   }

@@ -1,12 +1,27 @@
-const igdbService = require('./infosJeu'); // Importez le service qui contient les méthodes pour récupérer les informations de l'API IGDB
+const igdbService = require('./infosJeu'); 
 
 
 exports.getAllTitles = async () => {
   try {
-    // Utilisez la fonction appropriée du service IGDB pour récupérer la liste de tous les titres de jeu
-    const titles = await igdbService.getAllNomJeu(); // Cette fonction doit être implémentée dans votre service IGDB
+    const titles = await igdbService.getAllNomJeu(); 
 
-    return titles; // Retournez la liste des titres de jeu
+    return titles;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to fetch game titles');
+  }
+};
+
+
+exports.getTitleById = async (idT) => {
+  try {
+    const titles = await igdbService.getInfosJeuByName({
+        where: {
+          idT,
+        },
+      }); 
+
+    return titles;
   } catch (error) {
     console.error(error);
     throw new Error('Failed to fetch game titles');
