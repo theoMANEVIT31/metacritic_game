@@ -26,7 +26,7 @@ exports.getCriticsUserById = async (req, res, next) => {
 }
 
 exports.putCriticsUser = (req, res, next) => {
-   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU)
+   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU, req.body.date)
    if (criticsUserUpdated) {
       res.status(201).json({idR: criticsUserUpdated.idR, idU: criticsUserUpdated.idU})
    } else {

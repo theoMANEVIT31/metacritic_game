@@ -18,13 +18,14 @@ module.exports = (instance) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      NoteU: {
+      noteU: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
       date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

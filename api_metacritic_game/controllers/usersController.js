@@ -26,7 +26,7 @@ exports.getUserById = async (req, res, next) => {
 }
 
 exports.putUser = (req, res, next) => {
-   const userUpdated = usersService.putUser(req.body.pseudo, req.body.hashedPassword, req.body.email)
+   const userUpdated = usersService.putUser(req.body.idU, req.body.pseudo, req.body.hashedPassword, req.body.email)
    if (userUpdated) {
       res.status(201).json({idU: userUpdated.idU})
    } else {

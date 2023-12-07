@@ -8,278 +8,12 @@ tags:
   - name: "MetaCritic"
     description: "gestion des Critics liees aux reviews"
 
+
+
+
+
+
 paths:
-  /reviews:
-    get:
-      tags:
-        - Reviews
-      summary: get all reviews
-      description: Returns all the reviews mayde by editors
-      operationId: "getReviews" 
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Reviews'
-
-    post:
-      tags:
-        - Reviews
-      summary: Add review
-      description: Add review
-      operationId: "addReview" 
-      requestBody:
-        $ref: '#/components/requestBodies/Review'
-      responses:
-        '200':
-          description: review response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Reviews'
-
-    put:
-      tags:
-        - Reviews
-      summary: Update review by id
-      description: Update a review by his id
-      operationId: "updateReview" 
-      requestBody:
-        $ref: '#/components/requestBodies/Review'
-      responses:
-        '200':
-          description: review response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Reviews'
-
-  /reviews/{id}:
-    get:
-      tags:
-        - Reviews
-      summary: Get review by id
-      description: Returns a review by his id
-      operationId: "getreviewById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: review response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Reviews'
-                 
-    delete:
-      tags:
-        - Reviews
-      summary: Delete review by id
-      description: Delete a review by his id
-      operationId: "DeleteReviewById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: review response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Reviews'
-  
-  /criticsEditors:
-    get:
-      tags:
-        - Critics Editor
-      summary: get all Critics from editors
-      description: Returns all the Critics mayde by editors
-      operationId: "getCriticsEditor" 
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsEditors'
-
-    post:
-      tags:
-        - Critics Editor
-      summary: Add Critic
-      description: Add Critic by a editor
-      operationId: "addCriticEditor" 
-      requestBody:
-        $ref: '#/components/requestBodies/CriticsEditor'
-      responses:
-        '200':
-          description: criticsEditors response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsEditors'
-
-    put:
-      tags:
-        - Critics Editor
-      summary: Update Critics by id
-      description: Update a Critic made by a editor by his id
-      operationId: "updateCriticE" 
-      requestBody:
-        $ref: '#/components/requestBodies/CriticsEditor'
-      responses:
-        '200':
-          description: rentals response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsEditors'
-
-  /criticsEditors/{id}:
-    get:
-      tags:
-        - Critics Editor
-      summary: Get Critic by id
-      description: Returns a Critic made by a editor by his id 
-      operationId: "getCriticEditorById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: criticsEditors response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsEditors'
-                 
-    delete:
-      tags:
-        - Critics Editor
-      summary: Delete Critic by id
-      description: Delete a Critic made by a editor by his id
-      operationId: "DeleteCriticEditorById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: criticsEditors response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsEditors'
-  
-  /criticsUsers:
-    get:
-      tags:
-        - Critics User
-      summary: get all Critics from user
-      description: Returns all the Critics mayde by user
-      operationId: "getCriticsUsers" 
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsUsers'
-
-    post:
-      tags:
-        - Critics User
-      summary: Add Critic
-      description: Add Critic by a user
-      operationId: "addCriticUser" 
-      requestBody:
-        $ref: '#/components/requestBodies/CriticsUser'
-      responses:
-        '200':
-          description: criticsUsers response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsUsers'
-
-    put:
-      tags:
-        - Critics User
-      summary: Update Critics by id
-      description: Update a Critic made by a user by his id
-      operationId: "updateCriticUser" 
-      requestBody:
-        $ref: '#/components/requestBodies/CriticsUser'
-      responses:
-        '200':
-          description: criticsUsers response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsUsers'
-
-  /criticsUsers/{id}:
-    get:
-      tags:
-        - Critics User
-      summary: Get Critic by id
-      description: Returns a Critic made by a user by his id 
-      operationId: "getCriticUserById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: criticsUsers response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsUsers'
-                 
-                 
-    delete:
-      tags:
-        - Critics User
-      summary: Delete Critic by id
-      description: Delete a Critic made by a user by his id
-      operationId: "DeleteCriticUserById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: criticsUsers response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsUsers'
-
   /users:
     get:
       tags:
@@ -369,6 +103,7 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/Users'
+
 
   /editors:
     get:
@@ -460,6 +195,282 @@ paths:
                 items:
                  $ref: '#/components/schemas/Editors'
 
+
+  /criticsEditors:
+    get:
+      tags:
+        - Critics Editor
+      summary: get all Critics from editors
+      description: Returns all the Critics mayde by editors
+      operationId: "getCriticsEditor" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
+
+    post:
+      tags:
+        - Critics Editor
+      summary: Add Critic
+      description: Add Critic by a editor
+      operationId: "addCriticEditor" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsEditor'
+      responses:
+        '200':
+          description: criticsEditors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
+
+    put:
+      tags:
+        - Critics Editor
+      summary: Update Critics by id
+      description: Update a Critic made by a editor by his id
+      operationId: "updateCriticE" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsEditor'
+      responses:
+        '200':
+          description: rentals response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
+
+  /criticsEditors/{id}:
+    get:
+      tags:
+        - Critics Editor
+      summary: Get Critic by id
+      description: Returns a Critic made by a editor by his id 
+      operationId: "getCriticEditorById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: criticsEditors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
+                 
+    delete:
+      tags:
+        - Critics Editor
+      summary: Delete Critic by id
+      description: Delete a Critic made by a editor by his id
+      operationId: "DeleteCriticEditorById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: criticsEditors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
+
+
+  /reviews:
+    get:
+      tags:
+        - Reviews
+      summary: get all reviews
+      description: Returns all the reviews mayde by editors
+      operationId: "getReviews" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+
+    post:
+      tags:
+        - Reviews
+      summary: Add review
+      description: Add review
+      operationId: "addReview" 
+      requestBody:
+        $ref: '#/components/requestBodies/Review'
+      responses:
+        '200':
+          description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+
+    put:
+      tags:
+        - Reviews
+      summary: Update review by id
+      description: Update a review by his id
+      operationId: "updateReview" 
+      requestBody:
+        $ref: '#/components/requestBodies/Review'
+      responses:
+        '200':
+          description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+
+  /reviews/{id}:
+    get:
+      tags:
+        - Reviews
+      summary: Get review by id
+      description: Returns a review by his id
+      operationId: "getreviewById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+                 
+    delete:
+      tags:
+        - Reviews
+      summary: Delete review by id
+      description: Delete a review by his id
+      operationId: "DeleteReviewById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+  
+
+  /criticsUsers:
+    get:
+      tags:
+        - Critics User
+      summary: get all Critics from user
+      description: Returns all the Critics mayde by user
+      operationId: "getCriticsUsers" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+
+    post:
+      tags:
+        - Critics User
+      summary: Add Critic
+      description: Add Critic by a user
+      operationId: "addCriticUser" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsUser'
+      responses:
+        '200':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+
+    put:
+      tags:
+        - Critics User
+      summary: Update Critics by id
+      description: Update a Critic made by a user by his id
+      operationId: "updateCriticUser" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsUser'
+      responses:
+        '200':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+
+  /criticsUsers/{id}:
+    get:
+      tags:
+        - Critics User
+      summary: Get Critic by id
+      description: Returns a Critic made by a user by his id 
+      operationId: "getCriticUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+                 
+                 
+    delete:
+      tags:
+        - Critics User
+      summary: Delete Critic by id
+      description: Delete a Critic made by a user by his id
+      operationId: "DeleteCriticUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+
+
+
       
 
 
@@ -471,31 +482,20 @@ components:
       in: path
       schema:
         type: integer
-    
-  requestBodies:
-    Review:
-      description: A JSON object containing a review
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/examples/Reviews'
-    
-    CriticsEditor:
-      description: A JSON object containing a critic from an editor
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/examples/CriticsEditors'
 
-    CriticsUser:
-      description: A JSON object containing a critic from an user
+
+  requestBodies:
+
+    User:
+      description: A JSON object containing an user
       required: true
       content:
         application/json:
           schema:
-            $ref: '#/components/examples/CriticsUsers'
+            $ref: '#/components/schemas/Users'
+          examples:
+            userExample:
+              $ref: '#/components/examples/Users'
 
     Editor:
       description: A JSON object containing an editor
@@ -504,16 +504,102 @@ components:
         application/json:
           schema:
             $ref: '#/components/examples/Editors'
-    
-    User:
-      description: A JSON object containing an user
+          examples:
+            editorExample:
+              $ref: '#/components/examples/Editors'
+
+    CriticsEditor:
+      description: A JSON object containing a critic from an editor
       required: true
       content:
         application/json:
           schema:
-            $ref: '#/components/examples/Users'
+            $ref: '#/components/examples/CriticsEditors'
+          examples:
+            criticsEditorExample:
+              $ref: '#/components/examples/CriticsEditors'
+
+    Review:
+      description: A JSON object containing a review
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/Reviews'
+          examples:
+            reviewsExample:
+              $ref: '#/components/examples/Reviews'
+
+    CriticsUser:
+      description: A JSON object containing a critic from an user
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/CriticsUsers'
+          examples:
+            criticsUserExample:
+              $ref: '#/components/examples/CriticsUsers'
+
 
   schemas:
+    Users:
+      type: object
+      properties:
+        idU:
+          type: integer
+          format: int64
+          example: 3
+        pseudo:
+          type: string
+          example: johnDoe
+        hashedPassword:
+          type: string
+          example: $2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2
+        email:
+          type: string
+          example: johnDoe@gmail.com
+
+    Editors:
+      type: object
+      properties:
+        idE:
+          type: integer
+          format: int64
+          example: 3
+        pseudo:
+          type: string
+          example: johnDoe
+        hashedPassword:
+          type: string
+          example: $2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2
+        email:
+          type: string
+          example: johnDoe@gmail.com
+
+    CriticsEditors:
+      type: object
+      properties:
+        idC:
+          type: integer
+          format: int64
+          example: 1
+        evaluation:
+          type: string
+          example: il est bon
+        noteE:
+          type: integer
+          format: int64
+          example: 3
+        date:
+          type: string 
+          format: date
+          example: 2023/12/07
+        idE:
+          type: integer
+          format: int64
+          example: 3
+
     Reviews:
       type: object
       properties:
@@ -521,21 +607,17 @@ components:
           type: integer
           format: int64
           example: 1
-        noteE:
-          type: integer
+        avgU:
+          type: number 
           format: int64
-          example: 4
-        noteU:
-          type: integer
-          format: int64
-          example: 5       
+          example: 4.4     
         description:
           type: string
           example: bon jeu 
-        titre:
+        title:
           type: string
           example: the hobbit
-        date:
+        release:
           type: string
           example: 11/02/2002
         idC:
@@ -543,21 +625,6 @@ components:
           format: int64
           example: 1
 
-    CriticsEditors:
-      type: object
-      properties:
-        idC:
-          type: integer
-          format: int64
-          example: 1
-        description:
-          type: string
-          example: il est bon
-        idE:
-          type: integer
-          format: int64
-          example: 3
-
     CriticsUsers:
       type: object
       properties:
@@ -569,55 +636,37 @@ components:
           type: integer
           format: int64
           example: 3
-        description:
+        comment:
           type: string
           example: il est pas bon
+        noteU:
+          type: integer
+          format: int64
+          example: 3
+        date:
+          type: string 
+          format: date
+          example: 2023/12/07
 
-    Users:
-      type: object
-      properties:
-        idU:
-          type: integer
-          format: int64
-          example: 3
-        name:
-          type: string
-          example: Oui
-        hashedPassword:
-          type: string
-          example: $2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2
-        email:
-          type: string
-          example: johnDoe@gmail.com
-        
-    Editors:
-      type: object
-      properties:
-        idE:
-          type: integer
-          format: int64
-          example: 3
-        name:
-          type: string
-          example: Non
 
   examples:
     Reviews:
       summary: An example of a review
       value:
         idR: 1
-        noteE: 15
-        noteU: 10
+        avgU: 15
         description: "très bon jeu"
-        titre: "Persona 5"
-        date: "11-02-2002"
+        title: "Persona 5"
+        release: "11-02-2002"
         idC: 2
 
     CriticsEditors:
       summary: An example of a Critic made by a editor
       value:
         idC: 2
-        description: "bonne maniabilité"
+        evaluation: "bonne maniabilité"
+        noteE: 3
+        date: "2023/12/17"
         idE: 3
 
     CriticsUsers:
@@ -625,19 +674,25 @@ components:
       value:
         idR: 2
         idU: 3
-        description: "mauvaise maniabilité"
+        comment: "mauvaise maniabilité"
+        noteU: 1
+        date: "2023/12/07"
 
     Users:
       summary: An example of a user
       value:
         idU: 3
-        name: "SoloLeveling"
+        pseudo: "johnDoe"
+        email: "johnDoe@gmail.com"
+        hashedPassword: "$2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2"
 
     Editors:
       summary: An example of a editor
       value:
         idE: 3
-        name: "TheGreatReview"
+        pseudo: "johnDoe"
+        email: "johnDoe@gmail.com"
+        hashedPassword: "$2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2"
 
 
 

@@ -7,7 +7,7 @@ exports.getReviews = async (req, res) => {
 }
 
 exports.addReview = (req, res, next) => {
-   const reviewCreated = reviewsService.addReview(req.body.avgU, req.body.description, req.body.title, req.body.release, req.body.idC)
+   const reviewCreated = reviewsService.addReview(req.body.idR, req.body.avgU, req.body.description, req.body.title, req.body.release, req.body.idC)
    if (reviewCreated) {
       res.status(201).json({idR: reviewCreated.idR})
    } else {
@@ -25,7 +25,7 @@ exports.getReviewById = async (req, res, next) => {
 }
 
 exports.putReview = (req, res, next) => {
-   const reviewUpdated = reviewsService.putReview(req.body.avgU, req.body.description, req.body.title, req.body.release, req.body.idC)
+   const reviewUpdated = reviewsService.putReview(req.body.idR, req.body.avgU, req.body.description, req.body.title, req.body.release, req.body.idC)
    if (reviewUpdated) {
       res.status(201).json({idR: reviewUpdated.idR})
    } else {

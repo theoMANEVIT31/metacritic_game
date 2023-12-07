@@ -22,15 +22,9 @@ exports.getReviewById = async (idR) => {
   });
 };
 
-exports.putReview = async (avgU, description, title, release, idC) => {
+exports.putReview = async (idR, avgU, description, title, release, idC) => {
   return await db.reviews.update(
-    {
-      avgU: avgU,
-      description: description,
-      title: title,
-      release: release,
-      idC: idC,
-    },
+    { avgU: avgU, description: description, title: title, release: release, idC: idC},
     {
       where: {
         idR,

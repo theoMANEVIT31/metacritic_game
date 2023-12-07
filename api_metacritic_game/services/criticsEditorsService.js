@@ -5,7 +5,7 @@ exports.getCriticsEditors = async () => {
 };
 
 exports.addCriticsEditor = (evaluation, noteE, date, idE) => {
-  return db.criticsEditors.create({evaluation, noteE, date, idE });
+  return db.criticsEditors.create({ evaluation, noteE, date, idE });
 };
 
 exports.getCriticsEditorById = async (idC) => {
@@ -16,9 +16,9 @@ exports.getCriticsEditorById = async (idC) => {
   });
 };
 
-exports.putCriticsEditor = async (evaluation, noteE, date, idE) => {
+exports.putCriticsEditor = async (idC, evaluation, noteE, date, idE) => {
   return await db.criticsEditors.update(
-    { evaluation: evaluation, noteE: noteE,date: date, idE: idE },
+    { evaluation: evaluation, noteE: noteE, date: date, idE: idE },
     {
       where: {
         idC,
@@ -29,9 +29,8 @@ exports.putCriticsEditor = async (evaluation, noteE, date, idE) => {
 
 exports.deleteCriticsEditorById = async (idC) => {
   return await db.criticsEditors.destroy({
-      where: {
-          idC
-      }
+    where: {
+      idC,
+    },
   });
-}
-
+};

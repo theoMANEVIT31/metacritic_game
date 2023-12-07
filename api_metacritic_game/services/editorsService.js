@@ -1,11 +1,13 @@
 const db = require("../models/indexModel");
 
 exports.getEditors = async () => {
-  return await db.editors.findAll();
+  return await db.editors.findAll({
+    attributes: { exclude: ["hashedPassword"] },
+  });
 };
 
 exports.addEditor = (pseudo, hashedPassword, email) => {
-  return db.editors.create({pseudo, hashedPassword, email});
+  return db.editors.create({ pseudo, hashedPassword, email });
 };
 
 exports.getEditorById = async (idE) => {
@@ -13,12 +15,13 @@ exports.getEditorById = async (idE) => {
     where: {
       idE,
     },
+    attributes: { exclude: ["hashedPassword"] },
   });
 };
 
-exports.putEditor = async (pseudo, hashedPassword, email) => {
+exports.putEditor = async (idE, pseudo, hashedPassword, email) => {
   return await db.editors.update(
-    { pseudo: pseudo, hashedPassword: hashedPassword, email: email},
+    { pseudo: pseudo, hashedPassword: hashedPassword, email: email },
     {
       where: {
         idE,

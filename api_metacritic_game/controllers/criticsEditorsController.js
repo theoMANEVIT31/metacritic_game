@@ -26,7 +26,7 @@ exports.getCriticsEditorById = async (req, res, next) => {
 }
 
 exports.putCriticsEditor = (req, res, next) => {
-   const criticsEditorUpdated = criticsEditorsService.putCriticsEditor(req.body.evaluation, req.body.noteE, req.body.date, req.body.idE)
+   const criticsEditorUpdated = criticsEditorsService.putCriticsEditor(req.body.idC, req.body.evaluation, req.body.noteE, req.body.date, req.body.idE)
    if (criticsEditorUpdated) {
       res.status(201).json({idC: criticsEditorUpdated.idC})
    } else {

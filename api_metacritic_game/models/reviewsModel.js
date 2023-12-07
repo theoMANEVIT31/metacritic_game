@@ -23,7 +23,7 @@ module.exports = (instance) => {
         allowNull: false,
       },
       release: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       idC: {
