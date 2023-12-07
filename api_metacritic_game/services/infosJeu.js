@@ -3,18 +3,19 @@ const axios = require('axios');
 
 exports.getAllNomJeu = async () => {
     await configApiExterne.getAuthorization();
-    fetch(
-        "https://api.igdb.com/v4/games",
+    return fetch(
+        //"https://api.igdb.com/v4/release_dates",
+        "https://api.igdb.com/v4/games/",
         { method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Client-ID': configApiExterne.client_id,
             'Authorization': `Bearer ${configApiExterne.access_token}`
           },
-          body: "name;"
+          body: "fields *; limit 500; "//sort date asc;
         }
     ) .then(response => {
-            console.log(response.json());
+            return response.json()
         }
     ) .catch(err => {
             console.error(err);

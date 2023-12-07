@@ -1,17 +1,30 @@
 const db = require("../models/indexModel");
+const igdbService = require('./infosJeu');
 
 exports.getReviews = async () => {
   return await db.reviews.findAll();
 };
 
-exports.addReview = (avgU, description, title, release, idC) => {
-  return db.reviews.create({
-    avgU,
-    description,
-    title,
-    release,
-    idC,
-  });
+
+exports.addReview = async (avgU, title, idC) => {
+  try {
+    const gameInfo = await igdbService.getInfosJeuByName(title); 
+
+    const { storyline, release_dates } = gameInfo; 
+
+    const review = await db.reviews.create({
+      avgU,
+      description: storyline,
+      title,
+      release: release_dates,
+      idC,
+    });
+
+    return review; 
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to add review');
+  }
 };
 
 exports.getReviewById = async (idR) => {
