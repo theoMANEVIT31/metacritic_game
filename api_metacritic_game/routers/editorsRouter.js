@@ -1,12 +1,13 @@
 const express = require('express'),
     router = express.Router(),
-    editorsController = require('../controllers/editorsController');
+    editorsController = require('../controllers/editorsController'),
+    authMiddleware = require('../middlewares/authMiddleware');
 
 
-router.get('/', editorsController.getEditors);
-router.post('/', editorsController.addEditor);
+router.get('/', authMiddleware, editorsController.getEditors);
+router.post('/', authMiddleware, editorsController.addEditor);
 
-router.get('/:idE', editorsController.getEditorById);
+router.get('/:idE', authMiddleware, editorsController.getEditorById);
 
 
 module.exports = router;

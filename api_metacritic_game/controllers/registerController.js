@@ -1,6 +1,6 @@
 var bcrypt    = require('bcrypt')
 var jwt       = require('jsonwebtoken')
-var createError = require ('http-errors')
+// var createError = require ('http-errors')
 var waterfall = require ('async-waterfall')
 var db        = require('../models/indexModel')
 var sequelize = require('sequelize')
@@ -44,7 +44,6 @@ exports.signUp = async (req, res) => {
       if(!user){
         require('dotenv').config();
         bcrypt.hash(password, 10, function(err, bcryptPassword){
-          console.log(bcryptPassword)
           callback(null, user, bcryptPassword)
         })
       } else {
@@ -137,8 +136,7 @@ exports.signIn = async (req, res) => {
         process.env.JWT_SIGN_SECRET,
         {
           expiresIn: '1h'
-        }
-        )
+        })
       })
     } else {
       return res.status(500).json({
