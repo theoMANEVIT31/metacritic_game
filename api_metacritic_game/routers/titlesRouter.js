@@ -4,6 +4,6 @@ const express = require('express'),
 
 
 router.get('/', titlesController.getAllTitles);
-router.get('/:idT', titlesController.getTitleById);
+router.get('/:nameT', titlesController.getTitleByName);
 
 module.exports = router;

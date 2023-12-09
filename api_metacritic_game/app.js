@@ -5,17 +5,17 @@ const OpenApiValidator = require('express-openapi-validator')
 const swaggerUi = require('swagger-ui-express')
 const YAML = require('yamljs')
 
-//const swaggerDocument = YAML.load('./openapi.yaml')
+const swaggerDocument = YAML.load('./openapi.yaml')
 
 app.use(cors());
 app.use(express.json()); 
 
-/*app.use(
+app.use(
     OpenApiValidator.middleware({
         apiSpec: 'openapi.yaml',
         ignoreUndocumented: true
     })
-)*/
+)
 
 const registerRouter = require('./routers/registerRouter')
 app.use('/register', registerRouter)
@@ -38,7 +38,7 @@ app.use('/users', usersRouter)
 const titlesRouter = require('./routers/titlesRouter')
 app.use('/titles', titlesRouter)
 
-//app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use((error, req, res, next) => {
     res.status(error.status || 500)

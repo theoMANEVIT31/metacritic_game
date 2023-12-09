@@ -11,7 +11,7 @@ exports.getAllNomJeu = async () => {
             'Client-ID': configApiExterne.client_id,
             'Authorization': `Bearer ${configApiExterne.access_token}`
           },
-          body: "fields name; limit 500; sort name asc;"
+          body: "fields name; limit 500; sort name asc;" 
         }
     ) .then(response => {
             return response.json()
@@ -22,9 +22,9 @@ exports.getAllNomJeu = async () => {
     );
 }
 
-exports.getInfosJeuByName = async (idT) => {
+exports.getInfosJeuByName = async (nameT) => {
   await configApiExterne.getAuthorization();
-  const requestBody = `fields *; where name = "${idT}";`;
+  const requestBody = `fields *; where name = "${nameT}";`;
   return fetch(
     "https://api.igdb.com/v4/games/",
     { method: 'POST',

@@ -1,9 +1,9 @@
-const igdbService = require('./infosJeu'); 
+const igdbService = require('./infosJeu');
 
 
 exports.getAllTitles = async () => {
   try {
-    const titles = await igdbService.getAllNomJeu(); 
+    const titles = await igdbService.getAllNomJeu();
 
     return titles;
   } catch (error) {
@@ -12,18 +12,13 @@ exports.getAllTitles = async () => {
   }
 };
 
-
-exports.getTitleById = async (idT) => {
+exports.getTitleByName = async (nameT) => {
   try {
-    const titles = await igdbService.getInfosJeuByName({
-        where: {
-          idT,
-        },
-      }); 
+    const title = await igdbService.getInfosJeuByName(nameT);
 
-    return titles;
+    return title;
   } catch (error) {
     console.error(error);
-    throw new Error('Failed to fetch game titles');
+    throw new Error('Failed to fetch game titles by name');
   }
 };

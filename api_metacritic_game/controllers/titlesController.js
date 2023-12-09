@@ -11,12 +11,13 @@ exports.getAllTitles = async (req, res, next) => {
   }
 };
 
-exports.getTitleById = async (req, res, next) => {
+exports.getTitleByName = async (req, res, next) => {
   try {
-    const titles = await titleServices.getTitleById(req.params.idT); 
+    const nameT = req.params.nameT; 
+    const titles = await titleServices.getTitleByName(nameT);
 
     res.json(titles);
   } catch (error) {
-    next(createError(400, "Failed to fetch game titles"))
+    next(createError(400, "Failed to fetch game titles by name"))
   }
 };
