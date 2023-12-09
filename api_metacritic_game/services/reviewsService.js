@@ -10,13 +10,13 @@ exports.addReview = async (avgU, title, idC) => {
   try {
     const gameInfo = await igdbService.getInfosJeuByName(title); 
 
-    const { storyline, release_dates } = gameInfo; 
+    const { first_release_date, summary} = gameInfo[0]; 
 
     const review = await db.reviews.create({
       avgU,
-      description: storyline,
+      description: summary,
       title,
-      release: release_dates,
+      release: first_release_date,
       idC,
     });
 
