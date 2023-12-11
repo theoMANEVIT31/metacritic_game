@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(
     OpenApiValidator.middleware({
-        apiSpec: './openapi.yaml',
+        apiSpec: 'openapi.yaml',
         ignoreUndocumented: true
     })
 )
@@ -34,6 +34,9 @@ app.use('/reviews', reviewsRouter)
 
 const usersRouter = require('./routers/usersRouter')
 app.use('/users', usersRouter)
+
+const titlesRouter = require('./routers/titlesRouter')
+app.use('/titles', titlesRouter)
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 

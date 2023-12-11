@@ -3,18 +3,18 @@ const axios = require('axios');
 
 exports.getAllNomJeu = async () => {
     await configApiExterne.getAuthorization();
-    fetch(
-        "https://api.igdb.com/v4/games",
+    return fetch(
+        "https://api.igdb.com/v4/games/",
         { method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Client-ID': configApiExterne.client_id,
             'Authorization': `Bearer ${configApiExterne.access_token}`
           },
-          body: "name;"
+          body: "fields name,first_release_date,summary; limit 500; sort name asc;" 
         }
     ) .then(response => {
-            console.log(response.json());
+            return response.json()
         }
     ) .catch(err => {
             console.error(err);
@@ -22,28 +22,24 @@ exports.getAllNomJeu = async () => {
     );
 }
 
-
-exports.getInfosJeuByName = async (nameJeu) => {
+exports.getInfosJeuByName = async (nameT) => {
   await configApiExterne.getAuthorization();
-
-  let data = `fields name, storyline, summary, alternative_name, category, cover, release_dates, franchise, genres, involved_companies, keywords, platforms, status;\r\nwhere name = ${nameJeu};`;
-
-  let config = {
-    method: 'post',
-    maxBodyLength: Infinity,
-    url: 'https://api.igdb.com/v4/games',
-    headers: { 
-      'Client-ID': configApiExterne.client_id,
-      'Authorization': `Bearer ${configApiExterne.access_token}`, 
-      'Content-Type': 'text/plain'
-    },
-    data
-  };
-  axios.request(config)
-  .then((response) => {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  const requestBody = `fields name,first_release_date,summary; where name = "${nameT}";`;
+  return fetch(
+    "https://api.igdb.com/v4/games/",
+    { method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Client-ID': configApiExterne.client_id,
+        'Authorization': `Bearer ${configApiExterne.access_token}`
+      },
+      body: requestBody
+    }
+) .then(response => {
+        return response.json()
+    }
+) .catch(err => {
+        console.error(err);
+    }
+);
 }

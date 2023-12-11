@@ -7,7 +7,7 @@ exports.getReviews = async (req, res) => {
 }
 
 exports.addReview = (req, res, next) => {
-   const reviewCreated = reviewsService.addReview(req.body.idR, req.body.avgU, req.body.description, req.body.title, req.body.release, req.body.idC)
+   const reviewCreated = reviewsService.addReview(req.body.avgU, req.body.title, req.body.idC)
    if (reviewCreated) {
       res.status(201).json({idR: reviewCreated.idR})
    } else {
