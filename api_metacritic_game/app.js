@@ -4,15 +4,16 @@ const cors = require('cors')
 const OpenApiValidator = require('express-openapi-validator')
 const swaggerUi = require('swagger-ui-express')
 const YAML = require('yamljs')
+require('dotenv').config()
 
-const swaggerDocument = YAML.load('./openapi.yaml')
+const swaggerDocument = YAML.load(__dirname + '/openapi.yaml')
 
 app.use(cors());
 app.use(express.json()); 
 
 app.use(
     OpenApiValidator.middleware({
-        apiSpec: 'openapi.yaml',
+        apiSpec: __dirname + '/openapi.yaml',
         ignoreUndocumented: true
     })
 )

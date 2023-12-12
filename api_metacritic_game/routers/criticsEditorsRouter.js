@@ -1,13 +1,14 @@
 const express = require('express'),
     router = express.Router(),
-    criticsEditorsController = require('../controllers/criticsEditorsController');
+    criticsEditorsController = require('../controllers/criticsEditorsController'),
+    authMiddleware = require('../middlewares/authMiddleware');
 
 
 router.get('/', criticsEditorsController.getCriticsEditors);
-router.post('/', criticsEditorsController.addCriticsEditor);
-router.put('/', criticsEditorsController.putCriticsEditor);
+router.post('/', authMiddleware, criticsEditorsController.addCriticsEditor);
+router.put('/', authMiddleware, criticsEditorsController.putCriticsEditor);
 router.get('/:idC', criticsEditorsController.getCriticsEditorById);
-router.delete('/:idC', criticsEditorsController.deleteCriticsEditorById);
+router.delete('/:idC', authMiddleware, criticsEditorsController.deleteCriticsEditorById);
 
 
 module.exports = router;

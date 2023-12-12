@@ -1,5 +1,5 @@
 const configApiExterne = require('./../config.api.externe.js');
-const axios = require('axios');
+// const axios = require('axios');
 
 exports.getAllNomJeu = async () => {
     await configApiExterne.getAuthorization();

@@ -1,30 +1,29 @@
 var bcrypt    = require('bcrypt')
 var jwt       = require('jsonwebtoken')
-var createError = require ('http-errors')
+// var createError = require ('http-errors')
 var waterfall = require ('async-waterfall')
 var db        = require('../models/indexModel')
 var sequelize = require('sequelize')
 
 const EMAIL_REGEX = /^[\w\W][^()<>@,;:"?|ç%&]+@[a-zA-Z]+\.[a-z]{2,3}$/
-const EMAIL_REGEX_FROM_WEB = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const PSEUDO_REGEX = /^[\w\-_]+$/
 
 exports.signUp = async (req, res) => {
   const email   = req.body.email
   const password= req.body.password
-  const name    = req.body.name
+  const pseudo    = req.body.pseudo
 
-  if(!email || !password || !name) return res.status(400).json({
+  if(!email || !password || !pseudo) return res.status(400).json({
       success: false,
-      message: 'Name, email and password are required'
+      message: 'Pseudo, email and password are required'
     })
   if(!EMAIL_REGEX.test(email)) return res.status(400).json({
       success: false,
       message: 'Email not valid'
     })
-  if(!PSEUDO_REGEX.test(name)) return res.status(400).json({
+  if(!PSEUDO_REGEX.test(pseudo)) return res.status(400).json({
       success: false,
-      message: 'Name can contains only alphanumeric character and \'_\' and \'-\''
+      message: 'Pseudo can contains only alphanumeric character and \'_\' and \'-\''
     })
 
   waterfall([
@@ -44,7 +43,6 @@ exports.signUp = async (req, res) => {
       if(!user){
         require('dotenv').config();
         bcrypt.hash(password, 10, function(err, bcryptPassword){
-          console.log(bcryptPassword)
           callback(null, user, bcryptPassword)
         })
       } else {
@@ -65,7 +63,7 @@ exports.signUp = async (req, res) => {
       }
     },
   ], function(user, bcryptPassword) {
-      if(db.users.create({name: name, email: email, hashedPassword: bcryptPassword})) {
+      if(db.users.create({pseudo: pseudo, email: email, hashedPassword: bcryptPassword})) {
         return res.status(201).json({
           success: true,
           message: 'User created !'
@@ -127,7 +125,6 @@ exports.signIn = async (req, res) => {
     },
   ], function(user) {
     if(user){
-      require('dotenv').config();
       res.status(200).json({
         success: true,
         userId: user.id,
@@ -137,8 +134,7 @@ exports.signIn = async (req, res) => {
         process.env.JWT_SIGN_SECRET,
         {
           expiresIn: '1h'
-        }
-        )
+        })
       })
     } else {
       return res.status(500).json({
