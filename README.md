@@ -14,9 +14,62 @@ Nous utilisons l'API externe IGBD qui nous permet d'avoir accès à une très gr
 Nous faisons appel à cette API lorsqu'un éditeur crée un test, pour ne pas stocker tous les jeux.
 
 
-## Documentation des Routes API
+# Metacritic Game API
 
-Les routes suivantes sont disponibles dans notre API. Consultez la documentation ci-dessous pour plus de détails.
+This API provides endpoints for managing users, editors, critics, reviews, and titles in the Metacritic Game platform.
 
-```yaml
-include(./api_metacritic_game/openapi.yaml)
+## Users
+
+- **GET Users**
+  - Endpoint: `GET /users`
+  - Description: Get a list of all users.
+
+- **POST User**
+  - Endpoint: `POST /users`
+  - Description: Create a new user.
+  - Request Body:
+    ```json
+    {
+      "pseudo": "user_3",
+      "email": "user_3@gmail.com",
+      "hashedPassword": "user_mdp"
+    }
+    ```
+
+- **PUT User**
+  - Endpoint: `PUT /users/:idU`
+  - Description: Update a user by ID.
+  - Request Body:
+    ```json
+    {
+      "idU": 1,
+      "pseudo": "user_2",
+      "email": "user_2@gmail.com",
+      "hashedPassword": "user_mdp"
+    }
+    ```
+
+- **GET User by ID**
+  - Endpoint: `GET /users/:idU`
+  - Description: Get a user by ID.
+
+- **DELETE User by ID**
+  - Endpoint: `DELETE /users/:idU`
+  - Description: Delete a user by ID.
+
+## Editors
+
+(Repeat the above structure for Editors, CriticsEditors, Reviews, CriticsUsers, and Titles)
+
+...
+
+## Titles
+
+- **GET Titles**
+  - Endpoint: `GET /titles`
+  - Description: Get a list of all titles.
+
+- **GET Title by ID**
+  - Endpoint: `GET /titles/:titleId`
+  - Description: Get a title by ID.
+  - Example: `GET /titles/007%20Legends:%20Skyfall`
