@@ -19,4 +19,4 @@ Nous faisons appel à cette API lorsqu'un éditeur crée un test, pour ne pas st
 Les routes suivantes sont disponibles dans notre API. Consultez la documentation ci-dessous pour plus de détails.
 
 ```yaml
-include(openapi.yaml)
+include(./api_metacritic_game/openapi.yaml)
