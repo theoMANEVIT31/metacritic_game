@@ -12,3 +12,11 @@ Il y a différents rôles : - Les éditeurs : Ce sont ceux qui créent les tests
                           - Les utilisateurs : Ce sont ceux qui si un test existe peuvent mettre une note au jeu et un commentaire
 Nous utilisons l'API externe IGBD qui nous permet d'avoir accès à une très grande liste de jeux.
 Nous faisons appel à cette API lorsqu'un éditeur crée un test, pour ne pas stocker tous les jeux.
+
+
+## Documentation des Routes API
+
+Les routes suivantes sont disponibles dans notre API. Consultez la documentation ci-dessous pour plus de détails.
+
+```yaml
+include(openapi.yaml)
