@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1702504280666" clover="3.2.0">
+  <project timestamp="1702504280666" name="All files">
+    <metrics statements="35" coveredstatements="31" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="6" elements="45" coveredelements="37" complexity="0" loc="35" ncloc="35" packages="3" files="8" classes="8"/>
+    <package name="api_metacritic_game">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="db.config.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\db.config.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="api_metacritic_game.models">
+      <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+      <file name="criticsEditorsModel.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\models\criticsEditorsModel.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="criticsUsersModel.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\models\criticsUsersModel.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="editorsModel.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\models\editorsModel.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="indexModel.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\models\indexModel.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+      <file name="reviewsModel.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\models\reviewsModel.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="usersModel.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\models\usersModel.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="api_metacritic_game.services">
+      <metrics statements="11" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+      <file name="usersService.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\services\usersService.js">
+        <metrics statements="11" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
