@@ -4,6 +4,15 @@ CREATE DATABASE metacritic
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
+
+Commandes d'installation des modules manquants : 
+
+npm install axios
+npm install sequelize
+
+(Ces modules n'ont pas étaient déposé sur le git, car trop volumineux.)
+
+
 API externe utiliser : IGDB
 Documentation de l'api externe : https://api-docs.igdb.com/?javascript
 
