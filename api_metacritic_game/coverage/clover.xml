@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1702504280666" clover="3.2.0">
-  <project timestamp="1702504280666" name="All files">
-    <metrics statements="35" coveredstatements="31" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="6" elements="45" coveredelements="37" complexity="0" loc="35" ncloc="35" packages="3" files="8" classes="8"/>
+<coverage generated="1702937948588" clover="3.2.0">
+  <project timestamp="1702937948588" name="All files">
+    <metrics statements="35" coveredstatements="35" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10" elements="45" coveredelements="45" complexity="0" loc="35" ncloc="35" packages="3" files="8" classes="8"/>
     <package name="api_metacritic_game">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="db.config.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\db.config.js">
@@ -54,20 +54,20 @@
       </file>
     </package>
     <package name="api_metacritic_game.services">
-      <metrics statements="11" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
       <file name="usersService.js" path="C:\Users\sarah\Documents\Ynov\devAPI\metacriticGame\metacritic_game\api_metacritic_game\services\usersService.js">
-        <metrics statements="11" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
       </file>
     </package>
   </project>

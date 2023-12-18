@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.63% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.63% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -111,22 +111,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -135,7 +124,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,12 +149,12 @@ exports.getUsers = async () =&gt; {
   });
 };
 &nbsp;
-exports.addUser = <span class="fstat-no" title="function not covered" >(p</span>seudo, hashedPassword, email) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return db.users.create({ pseudo, hashedPassword, email });</span>
+exports.addUser = (pseudo, hashedPassword, email) =&gt; {
+  return db.users.create({ pseudo, hashedPassword, email });
 };
 &nbsp;
-exports.getUserById = <span class="fstat-no" title="function not covered" >as</span>ync (idU) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return await db.users.findOne({</span>
+exports.getUserById = async (idU) =&gt; {
+  return await db.users.findOne({
     where: {
       idU,
     },
@@ -162,8 +162,8 @@ exports.getUserById = <span class="fstat-no" title="function not covered" >as</s
   });
 };
 &nbsp;
-exports.putUser = <span class="fstat-no" title="function not covered" >as</span>ync (idU, pseudo, hashedPassword, email) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return await db.users.update(</span>
+exports.putUser = async (idU, pseudo, hashedPassword, email) =&gt; {
+  return await db.users.update(
     { pseudo: pseudo, hashedPassword: hashedPassword, email: email },
     {
       where: {
@@ -173,8 +173,8 @@ exports.putUser = <span class="fstat-no" title="function not covered" >as</span>
   );
 };
 &nbsp;
-exports.deleteUserById = <span class="fstat-no" title="function not covered" >as</span>ync (idU) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return await db.users.destroy({</span>
+exports.deleteUserById = async (idU) =&gt; {
+  return await db.users.destroy({
     where: {
       idU,
     },
@@ -187,7 +187,7 @@ exports.deleteUserById = <span class="fstat-no" title="function not covered" >as
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-13T21:51:20.516Z
+                at 2023-12-18T22:19:08.544Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
