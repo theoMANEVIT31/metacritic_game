@@ -4,9 +4,9 @@ const app = require('./app');
 db.instance.sync({force: true}).then(async () => {
     console.log('Database connected and synchronized');
 
-    await db.users.create({pseudo: "user_1", email: "user_1@gmail.com", hashedPassword: "user_mdp"});
+    await db.users.create({pseudo: "user_1", email: "user_1@gmail.com", hashedPassword: "$2b$10$JFGYYD/SlUUMNj96VPTmIuiunOShESLn7tgwGOGJAYsiJ05OxnLXS"});
 
-    await db.editors.create({pseudo: "editor_1", email: "editor_1@gmail.com", hashedPassword: "editor_mdp"});
+    await db.editors.create({pseudo: "editor_1", email: "editor_1@gmail.com", hashedPassword: "$2b$10$psGwfBHMf9WUYL5og6boBuqRuWutTWccJXwBEKggTuoZtO4EwTxdW"});
 
     await db.criticsEditors.create({evaluation: "bien",noteE: 8, idE: 1});
 
