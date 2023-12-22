@@ -12,15 +12,15 @@ exports.getAllNomJeu = async () => {
   }
 
   const data = fetch (
-      "https://api.igdb.com/v4/games/",
-      { method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Client-ID': configApiExterne.client_id,
-          'Authorization': `Bearer ${configApiExterne.access_token}`
-        },
-        body: "fields name,first_release_date,summary; limit 500; sort name asc;" 
-      }
+    "https://api.igdb.com/v4/games/",
+    { method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Client-ID': configApiExterne.client_id,
+        'Authorization': `Bearer ${configApiExterne.access_token}`
+      },
+      body: "fields name,first_release_date,summary; limit 500; sort name asc;" 
+    }
   ) .then(response => {
     return response.json()
   }) .catch(err => {
