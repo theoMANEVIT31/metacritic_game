@@ -10,4 +10,5 @@ router.put('/', authMiddleware, editorsController.putEditor);
 router.get('/:idE', editorsController.getEditorById);
 router.delete('/:idE', authMiddleware, editorsController.deleteEditorById);
 
+
 module.exports = router;

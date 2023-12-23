@@ -10,4 +10,5 @@ router.put('/', authMiddleware, criticsUsersController.putCriticsUser);
 router.get('/:idU/:idR', criticsUsersController.getCriticsUserById);
 router.delete('/:idU/:idR', authMiddleware, criticsUsersController.deleteCriticsUserById);
 
+
 module.exports = router;

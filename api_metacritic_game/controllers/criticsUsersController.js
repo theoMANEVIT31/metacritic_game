@@ -2,15 +2,19 @@ const criticsUsersService = require('../services/criticsUsersService');
 const createError = require('http-errors')
 
 
-exports.getCriticsUsers = async (req, res) => {
+exports.getCriticsUsers = async (req, res, next) => {
    const criticsUsers = await criticsUsersService.getCriticsUsers()
-   res.json({data: criticsUsers})
+   if (criticsUsers) {
+      res.json({ data: criticsUsers })
+   } else {
+      next(createError(404, "no criticsUser found"))
+   }
 }
 
-exports.addCriticsUser = (req, res, next) => {
-   const criticsUserCreated = criticsUsersService.addCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU)
+exports.addCriticsUser = async (req, res, next) => {
+   const criticsUserCreated = await criticsUsersService.addCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU)
    if (criticsUserCreated) {
-      res.status(201).json({idR: criticsUserCreated.idR, idU: criticsUserCreated.idU})
+      res.status(201).send()
    } else {
       next(createError(400, "Error when creating this criticsUser, verify your args"))
    }
@@ -19,26 +23,26 @@ exports.addCriticsUser = (req, res, next) => {
 exports.getCriticsUserById = async (req, res, next) => {
    const criticsUser = await criticsUsersService.getCriticsUserById(req.params.idR, req.params.idU)
    if (criticsUser) {
-      res.json({data: criticsUser})
+      res.json({ data: criticsUser })
    } else {
       next(createError(404, "no criticsUser found for this idR and idU"))
    }
 }
 
-exports.putCriticsUser = (req, res, next) => {
-   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU, req.body.date)
+exports.putCriticsUser = async (req, res, next) => {
+   const criticsUserUpdated = await criticsUsersService.putCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU, req.body.date)
    if (criticsUserUpdated) {
-      res.status(201).json({idR: criticsUserUpdated.idR, idU: criticsUserUpdated.idU})
+      res.status(201).send()
    } else {
       next(createError(400, "Error when updating this criticsUser, verify your args"))
    }
 }
 
-exports.deleteCriticsUserById = (req, res, next) => {
-   try {
-      criticsUsersService.deleteCriticsUserById(req.params.idR, req.params.idU)
+exports.deleteCriticsUserById = async (req, res, next) => {
+   const criticsUserDeleted = await criticsUsersService.deleteCriticsUserById(req.params.idR, req.params.idU)
+   if (criticsUserDeleted) {
       res.status(204).send()
-   } catch(e) {
-      next(createError(404, `The criticsUser with idU '${idU}' and/or idR '${idR}'  doesn't exists, it cannot be deleted`))
+   } else {
+      next(createError(400, `The criticsUser with idR '${idR}' and/or idU '${idU}' doesn't exists, it cannot be deleted`))
    }
 }
