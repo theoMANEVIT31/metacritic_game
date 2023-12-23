@@ -6,8 +6,8 @@ describe('About users...', () => {
     it("should return list of users", async () => {
         // MOCK //
         users = {
-            0: {pseudo: "user_1", email: "user_1@gmail.com"},
-            1: {pseudo: "user_2", email: "user_2@gmail.com"}
+            0: {idU: 1, pseudo: "user_1", email: "user_1@gmail.com"},
+            1: {idU: 2, pseudo: "user_2", email: "user_2@gmail.com"}
         }
         db.users.findAll = jest.fn().mockReturnValue(users)
 
@@ -17,6 +17,7 @@ describe('About users...', () => {
         // THEN //
         expect(db.users.findAll).toBeCalled()
         expect(result[1]).toStrictEqual({
+            idU: 2,
             email: "user_2@gmail.com",
             pseudo: "user_2"
         })
