@@ -10,38 +10,19 @@
 			"name": "Users",
 			"item": [
 				{
-					"name": "GET_Users",
+					"name": "All_Users",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST_User",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"pseudo\": \"user_3\",\r\n    \"email\": \"user_3@gmail.com\",\r\n    \"hashedPassword\": \"user_mdp\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+						"auth": {
+							"type": "noauth"
 						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:3000/users",
 							"protocol": "http",
@@ -57,13 +38,19 @@
 					"response": []
 				},
 				{
-					"name": "PUT_User",
+					"name": "Update_User",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idU\": 1,\r\n    \"pseudo\": \"user_2\",\r\n    \"email\": \"user_2@gmail.com\",\r\n    \"hashedPassword\": \"user_mdp\"\r\n}",
+							"raw": "{\r\n    \"idU\": 1,\r\n    \"pseudo\": \"user_2\",\r\n    \"email\": \"user_2@gmail.com\",\r\n    \"password\": \"user_mdp\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -86,12 +73,21 @@
 					"response": []
 				},
 				{
-					"name": "GET_UserById",
+					"name": "Users_By_Id",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:3000/users/1",
+							"raw": "http://localhost:3000/users/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -99,17 +95,23 @@
 							"port": "3000",
 							"path": [
 								"users",
-								"1"
+								"2"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "DELETE_UserById",
+					"name": "Delete_User",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:3000/users/1",
 							"protocol": "http",
@@ -131,10 +133,16 @@
 			"name": "Editors",
 			"item": [
 				{
-					"name": "GET_Editors",
+					"name": "All_Editors",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:3000/editors",
 							"protocol": "http",
@@ -150,10 +158,16 @@
 					"response": []
 				},
 				{
-					"name": "POST_Editor",
+					"name": "Add_Editor",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"pseudo\": \"editor_3\",\r\n    \"email\": \"editor_3@gmail.com\",\r\n    \"hashedPassword\": \"editor_mdp\"\r\n}",
@@ -178,10 +192,16 @@
 					"response": []
 				},
 				{
-					"name": "PUT_Editor",
+					"name": "Update_Editor",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"idE\": 1,\r\n    \"pseudo\": \"editor_2\",\r\n    \"email\": \"editor_2@gmail.com\",\r\n    \"hashedPassword\": \"editor_mdp\"\r\n}",
@@ -206,7 +226,7 @@
 					"response": []
 				},
 				{
-					"name": "GET_EditorById",
+					"name": "Editors_By_Id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -226,7 +246,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE_EditorById",
+					"name": "Delete_Editor",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -251,7 +271,7 @@
 			"name": "CriticsEditors",
 			"item": [
 				{
-					"name": "GET_criticsEditors",
+					"name": "All_CriticsEditors",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -270,7 +290,7 @@
 					"response": []
 				},
 				{
-					"name": "POST_criticsEditor",
+					"name": "Add_CriticsEditor",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -298,7 +318,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT_criticsEditor",
+					"name": "Update_CriticsEditor",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -326,7 +346,7 @@
 					"response": []
 				},
 				{
-					"name": "GET_criticsEditorById",
+					"name": "CriticsEditors_By_Id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -346,10 +366,16 @@
 					"response": []
 				},
 				{
-					"name": "DELETE_criticsEditorById",
+					"name": "Delete_CriticsEditor",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:3000/criticsEditors/1",
 							"protocol": "http",
@@ -371,7 +397,7 @@
 			"name": "Reviews",
 			"item": [
 				{
-					"name": "GET_Reviews",
+					"name": "All_Reviews",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -390,10 +416,16 @@
 					"response": []
 				},
 				{
-					"name": "POST_Review",
+					"name": "Add_Review",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"avgU\": 2.2,\r\n    \"title\": \"007 Legends: Skyfall\",\r\n    \"idC\": 1\r\n}\r\n\r\n",
@@ -418,7 +450,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT_Review",
+					"name": "Update_Review",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -446,7 +478,7 @@
 					"response": []
 				},
 				{
-					"name": "GET_ReviewById",
+					"name": "Reviews_By_Id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -466,7 +498,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE_ReviewById",
+					"name": "Delete_Review",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -491,7 +523,7 @@
 			"name": "CriticsUsers",
 			"item": [
 				{
-					"name": "GET_criticsUsers",
+					"name": "All_CriticsUsers",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -510,7 +542,7 @@
 					"response": []
 				},
 				{
-					"name": "POST_criticsUser",
+					"name": "Add_CriticsUser",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -538,7 +570,7 @@
 					"response": []
 				},
 				{
-					"name": "PUT_criticsUser",
+					"name": "Update_CriticsUser",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -566,7 +598,7 @@
 					"response": []
 				},
 				{
-					"name": "GET_criticsUsersById",
+					"name": "CriticsUsers_By_Id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -587,7 +619,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE_criticsUsersById",
+					"name": "Delete_CriticsUser",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -613,7 +645,7 @@
 			"name": "Titles",
 			"item": [
 				{
-					"name": "GET_Titles",
+					"name": "All_Titles",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -632,7 +664,7 @@
 					"response": []
 				},
 				{
-					"name": "GET_TitleById",
+					"name": "Title_By_Id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -652,6 +684,92 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "register",
+			"item": [
+				{
+					"name": "Sign_Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pseudo\": \"user_2\",\r\n    \"email\": \"user_2@gmail.com\",\r\n    \"password\": \"user_mdp\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/register/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign_In",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Extrait le token de la réponse\r",
+									"var jsonData = pm.response.json();\r",
+									"var token = jsonData.token;\r",
+									"\r",
+									"// Stocke le token dans une variable d'environnement\r",
+									"pm.environment.set(\"auth_token\", token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user_2@gmail.com\",\r\n    \"password\": \"user_mdp\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/register/signIn",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register",
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_token",
+			"value": "auth_token"
 		}
 	]
 }

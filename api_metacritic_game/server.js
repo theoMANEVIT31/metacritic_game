@@ -21,7 +21,7 @@ db.instance.sync({force: true}).then(async () => {
         headers: {'Content-Type': 'application/json'}
     })
 
-    await db.editors.create({pseudo: "editor_1", email: "editor_1@gmail.com", hashedPassword: "editor_mdp"});
+    await db.editors.create({pseudo: "editor_1", email: "editor_1@gmail.com", hashedPassword: "$2b$10$psGwfBHMf9WUYL5og6boBuqRuWutTWccJXwBEKggTuoZtO4EwTxdW"});
 
     await db.criticsEditors.create({evaluation: "bien",noteE: 8, idE: 1});
 
