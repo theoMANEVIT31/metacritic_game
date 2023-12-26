@@ -8,7 +8,8 @@ COLLATE utf8_general_ci;
 Commandes d'installation des modules manquants : 
 
 npm install axios,
-npm install sequelize
+npm install sequelize,
+npm install node-cache
 
 (Ces modules n'ont pas étaient déposé sur le git, car trop volumineux.)
 
