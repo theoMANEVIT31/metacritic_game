@@ -1,4 +1,4 @@
-const db = require('../models/indexModel');
+const db = require('../models/indexModel')
 
 exports.getIdRolesByNom = async (nom) => {
     return await db.roles.findOne({
