@@ -1,93 +1,259 @@
-Commande création base de données :
+# 🎮​ METACRITIC 🎮​
 
-CREATE DATABASE metacritic
-CHARACTER SET utf8
-COLLATE utf8_general_ci;
+Notre projet était de développer une API en lien avec les jeux vidéos ainsi nous avons choisi de vous faire découvrir **Metacritic**.
 
+## Résumé
 
-Commandes d'installation des modules manquants : 
+Vous souhaitez découvrir un nouveau jeu sans savoir lequel ? Donnez votre avis sur votre dernier jeu ? Tout cela est possible grâce à **Metacritic** : l'API de critiques du jeux vidéo !
 
-npm install axios,
-npm install sequelize,
-npm install node-cache
+Plusieurs utilisations s'offrent à vous tels que :
+- Consulter les avis des internautes et de la rédaction
+- Partager votre avis sur un jeu
+  - Écrire une critique (bonne ou mauvaise)
+  - Noter le jeu
 
-(Ces modules n'ont pas étaient déposé sur le git, car trop volumineux.)
+## Installation
 
-Pour la configuration de la base de données : 
+Concernant l'installation de l'API, celle-ci est disponible [ici](https://github.com/theoMANEVIT31/metacritic_game).
+
+### Récupération des modules installés
+
+Afin de récupérer l'ensemble des modules qui ont été installés, la commande `npm install` doit être lancée.
+
+### Mise en place de l'environnement de travail
+
+Pour établir quelques constantes, l'environnement de travail doit être établi.
+Il vous faut donc créer un fichier `.env` dans lequel vous renseignerez la variable d'environnement `JWT_SIGN_SECRET`. Cette donnée correspond à votre token décodeur.
+
+### Création de la base de données
+
+Pour que le projet ne rencontre aucun soucis lors de son lancement, vous allez créer une base de donnée nommée **metaCritic**. La création de la BDD peut directement se faire dans la console SQL de PhpMyAdmin (par exemple) via la commande `CREATE DATABASE metacritic CHARACTER SET utf8 COLLATE utf8_general_ci;`
+
+La configuration de l'accès à la base de données se fait directement depuis le fichier `db.config.js` présent à la racine du projet. Vous devrez y renseigner les données demandées telle que ci-dessous:
+```
     host: "localhost",
     username: "root",
     password: "",
     database: "metaCritic",
     port: 3306
+```
+### Lancement du projet
 
+Le lancement du projet se fera donc via la commande `node server.js`
 
-API externe utiliser : IGDB
-Documentation de l'api externe : https://api-docs.igdb.com/?javascript
+## Les utilisateurs
 
-Notre projet consiste a créé une API qui permette aux utilisateurs de voir des tests de jeux vidéos ainsi que de les notés et de mettre un commentaire.
-Il y a différents rôles : - Les éditeurs : Ce sont ceux qui créent les tests des jeux
-                          - Les utilisateurs : Ce sont ceux qui si un test existe peuvent mettre une note au jeu et un commentaire
-Nous utilisons l'API externe IGBD qui nous permet d'avoir accès à une très grande liste de jeux.
-Nous faisons appel à cette API lorsqu'un éditeur crée un test, pour ne pas stocker tous les jeux.
+Dans ce projet, tous les utilisateurs n'ont pas les mêmes droits. Ainsi il existe différents rôles : 
+- gamer
+- editor
+- admin
 
-Le cache est utilisé lors de l'appel à l'API externe.
+Au lancement du projet, 3 utilisateurs sont d'ores et déjà présent en BDD, un utilisateur par rôle. 
+- **email** : gamer@gmail.com - **mot de passe** : gamer_mdp
+- **email** : editor@gmail.com - **mot de passe** : editor_mdp
+- **email** : admin@gmail.com - **mot de passe** : admin_mdp
 
-# Metacritic Game API
+### Rôle gamer
 
-This API provides endpoints for managing users, editors, critics, reviews, and titles in the Metacritic Game platform.
+Le rôle de **gamer** est attribué par défaut à toutes nouvelles inscriptions. Les utilisateurs associés à ce rôle ont alors le droit de noter et de publier des critiques sur un jeu (nommé review). 
 
-## Users
+### Rôle editor
 
-- **GET Users**
-  - Endpoint: `GET /users`
-  - Description: Get a list of all users.
+Un **editor** peut quant à lui créer des reviews sur des jeux afin que les **gamer** puisse les commenter. Il créé alors une critique puis l'associe à une nouvelle review
 
-- **POST User**
-  - Endpoint: `POST /users`
-  - Description: Create a new user.
-  - Request Body:
-    ```json
-    {
-      "pseudo": "user_3",
-      "email": "user_3@gmail.com",
-      "hashedPassword": "user_mdp"
-    }
+### Rôle admin
+
+Tout utilisateur avec le rôle **admin** peut principalement gérer les utilisateurs notamment la modification des rôles...etc
+
+## Les routes
+
+Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API avec leur fonction décrite. Celles-ci sont également disponibles avec Swagger à l'accueil du projet soit par l'adresse `localhost:3000`. 3000 étant le port que nous avons choisi.
+
+### Users
+
+- ### /users
+  
+    - GET
+    ```
+      Rôle: admin 
+      Fonction: Récupère la liste des utilisateurs
+    ```
+    - POST
+    ```
+      Rôle: admin 
+      Fonction: Ajoute un utilisateur
     ```
 
-- **PUT User**
-  - Endpoint: `PUT /users/:idU`
-  - Description: Update a user by ID.
-  - Request Body:
-    ```json
-    {
-      "idU": 1,
-      "pseudo": "user_2",
-      "email": "user_2@gmail.com",
-      "hashedPassword": "user_mdp"
-    }
+- ### /users/:id
+
+    - PUT
+    ```
+      Rôle: gamer 
+      Fonction: Modifie les données de son compte utilisateur
+    ```
+    - DELETE
+    ```
+      Rôle: gamer 
+      Fonction: Supprime son compte utilisateur
     ```
 
-- **GET User by ID**
-  - Endpoint: `GET /users/:idU`
-  - Description: Get a user by ID.
+- ### /users/role/:id
 
-- **DELETE User by ID**
-  - Endpoint: `DELETE /users/:idU`
-  - Description: Delete a user by ID.
+    - PUT
+    ```
+      Rôle: admin 
+      Fonction: Modifie le rôle d'un utilisateur
+    ```
 
-## Editors
+### Critics Users
 
-(Repeat the above structure for Editors, CriticsEditors, Reviews, CriticsUsers, and Titles)
+- ### /criticsUsers
+  
+    - GET
+    ```
+      Rôle: tous 
+      Fonction: Récupère la liste des critiques de tous les utilisateurs
+    ```
+    - POST
+    ```
+      Rôle: gamer 
+      Fonction: Ajoute une critique
+    ```
 
-...
+- ### /criticsUsers/:id
 
-## Titles
+    - PUT
+    ```
+      Rôle: gamer 
+      Fonction: Modifie l'une de ses critiques
+    ```
+- ### /criticsUsers/:idUser/:idReview
 
-- **GET Titles**
-  - Endpoint: `GET /titles`
-  - Description: Get a list of all titles.
+    - GET
+    ```
+      Rôle: tous 
+      Fonction: Récupère la critique d'un utilisateur
+    ```
+    - DELETE
+    ```
+      Rôle: gamer 
+      Fonction: Supprime sa critique
+    ```
 
-- **GET Title by ID**
-  - Endpoint: `GET /titles/:titleId`
-  - Description: Get a title by ID.
-  - Example: `GET /titles/007%20Legends:%20Skyfall`
+### Critics Editors
+
+- ### /criticsEditors
+  
+    - GET
+    ```
+      Rôle: tous 
+      Fonction: Récupère la liste des critiques des éditeurs
+    ```
+    - POST
+    ```
+      Rôle: editor 
+      Fonction: Ajoute une critique
+    ```
+
+- ### /criticsEditors/:id
+
+    - PUT
+    ```
+      Rôle: editor 
+      Fonction: Modifie l'une de ses critiques
+    ```
+    - GET
+    ```
+      Rôle: tous 
+      Fonction: Récupère la critique d'un éditeur
+    ```
+    - DELETE
+    ```
+      Rôle: editor 
+      Fonction: Supprime sa critique
+
+
+    ```
+### Reviews
+
+- ### /reviews
+
+    - GET
+    ```
+      Rôle: tous 
+      Fonction: Récupère la liste des reviews
+    ```
+    - POST
+    ```
+      Rôle: editor 
+      Fonction: Ajoute une review
+    ```
+
+- ### /reviews/:id
+
+    - PUT
+    ```
+      Rôle: editor 
+      Fonction: Modifie une review
+    ```
+    - GET
+    ```
+      Rôle: tous 
+      Fonction: Récupère une review
+    ```
+    - DELETE
+    ```
+      Rôle: editor 
+      Fonction: Supprime une review
+    ```
+
+### Register
+
+- ### /register/signUp
+
+    - POST
+    ```
+      Rôle: tous 
+      Fonction: S'inscrire
+    ```
+
+- ### /register/signIn
+
+    - POST
+    ```
+      Rôle: tous 
+      Fonction: Se connecter
+    ```
+
+### Titles
+
+- ### /titles
+
+    - GET
+    ```
+      Rôle: editor 
+      Fonction: Récupère la liste des jeux vidéos
+    ```
+
+- ### /titles/:nameT
+
+    - GET
+    ```
+      Rôle: editor 
+      Fonction: Récupère un jeu vidéo par son nom
+    ```
+
+## Ressources extérieures
+
+* API externe utilisée : IGDB
+    * Documentation associée : https://api-docs.igdb.com/?javascript
+
+## Auteurs
+
+Ce projet a été réalisé dans le cadre du cours "Dev API" par :
+
+  - **Ambre Rouillon**
+  - **Théo Manevit**
+  - **Sarah Barrabé**
+
+Tous élèves chez YNOV Toulouse en B3 Informatique spécialité développement. 

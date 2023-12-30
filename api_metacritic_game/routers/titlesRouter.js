@@ -1,9 +1,9 @@
 const express = require('express'),
     router = express.Router(),
-    titlesController = require('../controllers/titlesController')
+    titlesController = require('../controllers/titlesController'),
+    authMiddleware = require('../middlewares/authMiddleware')
 
-
-router.get('/', titlesController.getAllTitles)
-router.get('/:nameT', titlesController.getTitleByName)
+router.get('/', authMiddleware("editor"), titlesController.getAllTitles)
+router.get('/:nameT', authMiddleware("editor"), titlesController.getTitleByName)
 
 module.exports = router
