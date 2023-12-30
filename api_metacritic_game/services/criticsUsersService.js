@@ -15,7 +15,7 @@ exports.getCriticsUserById = async (idReview,idUser) => {
             idReview,
             idUser
         }
-    });
+    })
 }
 
 exports.putCriticsUser = async (idReview, idUser, comment, note) => {
@@ -24,7 +24,7 @@ exports.putCriticsUser = async (idReview, idUser, comment, note) => {
             idReview,
             idUser
         }
-    });
+    })
 }
 
 exports.deleteCriticsUserById = async (idReview, idUser) => {
@@ -34,10 +34,10 @@ exports.deleteCriticsUserById = async (idReview, idUser) => {
           idReview,
           idUser,
         },
-      });
+      })
     } catch (error) {
       throw new Error(
         `Une erreur s'est produite lors de la suppression de l'utilisateur de critiques : ${error}`
-      );
+      )
     }
-  };
+  }
