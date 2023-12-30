@@ -83,18 +83,15 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
       Rôle: admin 
       Fonction: Ajoute un utilisateur
     ```
-
-- ### /users/:id
-
     - PUT
     ```
       Rôle: gamer 
-      Fonction: Modifie les données de son compte utilisateur
+      Fonction: Modifie les données de SON compte utilisateur
     ```
     - DELETE
     ```
       Rôle: gamer 
-      Fonction: Supprime son compte utilisateur
+      Fonction: Supprime SON compte utilisateur
     ```
 
 - ### /users/role/:id
@@ -119,14 +116,12 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
       Rôle: gamer 
       Fonction: Ajoute une critique
     ```
-
-- ### /criticsUsers/:id
-
     - PUT
     ```
       Rôle: gamer 
-      Fonction: Modifie l'une de ses critiques
+      Fonction: Modifie l'une de SES critiques
     ```
+
 - ### /criticsUsers/:idUser/:idReview
 
     - GET
@@ -154,14 +149,14 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
       Rôle: editor 
       Fonction: Ajoute une critique
     ```
-
-- ### /criticsEditors/:id
-
     - PUT
     ```
       Rôle: editor 
       Fonction: Modifie l'une de ses critiques
     ```
+
+- ### /criticsEditors/:id
+
     - GET
     ```
       Rôle: tous 
@@ -188,14 +183,14 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
       Rôle: editor 
       Fonction: Ajoute une review
     ```
-
-- ### /reviews/:id
-
     - PUT
     ```
       Rôle: editor 
       Fonction: Modifie une review
     ```
+
+- ### /reviews/:id
+
     - GET
     ```
       Rôle: tous 

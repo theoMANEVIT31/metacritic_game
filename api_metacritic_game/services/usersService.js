@@ -44,6 +44,18 @@ exports.updateRoleByUserId = async (id, role) => {
 }
 
 exports.deleteUserById = async (id) => {
+  const criticUser = await db.criticsUsers.findAll({
+    where: {
+      idUser: id
+    }
+  })
+  if(criticUser){
+    await db.criticsUsers.destroy({
+      where: {
+        idUser: id
+      }
+    })
+  }
   return await db.users.destroy({
     where: {
       id,

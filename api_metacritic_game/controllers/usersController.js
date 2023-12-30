@@ -1,5 +1,7 @@
 const usersService = require('../services/usersService')
+const criticsUserService = require('../services/criticsUsersService')
 const createError = require('http-errors')
+const jwt = require('jsonwebtoken')
 
 
 exports.getUsers = async (req, res, next) => {
@@ -30,9 +32,13 @@ exports.getUserById = async (req, res, next) => {
 }
 
 exports.putUser = (req, res, next) => {
-   const userUpdated = usersService.putUser(req.body.id, req.body.pseudo, req.body.hashedPassword, req.body.email)
+   const userConnected = jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SIGN_SECRET)
+   const userUpdated = usersService.putUser(userConnected.userId, req.body.pseudo, req.body.hashedPassword, req.body.email)
    if (userUpdated) {
-      res.status(201).json({id: userUpdated.id})
+      res.status(200).json({
+         success: true,
+         message: "User updated"
+      })
    } else {
       next(createError(400, "Error when updating this user, verify your args"))
    }
@@ -70,9 +76,13 @@ exports.updateRoleByUserId = async (req, res, next) => {
 
 exports.deleteUserById = (req, res, next) => {
    try {
-      usersService.deleteUserById(req.params.id)
-      res.status(204).send()
+      const userConnected = jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SIGN_SECRET)
+      usersService.deleteUserById(userConnected.userId)
+      res.status(204).json({
+         success: true,
+         message: "User deleted"
+      })
    } catch(e) {
-      next(createError(404, `The user with id '${id}' doesn't exists, it cannot be deleted`))
+      next(createError(404, `This user doesn't exists, it cannot be deleted`))
    }
 }

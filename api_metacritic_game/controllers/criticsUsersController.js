@@ -1,5 +1,7 @@
 const criticsUsersService = require('../services/criticsUsersService')
+const reviewsService = require('../services/reviewsService')
 const createError = require('http-errors')
+const jwt = require('jsonwebtoken')
 
 
 exports.getCriticsUsers = async (req, res, next) => {
@@ -12,7 +14,7 @@ exports.getCriticsUsers = async (req, res, next) => {
 }
 
 exports.addCriticsUser = (req, res, next) => {
-   const criticsUserCreated = criticsUsersService.addCriticsUser(req.body.idReview, req.body.idUser, req.body.comment, req.body.noteU)
+   const criticsUserCreated = criticsUsersService.addCriticsUser(req.body.idReview, req.body.idUser, req.body.comment, req.body.note)
    if (criticsUserCreated) {
       res.status(201).json({idReview: criticsUserCreated.idReview, idUser: criticsUserCreated.idUser})
    } else {
@@ -29,10 +31,22 @@ exports.getCriticsUserById = async (req, res, next) => {
    }
 }
 
-exports.putCriticsUser = (req, res, next) => {
-   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idReview, req.body.idUser, req.body.comment, req.body.noteU, req.body.date)
+exports.putCriticsUser = async (req, res, next) => {
+   const userConnected = jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SIGN_SECRET)
+
+   if((!await criticsUsersService.getCriticsUserById(req.body.idReview, userConnected.userId))){
+      res.status(400).json({
+         success: false,
+         message: "No critic found"
+      }).send()
+      return
+   }
+   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idReview, userConnected.userId, req.body.comment, req.body.note, req.body.date)
    if (criticsUserUpdated) {
-      res.status(201).json({idReview: criticsUserUpdated.idReview, idUser: criticsUserUpdated.idUser})
+      res.status(201).json({
+         success: true,
+         message: "Critic updated"
+      })
    } else {
       next(createError(400, "Error when updating this criticsUser, verify your args"))
    }

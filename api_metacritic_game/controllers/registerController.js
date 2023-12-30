@@ -114,7 +114,7 @@ exports.signIn = async (req, res) => {
       } else {
         return res.status(404).json({
           success: false,
-          error: 'This user doesn\'t exist'
+          error: 'Email or password invalid'
         })
       }
     },
@@ -124,7 +124,7 @@ exports.signIn = async (req, res) => {
       } else {
         return res.status(401).json({
           success: false,
-          error: 'Invalid password'
+          error: 'Email or password invalid'
         })
       }
     },

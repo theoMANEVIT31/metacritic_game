@@ -41,6 +41,7 @@ db.instance.sync({force: true}).then(async () => {
 
     await db.criticsUsers.create({idReview: 1, idUser: 3, comment: "Super jeu", note: 10});
 
+
 }).catch((e) => {
     console.error(e)
 })
