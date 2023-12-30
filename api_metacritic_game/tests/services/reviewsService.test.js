@@ -1,5 +1,5 @@
-const reviews = require('../../services/reviewsService');
-const db = require('../../models/indexModel');
+const reviews = require('../../services/reviewsService')
+const db = require('../../models/indexModel')
 
 describe('About reviews...', () => {
 
