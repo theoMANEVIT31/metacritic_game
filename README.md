@@ -13,6 +13,13 @@ npm install node-cache
 
 (Ces modules n'ont pas étaient déposé sur le git, car trop volumineux.)
 
+Pour la configuration de la base de données : 
+    host: "localhost",
+    username: "root",
+    password: "",
+    database: "metaCritic",
+    port: 3306
+
 
 API externe utiliser : IGDB
 Documentation de l'api externe : https://api-docs.igdb.com/?javascript
