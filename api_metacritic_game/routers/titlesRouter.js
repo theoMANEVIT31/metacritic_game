@@ -3,7 +3,7 @@ const express = require('express'),
     titlesController = require('../controllers/titlesController')
 
 
-router.get('/', titlesController.getAllTitles);
-router.get('/:nameT', titlesController.getTitleByName);
+router.get('/', titlesController.getAllTitles)
+router.get('/:nameT', titlesController.getTitleByName)
 
-module.exports = router;
+module.exports = router
