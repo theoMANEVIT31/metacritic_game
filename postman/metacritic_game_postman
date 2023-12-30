@@ -1,959 +1,772 @@
-{
-	"info": {
-		"_postman_id": "ed3f62b5-8f63-4910-a7b2-5289c3e09bd2",
-		"name": "metacritic_game",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31332962"
-	},
-	"item": [
-		{
-			"name": "Users",
-			"item": [
-				{
-					"name": ":Id",
-					"item": [
-						{
-							"name": "Users By Id (gamer)",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{auth_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/users/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"users",
-										"1"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "role",
-					"item": [
-						{
-							"name": ":id",
-							"item": [
-								{
-									"name": "Update User (admin)",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{auth_token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"idU\": 1,\r\n    \"pseudo\": \"user_1\",\r\n    \"email\": \"user_1@gmail.com\",\r\n    \"password\": \"user_mdp\",\r\n    \"roles\": \"1\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:3000/users",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "3000",
-											"path": [
-												"users"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						}
-					]
-				},
-				{
-					"name": "Update User (gamer)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"idU\": 1,\r\n    \"pseudo\": \"user_1\",\r\n    \"email\": \"user_1@gmail.com\",\r\n    \"password\": \"user_mdp\",\r\n    \"roles\": \"1\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "All Users (admin)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/users/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add User (admin)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"pseudo\": \"user_1\",\r\n    \"password\": \"user_mdp\",\r\n    \"email\": \"user_1@gmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete User (gamer)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/users/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"users",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "CriticsEditors",
-			"item": [
-				{
-					"name": ":id",
-					"item": [
-						{
-							"name": "CriticsEditors By Id (all)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/criticsEditors/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"criticsEditors",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete CriticsEditor (editor)",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{auth_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/criticsEditors/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"criticsEditors",
-										"1"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "All CriticsEditors (all)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/criticsEditors",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"criticsEditors"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add CriticsEditor (editor)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"evaluation\": \"mauvais\",\r\n    \"noteE\": 2,\r\n    \"idE\": 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/criticsEditors",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"criticsEditors"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update CriticsEditor (editor)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"idC\": 1,\r\n    \"evaluation\": \"très bien\",\r\n    \"noteE\": 10,\r\n    \"idE\": 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/criticsEditors",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"criticsEditors"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Reviews",
-			"item": [
-				{
-					"name": ":id",
-					"item": [
-						{
-							"name": "Reviews By Id (all)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/reviews/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"reviews",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Review (editor)",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{auth_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/reviews/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"reviews",
-										"1"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "All Reviews (all)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/reviews",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"reviews"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Review (editor)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"avgU\": 2.2,\r\n    \"title\": \"007 Legends: Skyfall\",\r\n    \"idC\": 1\r\n}\r\n\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/reviews",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"reviews"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Review (editor)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"idR\": 1,\r\n    \"avgU\": 3.7,\r\n    \"description\": \"un jeu vidéo développé par Daedalic Entertainment et co-édité par Daedalic Entertainment et Nacon.\",\r\n    \"title\": \"Le Seigneur des anneaux : Gollum\",\r\n    \"release\": \"2023/05/25\",\r\n    \"idC\": 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/reviews",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"reviews"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "CriticsUsers",
-			"item": [
-				{
-					"name": ":idUser/:idReview",
-					"item": [
-						{
-							"name": "CriticsUsers By Id (all)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/criticsUsers/1/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"criticsUsers",
-										"1",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete CriticsUser (gamer)",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{auth_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{auth_token}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://localhost:3000/criticsUsers/1/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"criticsUsers",
-										"1",
-										"1"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "All CriticsUsers (all)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/criticsUsers",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"criticsUsers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add CriticsUser (gamer)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"idR\": 1,\r\n    \"idU\": 2,\r\n    \"comment\": \"pas mal\",\r\n    \"noteU\": 7\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/criticsUsers",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"criticsUsers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update CriticsUser (gamer)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"idR\": 1,\r\n    \"idU\": 1,\r\n    \"comment\": \"nul\",\r\n    \"noteU\": 2\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/criticsUsers",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"criticsUsers"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Titles",
-			"item": [
-				{
-					"name": "All Titles (editor)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/titles",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"titles"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Title By Name (editor)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{auth_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/titles/007%20Legends:%20Skyfall",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"titles",
-								"007%20Legends:%20Skyfall"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "register",
-			"item": [
-				{
-					"name": "Sign Up",
-					"item": [
-						{
-							"name": "Sign_Up (all)",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"pseudo\": \"user_2\",\r\n    \"email\": \"user_2@gmail.com\",\r\n    \"password\": \"user_mdp\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/register/signUp",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"register",
-										"signUp"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Sign In",
-					"item": [
-						{
-							"name": "Sign In Admin (all)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"// Extrait le token de la réponse\r",
-											"var jsonData = pm.response.json();\r",
-											"var token = jsonData.token;\r",
-											"\r",
-											"// Stocke le token dans une variable d'environnement\r",
-											"pm.environment.set(\"auth_token\", token);\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin_mdp\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/register/signIn",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"register",
-										"signIn"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sign In Gamer (all)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"// Extrait le token de la réponse\r",
-											"var jsonData = pm.response.json();\r",
-											"var token = jsonData.token;\r",
-											"\r",
-											"// Stocke le token dans une variable d'environnement\r",
-											"pm.environment.set(\"auth_token\", token);\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"gamer@gmail.com\",\r\n    \"password\": \"gamer_mdp\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/register/signIn",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"register",
-										"signIn"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sign In Editor (all)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"// Extrait le token de la réponse\r",
-											"var jsonData = pm.response.json();\r",
-											"var token = jsonData.token;\r",
-											"\r",
-											"// Stocke le token dans une variable d'environnement\r",
-											"pm.environment.set(\"auth_token\", token);\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"editor@gmail.com\",\r\n    \"password\": \"editor_mdp\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/register/signIn",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"register",
-										"signIn"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		}
-	],
-	"variable": [
-		{
-			"key": "auth_token",
-			"value": "auth_token"
-		}
-	]
-}
+openapi: 3.0.1
+info:
+  description: "Projet Final"
+  version: "1.0.6"
+  title: "MetaCritic"
+
+tags:
+  - name: "MetaCritic"
+    description: "gestion des Critics liées aux reviews"
+
+
+
+
+
+
+paths:
+  /users:
+    get:
+      tags:
+        - Users
+      summary: All Users
+      description: Returns all users
+      operationId: "getUsers" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+    
+    post:
+      tags:
+        - Users
+      summary: Add user
+      description: Add user
+      operationId: "addUser" 
+      requestBody:
+        $ref: '#/components/requestBodies/User'
+      responses:
+        '201':
+          description: criticsEditors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+
+    put:
+      tags:
+        - Users
+      summary: Update User
+      description: Update a user by his id
+      operationId: "updateUser"
+      requestBody:
+        $ref: '#/components/requestBodies/User'
+      responses:
+        '201':
+          description: users response
+          
+    
+          
+  /users/{id}:        
+    get:
+      tags:
+        - Users
+      summary: Users By Id
+      description: Returns a user by id
+      operationId: "getUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: users response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+
+    put:
+      tags:
+        - Users
+      summary: Update role's user by id
+      description: Returns new role and id
+      operationId: "updateRoleByUserId" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: users response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+                 
+    delete:
+      tags:
+        - Users
+      summary: Delete User By Id
+      description: Delete a user by his id
+      operationId: "DeleteUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '204':
+          description: users response
+          
+
+  /criticsEditors:
+    get:
+      tags:
+        - Critics Editor
+      summary: All Critics Editors
+      description: Returns all the Critics mayde by editors
+      operationId: "getCriticsEditor" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
+
+    post:
+      tags:
+        - Critics Editor
+      summary: Add Critics Editor
+      description: Add Critic by a editor
+      operationId: "addCriticEditor" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsEditor'
+      responses:
+        '201':
+          description: criticsEditors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
+
+    put:
+      tags:
+        - Critics Editor
+      summary: Update Critics Editor
+      description: Update a Critic made by a editor by his id
+      operationId: "updateCriticE" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsEditor'
+      responses:
+        '201':
+          description: rentals response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
+
+  /criticsEditors/{id}:
+    get:
+      tags:
+        - Critics Editor
+      summary: Critics Editors By Id
+      description: Returns a Critic made by a editor by his id 
+      operationId: "getCriticEditorById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: criticsEditors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsEditors'
+                 
+    delete:
+      tags:
+        - Critics Editor
+      summary: Delete Critic Editors By Id
+      description: Delete a Critic made by a editor by his id
+      operationId: "DeleteCriticEditorById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '204':
+          description: criticsEditors response
+
+
+  /reviews:
+    get:
+      tags:
+        - Reviews
+      summary: All Reviews
+      description: Returns all the reviews mayde by editors
+      operationId: "getReviews" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+
+    post:
+      tags:
+        - Reviews
+      summary: Add Review
+      description: Add review
+      operationId: "addReview" 
+      requestBody:
+        $ref: '#/components/requestBodies/Review'
+      responses:
+        '201':
+          description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+
+    put:
+      tags:
+        - Reviews
+      summary: Update Review
+      description: Update a review by his id
+      operationId: "updateReview" 
+      requestBody:
+        $ref: '#/components/requestBodies/Review'
+      responses:
+        '201':
+          description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+
+  /reviews/{id}:
+    get:
+      tags:
+        - Reviews
+      summary: Reviews By Id
+      description: Returns a review by his id
+      operationId: "getreviewById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+
+    delete:
+      tags:
+        - Reviews
+      summary: Delete Review By Id
+      description: Delete a review by his id
+      operationId: "DeleteReviewById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '204':
+          description: review response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Reviews'
+  
+
+  /criticsUsers:
+    get:
+      tags:
+        - Critics User
+      summary: All Critics Users
+      description: Returns all the Critics mayde by user
+      operationId: "getCriticsUsers" 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+
+    post:
+      tags:
+        - Critics User
+      summary: Add Critics User
+      description: Add Critic by a user
+      operationId: "addCriticUser" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsUser'
+      responses:
+        '201':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+
+    put:
+      tags:
+        - Critics User
+      summary: Update Critics User
+      description: Update a Critic made by a user by his id
+      operationId: "updateCriticUser" 
+      requestBody:
+        $ref: '#/components/requestBodies/CriticsUser'
+      responses:
+        '201':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+
+  /criticsUsers/{idUser}/{idReview}:
+    get:
+      tags:
+        - Critics User
+      summary: Critics Users by id
+      description: Returns a Critic made by a user by his id 
+      operationId: "getCriticUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idUser'
+        - $ref: '#/components/parameters/idReview'
+      responses:
+        '200':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+  
+    delete:
+      tags:
+        - Critics User
+      summary: Delete Critics User by id
+      description: Delete a Critic made by a user by his id
+      operationId: "DeleteCriticUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idUser'
+        - $ref: '#/components/parameters/idReview'
+      responses:
+        '204':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/CriticsUsers'
+
+
+  /register/SignUp:
+    post:
+      tags:
+        - Sign Up
+      summary: Sign Up
+      description: Sign Up
+      operationId: "signUp" 
+      requestBody:
+        $ref: '#/components/requestBodies/SignUp'
+      responses:
+        '201':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/SignUp'
+    
+    
+  /register/SignIn:  
+    post:
+      tags:
+        - Sign In
+      summary: Sign In
+      description: Sign In
+      operationId: "signIn" 
+      requestBody:
+        $ref: '#/components/requestBodies/SignIn'
+      responses:
+        '200':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/SignIn'
+
+
+  /titles :  
+    get:
+      tags:
+        - Titles
+      summary: get all titles
+      description: get a list titles
+      operationId: "getAllTitles" 
+      responses:
+        '200':
+          description: titles response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Titles'
+                 
+  /titles/{nameT} :
+    get:
+      tags:
+        - Titles
+      summary: get title by name
+      description: get a title with a name
+      operationId: "getTitleByName" 
+      parameters:
+        - $ref: '#/components/parameters/nameT'
+      responses:
+        '200':
+          description: titles response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Titles'
+
+
+
+
+components:
+  parameters:
+    idInPath:
+      required: true
+      name: id
+      in: path
+      schema:
+        type: integer
+        
+    idUser:
+      required: true
+      name: idUser
+      in: path
+      schema:
+        type: integer
+    
+    idReview:
+      required: true
+      name: idReview
+      in: path
+      schema:
+        type: integer
+    
+    nameT:
+      required: true
+      name: nameT
+      in: path
+      schema:
+        type: string
+
+
+  requestBodies:
+
+    User:
+      description: A JSON object containing an user
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Users'
+          examples:
+            userExample:
+              $ref: '#/components/examples/Users'
+
+    CriticsEditor:
+      description: A JSON object containing a critic from an editor
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/CriticsEditors'
+          examples:
+            criticsEditorExample:
+              $ref: '#/components/examples/CriticsEditors'
+
+    Review:
+      description: A JSON object containing a review
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/Reviews'
+          examples:
+            reviewsExample:
+              $ref: '#/components/examples/Reviews'
+
+    CriticsUser:
+      description: A JSON object containing a critic from an user
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/CriticsUsers'
+          examples:
+            criticsUserExample:
+              $ref: '#/components/examples/CriticsUsers'
+              
+    SignUp:
+      description: A JSON object containing a sign up
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/SignUp'
+          examples:
+            criticsUserExample:
+              $ref: '#/components/examples/SignUp'
+              
+    SignIn:
+      description: A JSON object containing a sign in
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/SignIn'
+          examples:
+            criticsUserExample:
+              $ref: '#/components/examples/SignIn'
+              
+    Titles:
+      description: A JSON object containing a title
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/Titles'
+          examples:
+            criticsUserExample:
+              $ref: '#/components/examples/Titles'
+
+
+  schemas:
+    Users:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        pseudo:
+          type: string
+          example: "user_1"
+        email:
+          type: string
+          example: "user_1@gmail.com"
+
+    Editors:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        pseudo:
+          type: string
+          example: "editor_1"
+        email:
+          type: string
+          example: "editor_1@gmail.com"
+
+    CriticsEditors:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        evaluation:
+          type: string
+          example: "il est bon"
+        note:
+          type: integer
+          format: int64
+          example: 8
+        date:
+          type: string 
+          format: date
+          example: "2023/12/07"
+        idEditor:
+          type: integer
+          format: int64
+          example: 1
+
+    Reviews:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        avg:
+          type: number 
+          format: int64
+          example: 9.8   
+        description:
+          type: string
+          example: "Take on the role of James Bond as played by Daniel Craig in all new SKYFALL levels. Unlock three new single player levels following the storyline of the SKYFALL movie. Levels take place in Istanbul and Shanghai as the player (Bond) attempts to track down "
+        title:
+          type: string
+          example: "007 Legends: Skyfall"
+        release:
+          type: string
+          example: "11/02/2002"
+        idCriticEditor:
+          type: integer
+          format: int64
+          example: 1
+
+    CriticsUsers:
+      type: object
+      properties:
+        idReview:
+          type: integer
+          format: int64
+          example: 1
+        idUser:
+          type: integer
+          format: int64
+          example: 1
+        comment:
+          type: string
+          example: "il est pas bon"
+        note:
+          type: integer
+          format: int64
+          example: 10
+        date:
+          type: string 
+          format: date
+          example: "2023-12-26"
+          
+    SignUp:
+      type: object
+      properties:
+        success:
+          type: string
+          example: true
+        message:
+          type: string
+          example: "User created !"
+    
+    SignIn:
+      type: object
+      properties:
+        success:
+          type: string
+          example: true
+        userId:
+          type: integer
+          example: 1
+        token:
+          type: string
+          example: "eyJhbGciOiqdqdk1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM2MDU2NzQsImV4cCI6MTcwMzYwOTI3NH0.JSK5U2k-5WxCW3svHIOP4I9X4ehOUX8iWiWdcO1BQQc"
+          
+    Titles:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 110398
+        first_release_date:
+          type: integer
+          example: 1353369600
+        name:
+          type: string
+          example: "007 Legends: Skyfall"
+        summary:
+          type: string
+          example: "Take on the role of James Bond as played by Daniel Craig in all new SKYFALL levels. Unlock three new single player levels following the storyline of the SKYFALL movie. Levels take place in Istanbul and Shanghai as the player (Bond) attempts to track down the villain Patrice."
+
+  examples:
+    Reviews:
+      summary: An example of a review
+      value:
+        id: 1
+        avg: 15
+        description: "très bon jeu"
+        title: "Persona 5"
+        release: "11-02-2002"
+        idCriticEditor: 2
+
+    CriticsEditors:
+      summary: An example of a Critic made by a editor
+      value:
+        id: 2
+        evaluation: "bonne maniabilité"
+        note: 3
+        date: "2023/12/17"
+        idEditor: 3
+
+    CriticsUsers:
+      summary: An example of a Critic made by a user
+      value:
+        idReview: 2
+        idUser: 3
+        comment: "mauvaise maniabilité"
+        note: 1
+        date: "2023/12/07"
+
+    Users:
+      summary: An example of a user
+      value:
+        id: 3
+        pseudo: "johnDoe"
+        email: "johnDoe@gmail.com"
+        hashedPassword: "$2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2"
+        roles: "user"
+
+    SignUp:
+      summary: An example of a sign up
+      value:
+        pseudo: "user_1"
+        email: "user_1@gmail.com"
+        password: "user_mdp"
+        
+    SignIn:
+      summary: An example of a sign in
+      value:
+        email: "user_1@gmail.com"
+        password: "user_mdp"
+        
+    Titles:
+      summary: An example of a title
+      value:
+        id: 165499
+        first_release_date: 1326499200
+        name: "^_^"
+        summary: "Julian has been turned into a werebunny and is quite cross about this! His human abilities have been replaced with only animal instincts! Bite, headbutt and shout your way as Julian in order to find a way to change back!"
+
