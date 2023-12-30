@@ -31,7 +31,7 @@ exports.getAllGameName = async () => {
   return data
 }
 
-exports.getGameDataByName = async (nameT) => {
+exports.getGameInfosByName = async (nameT) => {
   await configApiExterne.getAuthorization()
 
   const isCacheID = cache.get('gamesID')
