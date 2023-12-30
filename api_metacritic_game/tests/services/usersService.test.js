@@ -6,8 +6,8 @@ describe('About users...', () => {
     it("should return list of users", async () => {
         // MOCK //
         users = {
-            0: {idU: 1, pseudo: "user_1", email: "user_1@gmail.com"},
-            1: {idU: 2, pseudo: "user_2", email: "user_2@gmail.com"}
+            0: {id: 1, pseudo: "user_1", email: "user_1@gmail.com"},
+            1: {id: 2, pseudo: "user_2", email: "user_2@gmail.com"}
         }
         db.users.findAll = jest.fn().mockReturnValue(users)
 
@@ -17,7 +17,7 @@ describe('About users...', () => {
         // THEN //
         expect(db.users.findAll).toBeCalled()
         expect(result[1]).toStrictEqual({
-            idU: 2,
+            id: 2,
             email: "user_2@gmail.com",
             pseudo: "user_2"
         })
@@ -41,7 +41,7 @@ describe('About users...', () => {
     it("should return a single user", async() => {
         // MOCK //
         db.users.findOne = jest.fn().mockReturnValueOnce({
-            idU : 1,
+            id : 1,
             pseudo: "user_1",
             email: "user_1@gmail.com"
         })
@@ -51,9 +51,9 @@ describe('About users...', () => {
 
         // THEN //
         expect(db.users.findOne).toBeCalled()
-        expect(db.users.findOne.mock.calls[0][0].where.idU).toBe(1)
+        expect(db.users.findOne.mock.calls[0][0].where.id).toBe(1)
         expect(result).toStrictEqual({
-            idU : 1,
+            id : 1,
             pseudo: "user_1",
             email: "user_1@gmail.com"
         })
@@ -68,7 +68,7 @@ describe('About users...', () => {
 
         // THEN //
         expect(db.users.findOne).toBeCalled()
-        expect(db.users.findOne.mock.calls[0][0].where.idU).toBe(2)
+        expect(db.users.findOne.mock.calls[0][0].where.id).toBe(2)
         expect(result).toBeNull()
     })
 
@@ -103,7 +103,7 @@ describe('About users...', () => {
 
         // THEN //
         expect(db.users.destroy).toBeCalled()
-        expect(db.users.destroy.mock.calls[0][0].where.idU).toBe(2)
+        expect(db.users.destroy.mock.calls[0][0].where.id).toBe(2)
         expect(result).toBeUndefined()
     })
 

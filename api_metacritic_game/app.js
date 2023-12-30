@@ -27,9 +27,6 @@ app.use('/criticsEditors', criticsEditorsRouter)
 const criticsUsersRouter = require('./routers/criticsUsersRouter')
 app.use('/criticsUsers', criticsUsersRouter)
 
-const editorsRouter = require('./routers/editorsRouter')
-app.use('/editors', editorsRouter)
-
 const reviewsRouter = require('./routers/reviewsRouter')
 app.use('/reviews', reviewsRouter)
 

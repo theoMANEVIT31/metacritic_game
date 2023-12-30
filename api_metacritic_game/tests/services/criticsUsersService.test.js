@@ -7,15 +7,15 @@ describe('About critics from users...', () => {
         // MOCK //
         criticsFromUsers = {
             0: {
-                idR: 1,
-                idU: 1,
+                idReview: 1,
+                idUser: 1,
                 comment: "The best game ever",
                 noteU: 10,
                 date: "2023-12-19"
             },
             1: {
-                idR: 2,
-                idU: 1,
+                idReview: 2,
+                idUser: 1,
                 comment: "The worst game ever",
                 noteU: 0,
                 date: "2023-12-20"
@@ -29,8 +29,8 @@ describe('About critics from users...', () => {
         // THEN //
         expect(db.criticsUsers.findAll).toBeCalled()
         expect(result[1]).toStrictEqual({
-            idR: 2,
-            idU: 1,
+            idReview: 2,
+            idUser: 1,
             comment: "The worst game ever",
             noteU: 0,
             date: "2023-12-20"
@@ -49,14 +49,14 @@ describe('About critics from users...', () => {
         expect(db.criticsUsers.create).toBeCalled()
         expect(db.criticsUsers.create.mock.calls[0][0].comment).toBe("Very Good")
         expect(db.criticsUsers.create.mock.calls[0][0].noteU).toBe(9)
-        expect(db.criticsUsers.create.mock.calls[0][0].idU).toBe(1)
+        expect(db.criticsUsers.create.mock.calls[0][0].idUser).toBe(1)
     })
 
     it("should return a single critic", async() => {
         // MOCK //
         db.criticsUsers.findOne = jest.fn().mockReturnValueOnce({
-            idR: 2,
-            idU: 1,
+            idReview: 2,
+            idUser: 1,
             comment: "The worst game ever",
             noteU: 0,
             date: "2023-12-20"
@@ -67,10 +67,10 @@ describe('About critics from users...', () => {
 
         // THEN //
         expect(db.criticsUsers.findOne).toBeCalled()
-        expect(db.criticsUsers.findOne.mock.calls[0][0].where.idU).toBe(1)
+        expect(db.criticsUsers.findOne.mock.calls[0][0].where.idUser).toBe(1)
         expect(result).toStrictEqual({
-            idR: 2,
-            idU: 1,
+            idReview: 2,
+            idUser: 1,
             comment: "The worst game ever",
             noteU: 0,
             date: "2023-12-20"
@@ -83,8 +83,8 @@ describe('About critics from users...', () => {
             comment: "Not Bad", 
             noteU: "6",
             date: "24/12/2023",
-            idR: 2,
-            idU: 3
+            idReview: 2,
+            idUser: 3
         })
 
         // WHEN //
@@ -98,8 +98,8 @@ describe('About critics from users...', () => {
             comment: "Not Bad", 
             noteU: "6",
             date: "24/12/2023",
-            idR: 2,
-            idU: 3
+            idReview: 2,
+            idUser: 3
         })
     })
 
@@ -112,8 +112,8 @@ describe('About critics from users...', () => {
 
         // THEN //
         expect(db.criticsUsers.destroy).toBeCalled()
-        expect(db.criticsUsers.destroy.mock.calls[0][0].where.idU).toBe(4)
-        expect(db.criticsUsers.destroy.mock.calls[0][0].where.idR).toBe(2)
+        expect(db.criticsUsers.destroy.mock.calls[0][0].where.idUser).toBe(4)
+        expect(db.criticsUsers.destroy.mock.calls[0][0].where.idReview).toBe(2)
         expect(result).toBeUndefined()
     })
 

@@ -4,7 +4,7 @@ module.exports = (instance) => {
   return instance.define(
     "users",
     {
-      idU: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -23,6 +23,10 @@ module.exports = (instance) => {
         allowNull: false,
         unique: true,
       },
+      roles: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      }
     },
     {
       timestamps: false,

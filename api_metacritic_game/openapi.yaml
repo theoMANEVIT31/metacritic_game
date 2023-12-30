@@ -1,12 +1,12 @@
 openapi: 3.0.1
 info:
-  description: "MetaCritic"
+  description: "Projet Final"
   version: "1.0.6"
-  title: "Projet final"
+  title: "MetaCritic"
 
 tags:
   - name: "MetaCritic"
-    description: "gestion des Critics liees aux reviews"
+    description: "gestion des Critics liées aux reviews"
 
 
 
@@ -92,6 +92,24 @@ paths:
       summary: Get user by id
       description: Returns a user by id
       operationId: "getUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '200':
+          description: users response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
+
+    put:
+      tags:
+        - Users
+      summary: Update role's user by id
+      description: Returns new role and id
+      operationId: "updateRoleByUserId" 
       parameters:
         - $ref: '#/components/parameters/idInPath'
       responses:
@@ -546,7 +564,7 @@ components:
     Users:
       type: object
       properties:
-        idU:
+        id:
           type: integer
           format: int64
           example: 3
@@ -563,7 +581,7 @@ components:
     Editors:
       type: object
       properties:
-        idE:
+        id:
           type: integer
           format: int64
           example: 3
@@ -580,14 +598,14 @@ components:
     CriticsEditors:
       type: object
       properties:
-        idC:
+        id:
           type: integer
           format: int64
           example: 1
         evaluation:
           type: string
           example: il est bon
-        noteE:
+        note:
           type: integer
           format: int64
           example: 3
@@ -595,7 +613,7 @@ components:
           type: string 
           format: date
           example: 2023/12/07
-        idE:
+        idEditor:
           type: integer
           format: int64
           example: 3
@@ -603,11 +621,11 @@ components:
     Reviews:
       type: object
       properties:
-        idR:
+        id:
           type: integer
           format: int64
           example: 1
-        avgU:
+        avg:
           type: number 
           format: int64
           example: 4.4     
@@ -620,7 +638,7 @@ components:
         release:
           type: string
           example: 11/02/2002
-        idC:
+        idCriticEditor:
           type: integer
           format: int64
           example: 1
@@ -628,18 +646,18 @@ components:
     CriticsUsers:
       type: object
       properties:
-        idR:
+        idReview:
           type: integer
           format: int64
           example: 1
-        idU:
+        idUser:
           type: integer
           format: int64
           example: 3
         comment:
           type: string
           example: il est pas bon
-        noteU:
+        note:
           type: integer
           format: int64
           example: 3
@@ -653,46 +671,46 @@ components:
     Reviews:
       summary: An example of a review
       value:
-        idR: 1
-        avgU: 15
+        id: 1
+        avg: 15
         description: "très bon jeu"
         title: "Persona 5"
         release: "11-02-2002"
-        idC: 2
+        idCriticEditor: 2
 
     CriticsEditors:
       summary: An example of a Critic made by a editor
       value:
-        idC: 2
+        id: 2
         evaluation: "bonne maniabilité"
-        noteE: 3
+        note: 3
         date: "2023/12/17"
-        idE: 3
+        idEditor: 3
 
     CriticsUsers:
       summary: An example of a Critic made by a user
       value:
-        idR: 2
-        idU: 3
+        idReview: 2
+        idUser: 3
         comment: "mauvaise maniabilité"
-        noteU: 1
+        note: 1
         date: "2023/12/07"
 
     Users:
       summary: An example of a user
       value:
-        idU: 3
+        id: 3
         pseudo: "johnDoe"
         email: "johnDoe@gmail.com"
         hashedPassword: "$2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2"
+        roles: "user"
 
     Editors:
       summary: An example of a editor
       value:
-        idE: 3
+        id: 3
         pseudo: "johnDoe"
         email: "johnDoe@gmail.com"
         hashedPassword: "$2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2"
-
 
 

@@ -1,4 +1,5 @@
 const db = require("../models/indexModel");
+const { getIdRolesByNom } = require("./rolesService");
 
 exports.getUsers = async () => {
   return await db.users.findAll({
@@ -7,33 +8,45 @@ exports.getUsers = async () => {
 };
 
 exports.addUser = (pseudo, hashedPassword, email) => {
-  return db.users.create({ pseudo, hashedPassword, email });
+  return db.users.create({ pseudo, hashedPassword, email});
 };
 
-exports.getUserById = async (idU) => {
+exports.getUserById = async (id) => {
   return await db.users.findOne({
     where: {
-      idU,
+      id,
     },
     attributes: { exclude: ["hashedPassword"] },
   });
 };
 
-exports.putUser = async (idU, pseudo, hashedPassword, email) => {
+exports.putUser = async (id, pseudo, hashedPassword, email) => {
   return await db.users.update(
     { pseudo: pseudo, hashedPassword: hashedPassword, email: email },
     {
       where: {
-        idU,
+        id,
       },
     }
   );
 };
 
-exports.deleteUserById = async (idU) => {
+exports.updateRoleByUserId = async (id, role) => {
+  const roleId = await getIdRolesByNom(role);
+  return await db.users.update({
+    roles: roleId.id
+  },
+  {
+    where: {
+      id,
+    },
+  })
+}
+
+exports.deleteUserById = async (id) => {
   return await db.users.destroy({
     where: {
-      idU,
+      id,
     },
   });
 };

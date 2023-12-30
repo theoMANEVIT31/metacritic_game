@@ -8,27 +8,27 @@ exports.getCriticsUsers = async (req, res) => {
 }
 
 exports.addCriticsUser = (req, res, next) => {
-   const criticsUserCreated = criticsUsersService.addCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU)
+   const criticsUserCreated = criticsUsersService.addCriticsUser(req.body.idReview, req.body.idUser, req.body.comment, req.body.noteU)
    if (criticsUserCreated) {
-      res.status(201).json({idR: criticsUserCreated.idR, idU: criticsUserCreated.idU})
+      res.status(201).json({idReview: criticsUserCreated.idReview, idUser: criticsUserCreated.idUser})
    } else {
       next(createError(400, "Error when creating this criticsUser, verify your args"))
    }
 }
 
 exports.getCriticsUserById = async (req, res, next) => {
-   const criticsUser = await criticsUsersService.getCriticsUserById(req.params.idR, req.params.idU)
+   const criticsUser = await criticsUsersService.getCriticsUserById(req.params.idReview, req.params.idUser)
    if (criticsUser) {
       res.json({data: criticsUser})
    } else {
-      next(createError(404, "no criticsUser found for this idR and idU"))
+      next(createError(404, "no criticsUser found for this idReview and idUser"))
    }
 }
 
 exports.putCriticsUser = (req, res, next) => {
-   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idR, req.body.idU, req.body.comment, req.body.noteU, req.body.date)
+   const criticsUserUpdated = criticsUsersService.putCriticsUser(req.body.idReview, req.body.idUser, req.body.comment, req.body.noteU, req.body.date)
    if (criticsUserUpdated) {
-      res.status(201).json({idR: criticsUserUpdated.idR, idU: criticsUserUpdated.idU})
+      res.status(201).json({idReview: criticsUserUpdated.idReview, idUser: criticsUserUpdated.idUser})
    } else {
       next(createError(400, "Error when updating this criticsUser, verify your args"))
    }
@@ -36,9 +36,9 @@ exports.putCriticsUser = (req, res, next) => {
 
 exports.deleteCriticsUserById = (req, res, next) => {
    try {
-      criticsUsersService.deleteCriticsUserById(req.params.idR, req.params.idU)
+      criticsUsersService.deleteCriticsUserById(req.params.idReview, req.params.idUser)
       res.status(204).send()
    } catch(e) {
-      next(createError(404, `The criticsUser with idU '${idU}' and/or idR '${idR}'  doesn't exists, it cannot be deleted`))
+      next(createError(404, `The criticsUser with idUser '${idUser}' and/or idReview '${idReview}'  doesn't exists, it cannot be deleted`))
    }
 }

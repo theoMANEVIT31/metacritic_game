@@ -4,13 +4,13 @@ module.exports = (instance) => {
   return instance.define(
     "reviews",
     {
-      idR: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
-      avgU: {
+      avg: {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
@@ -26,7 +26,7 @@ module.exports = (instance) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      idC: {
+      idCriticEditor: {
         type: DataTypes.INTEGER,
         allowNull: true,
       },

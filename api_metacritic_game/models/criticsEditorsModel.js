@@ -4,7 +4,7 @@ module.exports = (instance) => {
   return instance.define(
     "criticsEditors",
     {
-      idC: {
+      id: {
         primaryKey: true,
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -14,7 +14,7 @@ module.exports = (instance) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      noteE: {
+      note: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -23,7 +23,7 @@ module.exports = (instance) => {
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
-      idE: {
+      idEditor: {
         type: DataTypes.INTEGER,
         allowNull: true,
       },

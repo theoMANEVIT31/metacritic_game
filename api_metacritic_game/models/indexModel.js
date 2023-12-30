@@ -18,10 +18,11 @@ module.exports = {
   reviews: require('./reviewsModel')(instance),
   criticsEditors: require('./criticsEditorsModel')(instance),
   criticsUsers: require('./criticsUsersModel')(instance),
-  editors: require('./editorsModel')(instance)
+  roles: require('./rolesModel')(instance),
 }
 
-instance.models.criticsUsers.belongsTo(instance.models.users, { foreignKey: "idU" });
-instance.models.criticsUsers.belongsTo(instance.models.reviews, { foreignKey: "idR" });
-instance.models.reviews.belongsTo(instance.models.criticsEditors, { foreignKey: "idC" });
-instance.models.criticsEditors.belongsTo(instance.models.editors, { foreignKey: "idE" });
+instance.models.criticsUsers.belongsTo(instance.models.users, { foreignKey: "idUser" });
+instance.models.criticsUsers.belongsTo(instance.models.reviews, { foreignKey: "idReview" });
+instance.models.reviews.belongsTo(instance.models.criticsEditors, { foreignKey: "idCriticEditor" });
+instance.models.criticsEditors.belongsTo(instance.models.users, { foreignKey: "idEditor" });
+instance.models.users.belongsTo(instance.models.roles, { foreignKey: "roles" });

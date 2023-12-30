@@ -41,7 +41,6 @@ exports.signUp = async (req, res) => {
     },
     function(user, callback) {
       if(!user){
-        require('dotenv').config();
         bcrypt.hash(password, 10, function(err, bcryptPassword){
           callback(null, user, bcryptPassword)
         })
@@ -62,8 +61,14 @@ exports.signUp = async (req, res) => {
         })
       }
     },
-  ], function(user, bcryptPassword) {
-      if(db.users.create({pseudo: pseudo, email: email, hashedPassword: bcryptPassword})) {
+  ], async function(user, bcryptPassword) {
+      const role = await db.roles.findOne({
+        where: {
+            nom: "gamer",
+        },
+        attributes: ['id'],
+      })
+      if(db.users.create({pseudo: pseudo, email: email, hashedPassword: bcryptPassword, roles: role.dataValues.id})) {
         return res.status(201).json({
           success: true,
           message: 'User created !'
@@ -129,7 +134,7 @@ exports.signIn = async (req, res) => {
         success: true,
         userId: user.id,
         token: jwt.sign({
-            id: user.id,
+            userId: user.id,
         }, 
         process.env.JWT_SIGN_SECRET,
         {

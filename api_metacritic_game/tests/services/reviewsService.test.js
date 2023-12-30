@@ -5,20 +5,20 @@ describe('About reviews...', () => {
 
     reviewsList = {
         0: {
-            idR: 1, 
-            avgU: 8.1, 
+            id: 1, 
+            avg: 8.1, 
             description: "Final Fantasy XVI is an action role-playing game in which players take control of protagonist Clive Rosfield and a rotating party of AI-controlled companions through segmented open areas across the continents of Valisthea.", 
             title: "Final Fantasy XVI", 
             release: "2023/06/22", 
-            idC: 1
+            idCriticEditor: 1
         },
         1: {
-            idR: 2, 
-            avgU: 8.8, 
+            id: 2, 
+            avg: 8.8, 
             description: "Xenoblade Chronicles 3 is an action role-playing game with a large open world.", 
             title: "Xenoblade Chronicles 3", 
             release: "2023/04/26", 
-            idC: 3
+            idCriticEditor: 3
         }
     }
 
@@ -32,7 +32,7 @@ describe('About reviews...', () => {
         // THEN //
         expect(db.reviews.findAll).toBeCalled()
         expect(result[1]).toStrictEqual(reviewsList[1])
-        expect(result[0]).toHaveProperty('idC', 1)
+        expect(result[0]).toHaveProperty('idCriticEditor', 1)
     })
 
     it("should return a single review", async() => {
@@ -45,26 +45,26 @@ describe('About reviews...', () => {
 
         // THEN //
         expect(db.reviews.findOne).toBeCalled()
-        expect(db.reviews.findOne.mock.calls[0][0].where.idR).toBe(2)
+        expect(db.reviews.findOne.mock.calls[0][0].where.id).toBe(2)
         expect(result).toStrictEqual({
-            idR: 2, 
-            avgU: 8.8, 
+            id: 2, 
+            avg: 8.8, 
             description: "Xenoblade Chronicles 3 is an action role-playing game with a large open world.", 
             title: "Xenoblade Chronicles 3", 
             release: "2023/04/26", 
-            idC: 3
+            idCriticEditor: 3
         })
     })
 
     it("should update a review", async() => {
         // MOCK //
         db.reviews.update = jest.fn().mockReturnValueOnce({
-            idR: 2, 
-            avgU: 8.8, 
+            id: 2, 
+            avg: 8.8, 
             description: "Xenoblade Chronicles 3 is an action role-playing game with a large open world.", 
             title: "Xenoblade Chronicles 3", 
             release: "2023/04/26", 
-            idC: 3
+            idCriticEditor: 3
         })
 
         // WHEN //
@@ -72,14 +72,14 @@ describe('About reviews...', () => {
 
         // THEN //
         expect(db.reviews.update).toBeCalled()
-        expect(db.reviews.update.mock.calls[0][0].avgU).toBe(9)
+        expect(db.reviews.update.mock.calls[0][0].avg).toBe(9)
         expect(result).toStrictEqual({
-            idR: 2, 
-            avgU: 8.8, 
+            id: 2, 
+            avg: 8.8, 
             description: "Xenoblade Chronicles 3 is an action role-playing game with a large open world.", 
             title: "Xenoblade Chronicles 3", 
             release: "2023/04/26", 
-            idC: 3
+            idCriticEditor: 3
         })
     })
 })

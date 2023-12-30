@@ -4,12 +4,12 @@ module.exports = (instance) => {
   return instance.define(
     "criticsUsers",
     {
-      idR: {
+      idReview: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
       },
-      idU: {
+      idUser: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
@@ -18,7 +18,7 @@ module.exports = (instance) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      noteU: {
+      note: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

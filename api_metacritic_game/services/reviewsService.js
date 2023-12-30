@@ -5,7 +5,7 @@ exports.getReviews = async () => {
   return await db.reviews.findAll();
 };
 
-exports.addReview = async (avgU, title, idC) => {
+exports.addReview = async (avg, title, idCriticEditor) => {
   try {
     // Utilisez title comme il est s'il est déjà correctement formaté
     const gameInfo = await igdbService.getInfosJeuByName(title);
@@ -26,11 +26,11 @@ exports.addReview = async (avgU, title, idC) => {
       const formattedDate = `${year}/${month}/${day}`;
 
       const review = await db.reviews.create({
-        avgU,
+        avg,
         description: summary,
         title: name, // Utiliser le nom du jeu du JSON
         release: formattedDate,
-        idC,
+        idCriticEditor,
       });
 
       return review;
@@ -45,42 +45,42 @@ exports.addReview = async (avgU, title, idC) => {
   }
 };
 
-exports.getReviewById = async (idR) => {
+exports.getReviewById = async (id) => {
   return await db.reviews.findOne({
     where: {
-      idR,
+      id,
     },
   });
 };
 
-exports.putReview = async (idR, avgU, description, title, release, idC) => {
+exports.putReview = async (id, avg, description, title, release, idCriticEditor) => {
   return await db.reviews.update(
-    { avgU: avgU, description: description, title: title, release: release, idC: idC},
+    { avg: avg, description: description, title: title, release: release, idCriticEditor: idCriticEditor},
     {
       where: {
-        idR,
+        id,
       },
     }
   );
 };
 
-exports.deleteReviewById = async (idR) => {
+exports.deleteReviewById = async (id) => {
   try {
     const hasRelatedCriticsUsers = await db.criticsUsers.findOne({
       where: {
-        idR,
+        idReview: id,
       },
     });
     if (hasRelatedCriticsUsers) {
       await db.criticsUsers.destroy({
         where: {
-          idR,
+          idReview: id,
         },
       });
     }
     return await db.reviews.destroy({
       where: {
-        idR,
+        id,
       },
     });
   } catch (error) {
