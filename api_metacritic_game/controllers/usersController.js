@@ -2,7 +2,7 @@ const usersService = require('../services/usersService')
 const criticsUserService = require('../services/criticsUsersService')
 const createError = require('http-errors')
 const jwt = require('jsonwebtoken')
-
+const bcrypt    = require('bcrypt')
 
 exports.getUsers = async (req, res, next) => {
    const users = await usersService.getUsers()
@@ -14,12 +14,24 @@ exports.getUsers = async (req, res, next) => {
 }
 
 exports.addUser = async (req, res, next) => {
-   const userCreated = await usersService.addUser(req.body.pseudo, req.body.hashedPassword, req.body.email)
-   if (userCreated) {
-      res.status(201).json({id: userCreated.id})
-   } else {
-      next(createError(400, "Error when creating this user, verify your args"))
+   if(!req.body.password || !req.body.pseudo || !req.body.email || !req.body.role){
+      res.status(400).json({
+         success: false,
+         message: "Pseudo, email, password and role are required"
+      }).send()
+      return
    }
+
+   bcrypt.hash(req.body.password, 10, async function(err, bcryptPassword){
+      if(bcryptPassword){
+         const userCreated = await usersService.addUser(req.body.pseudo, bcryptPassword, req.body.email, req.body.role)
+         if (userCreated) {
+            res.status(201).json({id: userCreated.id})
+         } else {
+            next(createError(400, "Error when creating this user, verify your args"))
+         }
+      }
+    })
 }
 
 exports.getUserById = async (req, res, next) => {

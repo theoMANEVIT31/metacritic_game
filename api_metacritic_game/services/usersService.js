@@ -7,8 +7,14 @@ exports.getUsers = async () => {
   })
 }
 
-exports.addUser = (pseudo, hashedPassword, email) => {
-  return db.users.create({ pseudo, hashedPassword, email})
+exports.addUser = async (pseudo, password, email, role) => {
+  const roleId = await db.roles.findOne({
+    where: {
+        nom: role,
+    },
+    attributes: ['id'],
+  })
+  return db.users.create({pseudo: pseudo, hashedPassword: password, email: email, roles: roleId.id})
 }
 
 exports.getUserById = async (id) => {
