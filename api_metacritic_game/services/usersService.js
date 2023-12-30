@@ -1,5 +1,5 @@
-const db = require("../models/indexModel");
-const { getIdRolesByNom } = require("./rolesService");
+const db = require("../models/indexModel")
+const { getIdRolesByNom } = require("./rolesService")
 
 exports.getUsers = async () => {
   return await db.users.findAll({
@@ -8,8 +8,8 @@ exports.getUsers = async () => {
 }
 
 exports.addUser = (pseudo, hashedPassword, email) => {
-  return db.users.create({ pseudo, hashedPassword, email});
-};
+  return db.users.create({ pseudo, hashedPassword, email})
+}
 
 exports.getUserById = async (id) => {
   return await db.users.findOne({
@@ -17,8 +17,8 @@ exports.getUserById = async (id) => {
       id,
     },
     attributes: { exclude: ["hashedPassword"] },
-  });
-};
+  })
+}
 
 exports.putUser = async (id, pseudo, hashedPassword, email) => {
   return await db.users.update(
@@ -28,11 +28,11 @@ exports.putUser = async (id, pseudo, hashedPassword, email) => {
         id,
       },
     }
-  );
-};
+  )
+}
 
 exports.updateRoleByUserId = async (id, role) => {
-  const roleId = await getIdRolesByNom(role);
+  const roleId = await getIdRolesByNom(role)
   return await db.users.update({
     roles: roleId.id
   },
@@ -60,5 +60,5 @@ exports.deleteUserById = async (id) => {
     where: {
       id,
     },
-  });
-};
+  })
+}
