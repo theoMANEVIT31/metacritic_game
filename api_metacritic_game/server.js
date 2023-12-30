@@ -9,9 +9,9 @@ db.instance.sync({force: true}).then(async () => {
         console.log('Server running on port 3000 !')
     })
 
-    await db.roles.create({nom: "admin"});
-    await db.roles.create({nom: "editor"});
-    await db.roles.create({nom: "gamer"});
+    await db.roles.create({nom: "admin"})
+    await db.roles.create({nom: "editor"})
+    await db.roles.create({nom: "gamer"})
 
     await bcrypt.hash('admin_mdp', 10, async function(err, bcryptPassword){
         if(bcryptPassword){
