@@ -1,9 +1,9 @@
-const igdbService = require('./infosJeu')
+const igdbService = require('./gameInfosService')
 
 
 exports.getAllTitles = async () => {
   try {
-    const titles = await igdbService.getAllNomJeu()
+    const titles = await igdbService.getAllGameName()
 
     return titles
   } catch (error) {
@@ -14,7 +14,7 @@ exports.getAllTitles = async () => {
 
 exports.getTitleByName = async (nameT) => {
   try {
-    const title = await igdbService.getInfosJeuByName(nameT)
+    const title = await igdbService.getGameInfosByName(nameT)
 
     return title
   } catch (error) {
