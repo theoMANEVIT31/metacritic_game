@@ -1,4 +1,4 @@
-const criticsUsersService = require('../services/criticsUsersService');
+const criticsUsersService = require('../services/criticsUsersService')
 const createError = require('http-errors')
 
 
