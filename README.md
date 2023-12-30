@@ -30,6 +30,7 @@ Il y a différents rôles : - Les éditeurs : Ce sont ceux qui créent les tests
 Nous utilisons l'API externe IGBD qui nous permet d'avoir accès à une très grande liste de jeux.
 Nous faisons appel à cette API lorsqu'un éditeur crée un test, pour ne pas stocker tous les jeux.
 
+Le cache est utilisé lors de l'appel à l'API externe.
 
 # Metacritic Game API
 
