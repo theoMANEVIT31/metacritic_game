@@ -36,7 +36,7 @@ app.use('/users', usersRouter)
 const titlesRouter = require('./routers/titlesRouter')
 app.use('/titles', titlesRouter)
 
-const gameInfosRouter = require('./routers/gameInfos')
+const gameInfosRouter = require('./routers/gameInfosRouter')
 app.use('/infos', gameInfosRouter)
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
