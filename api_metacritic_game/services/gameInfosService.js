@@ -1,9 +1,9 @@
 const configApiExterne = require('./../config.api.externe.js')
 const NodeCache = require('node-cache')
-const cache = new NodeCache();
+const cache = new NodeCache()
 
 exports.getAllGameName = async () => {
-  await configApiExterne.getAuthorization();
+  await configApiExterne.getAuthorization()
 
   const isCache = cache.get('games')
 
