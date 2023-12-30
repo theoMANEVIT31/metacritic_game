@@ -1,5 +1,5 @@
-const editor = require('../../services/editorsService');
-const db = require('../../models/indexModel');
+const editor = require('../../services/editorsService')
+const db = require('../../models/indexModel')
 
 describe('About editors...', () => {
 
