@@ -101,6 +101,14 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
       Rôle: admin 
       Fonction: Modifie le rôle d'un utilisateur
     ```
+    
+- ### /users/:id
+  
+    - GET
+    ```
+      Rôle: gamer 
+      Fonction: Récupère un utilisateur en fonction de l'id fourni
+    ```
 
 ### Critics Users
 
