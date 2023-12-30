@@ -3,7 +3,7 @@ const igdbService = require('./gameInfosService')
 
 
 exports.getReviews = async () => {
-  return await db.reviews.findAll();
+  return await db.reviews.findAll()
 }
 
 exports.addReview = async (avg, title, idCriticEditor) => {
@@ -24,7 +24,7 @@ exports.addReview = async (avg, title, idCriticEditor) => {
         title: name,
         release: formattedDate,
         idCriticEditor,
-      });
+      })
 
       return review;
     } else {
@@ -40,8 +40,8 @@ exports.getReviewById = async (id) => {
     where: {
       id,
     },
-  });
-};
+  })
+}
 
 exports.putReview = async (id, avg, description, title, release, idCriticEditor) => {
   return await db.reviews.update(
@@ -51,8 +51,8 @@ exports.putReview = async (id, avg, description, title, release, idCriticEditor)
         id,
       },
     }
-  );
-};
+  )
+}
 
 exports.deleteReviewById = async (id) => {
   try {
@@ -60,19 +60,19 @@ exports.deleteReviewById = async (id) => {
       where: {
         idReview: id,
       },
-    });
+    })
     if (hasRelatedCriticsUsers) {
       await db.criticsUsers.destroy({
         where: {
           idReview: id,
         },
-      });
+      })
     }
     return await db.reviews.destroy({
       where: {
         id,
       },
-    });
+    })
   } catch (error) {
     throw new Error(
       `Une erreur s'est produite lors de la suppression de l'avis : ${error}`
