@@ -473,6 +473,79 @@ paths:
                  $ref: '#/components/schemas/SignIn'
 
 
+/titles :  
+    get:
+      tags:
+        - Titles
+      summary: get all titles
+      description: get a list game titles
+      operationId: "getAllTitles" 
+      responses:
+        '200':
+          description: titles response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/titles'
+                 
+/titles/{nameT} :
+      get:
+      tags:
+        - Titles
+      summary: get title by name
+      description: get the title of a game with a name
+      operationId: "getTitleByName" 
+       parameters:
+        - $ref: '#/components/parameters/gameInfos'
+      responses:
+        '200':
+          description: titles response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/titles'
+
+
+  /https://api.igdb.com/v4/games/:  
+    get:
+      tags:
+        - gameInfos
+      summary: get all game name
+      description: get a list of game name
+      operationId: "getAllGameName" 
+      responses:
+        '200':
+          description: gameInfos response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/gameInfos'
+
+      get:
+      tags:
+        - gameInfos
+      summary: get game infos by name
+      description: get all the infos about a game
+      operationId: "getGameInfosByName" 
+       parameters:
+        - $ref: '#/components/parameters/title'
+      responses:
+        '200':
+          description: gameInfos response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/gameInfos'
+
+
 
 
 components:
