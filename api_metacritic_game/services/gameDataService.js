@@ -1,8 +1,8 @@
-const configApiExterne = require('./../config.api.externe.js');
-const NodeCache = require('node-cache');
+const configApiExterne = require('./../config.api.externe.js')
+const NodeCache = require('node-cache')
 const cache = new NodeCache();
 
-exports.getAllNomJeu = async () => {
+exports.getAllGameName = async () => {
   await configApiExterne.getAuthorization();
 
   const isCache = cache.get('games')
@@ -31,8 +31,8 @@ exports.getAllNomJeu = async () => {
   return data
 }
 
-exports.getInfosJeuByName = async (nameT) => {
-  await configApiExterne.getAuthorization();
+exports.getGameDataByName = async (nameT) => {
+  await configApiExterne.getAuthorization()
 
   const isCacheID = cache.get('gamesID')
 
@@ -40,7 +40,7 @@ exports.getInfosJeuByName = async (nameT) => {
     return isCacheID
   }
 
-  const requestBody = `fields name,first_release_date,summary; where name = "${nameT}";`;
+  const requestBody = `fields name,first_release_date,summary; where name = "${nameT}";`
   
   const data = fetch(
     "https://api.igdb.com/v4/games/",
