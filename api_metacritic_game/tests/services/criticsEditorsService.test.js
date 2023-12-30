@@ -1,5 +1,5 @@
 const criticsEditors = require('../../services/criticsEditorsService')
-const db = require('../../models/indexModel');
+const db = require('../../models/indexModel')
 
 describe('About critics from editors...', () => {
 
