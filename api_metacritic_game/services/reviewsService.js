@@ -1,5 +1,5 @@
 const db = require("../models/indexModel")
-const igdbService = require('./infosJeu')
+const igdbService = require('./gameInfosService')
 
 
 exports.getReviews = async () => {
@@ -8,7 +8,7 @@ exports.getReviews = async () => {
 
 exports.addReview = async (avg, title, idCriticEditor) => {
   try {
-    const gameInfo = await igdbService.getInfosJeuByName(title)
+    const gameInfo = await igdbService.getGameInfoByName(title)
 
     if (gameInfo && gameInfo.length > 0) {
       const { first_release_date, summary, name } = gameInfo[0]
