@@ -6,5 +6,5 @@ exports.getIdRolesByNom = async (nom) => {
             nom,
         },
         attributes: ['id'],
-    });
+    })
 }
