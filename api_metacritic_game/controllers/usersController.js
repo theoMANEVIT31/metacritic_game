@@ -38,26 +38,33 @@ exports.putUser = (req, res, next) => {
    }
 }
 
-exports.updateRoleByUserId = (req, res, next) => {
+exports.updateRoleByUserId = async (req, res, next) => {
    if(!req.body || !req.body.role){
       res.status(400).json({
          success: false,
          message: "Bad Request, verify your args"
       })
    } else {
+      if(! await usersService.getUserById(req.params.id)){
+         res.status(400).json({
+            success: false,
+            message: "This user doesn't exist"
+         }).send()
+         return
+      }
       const userUpdated = usersService.updateRoleByUserId(req.params.id, req.body.role)
-   if (userUpdated) {
-      res.status(200).json({
-         success: true,
-         message: "User updated",
-         user: {
-            id: userUpdated.id,
-            role: userUpdated.roles
-         }
-      })
-   } else {
-      next(createError(400, "Error"))
-   }
+      if (userUpdated) {
+         res.status(200).json({
+            success: true,
+            message: "User updated",
+            user: {
+               id: userUpdated.id,
+               role: userUpdated.roles
+            }
+         })
+      } else {
+         next(createError(400, "Error"))
+      }
    }
 }
 
