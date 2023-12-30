@@ -1,4 +1,4 @@
-const gameInfos = require('../services/gameInfos')
+const gameInfos = require('../services/gameInfosService')
 
 
 exports.getAllGameName = (req, res) => {
