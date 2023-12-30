@@ -1,4 +1,4 @@
-const reviewsService = require('../services/reviewsService');
+const reviewsService = require('../services/reviewsService')
 const createError = require('http-errors')
 
 
