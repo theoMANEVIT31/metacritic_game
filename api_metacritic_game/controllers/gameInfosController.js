@@ -6,8 +6,8 @@ exports.getAllGameName = (req, res) => {
     res.json({ data: game})
 }
 
-exports.getGameDataByName = (req, res) => {
-  const game = gameInfos.getGameDataByName()
+exports.getGameInfosByName = (req, res) => {
+  const game = gameInfos.getGameInfosByName()
   res.json({ data: game})
 }
        
