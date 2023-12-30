@@ -246,7 +246,7 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
 
 ### GameInfos
 
-- ### /[gameInfo](https://api.igdb.com/v4/games/)
+- ### /https://api.igdb.com/v4/games/
 
     - GET
     ```
