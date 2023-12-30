@@ -244,6 +244,22 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
       Fonction: Récupère un jeu vidéo par son nom
     ```
 
+### GameInfos
+
+- ### /[gameInfo](https://api.igdb.com/v4/games/)
+
+    - GET
+    ```
+      Rôle: none 
+      Fonction: Récupère la liste des noms des jeux vidéos
+    ```
+
+    - GET
+    ```
+      Rôle: none 
+      Fonction: Récupère les informations d'un jeu en fonction du nom donnée
+    ```
+    
 ## Ressources extérieures
 
 * API externe utilisée : IGDB
