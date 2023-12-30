@@ -8,7 +8,7 @@ exports.getReviews = async () => {
 
 exports.addReview = async (avg, title, idCriticEditor) => {
   try {
-    const gameInfo = await igdbService.getGameInfoByName(title)
+    const gameInfo = await igdbService.getGameInfosByName(title)
 
     if (gameInfo && gameInfo.length > 0) {
       const { first_release_date, summary, name } = gameInfo[0]
