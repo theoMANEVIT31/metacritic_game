@@ -174,8 +174,6 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
     ```
       Rôle: editor 
       Fonction: Supprime sa critique
-
-
     ```
 ### Reviews
 
