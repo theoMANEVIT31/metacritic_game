@@ -101,6 +101,14 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
       Rôle: admin 
       Fonction: Modifie le rôle d'un utilisateur
     ```
+    
+- ### /users/:id
+  
+    - GET
+    ```
+      Rôle: gamer 
+      Fonction: Récupère un utilisateur en fonction de l'id fourni
+    ```
 
 ### Critics Users
 
@@ -166,8 +174,6 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
     ```
       Rôle: editor 
       Fonction: Supprime sa critique
-
-
     ```
 ### Reviews
 
@@ -238,6 +244,22 @@ Vous trouverez ci-dessous l'ensemble des routes disponibles au sein de l'API ave
       Fonction: Récupère un jeu vidéo par son nom
     ```
 
+### GameInfos
+
+- ### /[gameInfo](https://api.igdb.com/v4/games/)
+
+    - GET
+    ```
+      Rôle: none 
+      Fonction: Récupère la liste des noms des jeux vidéos
+    ```
+
+    - GET
+    ```
+      Rôle: none 
+      Fonction: Récupère les informations d'un jeu en fonction du nom donnée
+    ```
+    
 ## Ressources extérieures
 
 * API externe utilisée : IGDB
