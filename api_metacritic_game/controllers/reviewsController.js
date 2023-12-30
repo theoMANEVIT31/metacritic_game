@@ -1,9 +1,14 @@
-const reviewsService = require('../services/reviewsService');
+const reviewsService = require('../services/reviewsService')
 const createError = require('http-errors')
 
-exports.getReviews = async (req, res) => {
+
+exports.getReviews = async (req, res, next) => {
    const reviews = await reviewsService.getReviews()
-   res.json({data: reviews})
+   if (reviews) {
+      res.json({ data: reviews })
+   } else {
+      next(createError(404, "no review found"))
+   }
 }
 
 exports.addReview = (req, res, next) => {
@@ -18,7 +23,7 @@ exports.addReview = (req, res, next) => {
 exports.getReviewById = async (req, res, next) => {
    const review = await reviewsService.getReviewById(req.params.id)
    if (review) {
-      res.json({data: review})
+      res.json({ data: review })
    } else {
       next(createError(404, "no review found for this id"))
    }

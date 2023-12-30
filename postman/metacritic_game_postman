@@ -16,13 +16,7 @@
 							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{auth_token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "http://localhost:3000/users",
 							"protocol": "http",
@@ -50,7 +44,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idU\": 1,\r\n    \"pseudo\": \"user_2\",\r\n    \"email\": \"user_2@gmail.com\",\r\n    \"password\": \"user_mdp\"\r\n}",
+							"raw": "{\r\n    \"idU\": 1,\r\n    \"pseudo\": \"user_3\",\r\n    \"email\": \"user_3@gmail.com\",\r\n    \"password\": \"user_mdp\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -79,15 +73,9 @@
 							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{auth_token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/users/2",
+							"raw": "http://localhost:3000/users/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -95,7 +83,7 @@
 							"port": "3000",
 							"path": [
 								"users",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -136,13 +124,7 @@
 					"name": "All_Editors",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{auth_token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "http://localhost:3000/editors",
 							"protocol": "http",
@@ -204,7 +186,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idE\": 1,\r\n    \"pseudo\": \"editor_2\",\r\n    \"email\": \"editor_2@gmail.com\",\r\n    \"hashedPassword\": \"editor_mdp\"\r\n}",
+							"raw": "{\r\n    \"idE\": 1,\r\n    \"pseudo\": \"editor_4\",\r\n    \"email\": \"editor_4@gmail.com\",\r\n    \"hashedPassword\": \"editor_mdp\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -249,7 +231,13 @@
 					"name": "Delete_Editor",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:3000/editors/1",
 							"protocol": "http",
@@ -293,7 +281,13 @@
 					"name": "Add_CriticsEditor",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"evaluation\": \"mauvais\",\r\n    \"noteE\": 2,\r\n    \"idE\": 1\r\n}",
@@ -321,7 +315,13 @@
 					"name": "Update_CriticsEditor",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"idC\": 1,\r\n    \"evaluation\": \"très bien\",\r\n    \"noteE\": 10,\r\n    \"idE\": 1\r\n}",
@@ -453,7 +453,13 @@
 					"name": "Update_Review",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"idR\": 1,\r\n    \"avgU\": 3.7,\r\n    \"description\": \"un jeu vidéo développé par Daedalic Entertainment et co-édité par Daedalic Entertainment et Nacon.\",\r\n    \"title\": \"Le Seigneur des anneaux : Gollum\",\r\n    \"release\": \"2023/05/25\",\r\n    \"idC\": 1\r\n}",
@@ -501,7 +507,13 @@
 					"name": "Delete_Review",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:3000/reviews/1",
 							"protocol": "http",
@@ -545,7 +557,13 @@
 					"name": "Add_CriticsUser",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"idR\": 1,\r\n    \"idU\": 2,\r\n    \"comment\": \"pas mal\",\r\n    \"noteU\": 7\r\n}",
@@ -573,7 +591,13 @@
 					"name": "Update_CriticsUser",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"idR\": 1,\r\n    \"idU\": 1,\r\n    \"comment\": \"nul\",\r\n    \"noteU\": 2\r\n}",
@@ -622,7 +646,13 @@
 					"name": "Delete_CriticsUser",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:3000/criticsUsers/1/1",
 							"protocol": "http",

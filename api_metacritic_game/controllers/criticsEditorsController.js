@@ -1,10 +1,14 @@
-const criticsEditorsService = require('../services/criticsEditorsService');
+const criticsEditorsService = require('../services/criticsEditorsService')
 const createError = require('http-errors')
 
 
-exports.getCriticsEditors = async (req, res) => {
+exports.getCriticsEditors = async (req, res, next) => {
    const criticsEditors = await criticsEditorsService.getCriticsEditors()
-   res.json({data: criticsEditors})
+   if (criticsEditors) {
+      res.json({ data: criticsEditors })
+   } else {
+      next(createError(404, "no criticsEditors found"))
+   }
 }
 
 exports.addCriticsEditor = (req, res, next) => {
@@ -19,7 +23,7 @@ exports.addCriticsEditor = (req, res, next) => {
 exports.getCriticsEditorById = async (req, res, next) => {
    const criticsEditor = await criticsEditorsService.getCriticsEditorById(req.params.id)
    if (criticsEditor) {
-      res.json({data: criticsEditor})
+      res.json({ data: criticsEditor })
    } else {
       next(createError(404, "no criticsEditor found for this id"))
    }

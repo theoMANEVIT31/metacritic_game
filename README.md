@@ -8,9 +8,17 @@ COLLATE utf8_general_ci;
 Commandes d'installation des modules manquants : 
 
 npm install axios,
-npm install sequelize
+npm install sequelize,
+npm install node-cache
 
 (Ces modules n'ont pas étaient déposé sur le git, car trop volumineux.)
+
+Pour la configuration de la base de données : 
+    host: "localhost",
+    username: "root",
+    password: "",
+    database: "metaCritic",
+    port: 3306
 
 
 API externe utiliser : IGDB

@@ -1,7 +1,7 @@
 const express = require('express'),
     router = express.Router(),
     criticsEditorsController = require('../controllers/criticsEditorsController'),
-    authMiddleware = require('../middlewares/authMiddleware');
+    authMiddleware = require('../middlewares/authMiddleware')
 
 
 router.get('/', criticsEditorsController.getCriticsEditors); // tous le monde peut accéder aux critiques des "editor" sur les reviews
@@ -11,4 +11,4 @@ router.get('/:id', criticsEditorsController.getCriticsEditorById); // tous le mo
 router.delete('/:id', authMiddleware("editor"), criticsEditorsController.deleteCriticsEditorById); // seul les utilisateurs ayant pour rôle "editor" peuvent supprimer leurs critiques
 
 
-module.exports = router;
+module.exports = router

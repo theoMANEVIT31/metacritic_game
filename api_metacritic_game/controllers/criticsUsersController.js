@@ -1,10 +1,14 @@
-const criticsUsersService = require('../services/criticsUsersService');
+const criticsUsersService = require('../services/criticsUsersService')
 const createError = require('http-errors')
 
 
-exports.getCriticsUsers = async (req, res) => {
+exports.getCriticsUsers = async (req, res, next) => {
    const criticsUsers = await criticsUsersService.getCriticsUsers()
-   res.json({data: criticsUsers})
+   if (criticsUsers) {
+      res.json({ data: criticsUsers })
+   } else {
+      next(createError(404, "no criticsUser found"))
+   }
 }
 
 exports.addCriticsUser = (req, res, next) => {
@@ -19,7 +23,7 @@ exports.addCriticsUser = (req, res, next) => {
 exports.getCriticsUserById = async (req, res, next) => {
    const criticsUser = await criticsUsersService.getCriticsUserById(req.params.idReview, req.params.idUser)
    if (criticsUser) {
-      res.json({data: criticsUser})
+      res.json({ data: criticsUser })
    } else {
       next(createError(404, "no criticsUser found for this idReview and idUser"))
    }

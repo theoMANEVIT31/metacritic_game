@@ -8,8 +8,8 @@ require('dotenv').config()
 
 const swaggerDocument = YAML.load(__dirname + '/openapi.yaml')
 
-app.use(cors());
-app.use(express.json()); 
+app.use(cors())
+app.use(express.json())
 
 app.use(
     OpenApiValidator.middleware({

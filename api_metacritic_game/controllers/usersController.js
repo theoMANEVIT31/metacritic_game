@@ -1,14 +1,18 @@
-const usersService = require('../services/usersService');
+const usersService = require('../services/usersService')
 const createError = require('http-errors')
 
 
-exports.getUsers = async (req, res) => {
+exports.getUsers = async (req, res, next) => {
    const users = await usersService.getUsers()
-   res.json({data: users})
+   if (users) {
+      res.json({ data: users })
+   } else {
+      next(createError(404, "no user found"))
+   }
 }
 
-exports.addUser = (req, res, next) => {
-   const userCreated = usersService.addUser(req.body.pseudo, req.body.hashedPassword, req.body.email)
+exports.addUser = async (req, res, next) => {
+   const userCreated = await usersService.addUser(req.body.pseudo, req.body.hashedPassword, req.body.email)
    if (userCreated) {
       res.status(201).json({id: userCreated.id})
    } else {
@@ -19,7 +23,7 @@ exports.addUser = (req, res, next) => {
 exports.getUserById = async (req, res, next) => {
    const user = await usersService.getUserById(req.params.id)
    if (user) {
-      res.json({data: user})
+      res.json({ data: user })
    } else {
       next(createError(404, "no user found for this id"))
    }

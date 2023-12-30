@@ -4,8 +4,8 @@ const { getIdRolesByNom } = require("./rolesService");
 exports.getUsers = async () => {
   return await db.users.findAll({
     attributes: { exclude: ["hashedPassword"] },
-  });
-};
+  })
+}
 
 exports.addUser = (pseudo, hashedPassword, email) => {
   return db.users.create({ pseudo, hashedPassword, email});

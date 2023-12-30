@@ -1,11 +1,11 @@
-const titleServices = require('../services/titlesService'); 
+const titleServices = require('../services/titlesService')
 const createError = require('http-errors')
 
 exports.getAllTitles = async (req, res, next) => {
   try {
-    const titles = await titleServices.getAllTitles();
+    const titles = await titleServices.getAllTitles()
 
-    res.json(titles); 
+    res.json(titles)
   } catch (error) {
     next(createError(400, "Failed to fetch game titles"))
   }
@@ -13,10 +13,10 @@ exports.getAllTitles = async (req, res, next) => {
 
 exports.getTitleByName = async (req, res, next) => {
   try {
-    const nameT = req.params.nameT; 
-    const titles = await titleServices.getTitleByName(nameT);
+    const nameT = req.params.nameT
+    const titles = await titleServices.getTitleByName(nameT)
 
-    res.json(titles);
+    res.json(titles)
   } catch (error) {
     next(createError(400, "Failed to fetch game titles by name"))
   }

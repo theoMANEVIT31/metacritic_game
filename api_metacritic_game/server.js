@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const { getIdRolesByNom } = require('./services/rolesService');
 
 db.instance.sync({force: true}).then(async () => {
-    console.log('Database connected and synchronized');
+    console.log('Database connected and synchronized')
     app.listen(3000, () => {
         console.log('Server running on port 3000 !');
     });
@@ -42,5 +42,5 @@ db.instance.sync({force: true}).then(async () => {
     await db.criticsUsers.create({idReview: 1, idUser: 3, comment: "Super jeu", note: 10});
 
 }).catch((e) => {
-    console.error(e);
-});
+    console.error(e)
+})

@@ -1,8 +1,9 @@
-const db = require("../models/indexModel");
+const db = require("../models/indexModel")
+
 
 exports.getCriticsEditors = async () => {
-  return await db.criticsEditors.findAll();
-};
+  return await db.criticsEditors.findAll()
+}
 
 exports.addCriticsEditor = (evaluation, note, date, idEditor) => {
   return db.criticsEditors.create({ evaluation, note, date, idEditor });

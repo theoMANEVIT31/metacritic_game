@@ -18,7 +18,7 @@ paths:
     get:
       tags:
         - Users
-      summary: Get all users
+      summary: All Users
       description: Returns all users
       operationId: "getUsers" 
       responses:
@@ -31,65 +31,23 @@ paths:
                 items:
                  $ref: '#/components/schemas/Users'
 
-    post:
-      tags:
-        - Users
-      summary: Add user
-      description: Add user
-      operationId: "addUser" 
-      requestBody:
-        $ref: '#/components/requestBodies/User'
-      responses:
-        '200':
-          description: users response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Users'
-
     put:
       tags:
         - Users
-      summary: Update user by id
+      summary: Update User
       description: Update a user by his id
       operationId: "updateUser"
       requestBody:
         $ref: '#/components/requestBodies/User'
       responses:
-        '200':
+        '201':
           description: users response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Users'
 
   /users/{id}:
-    delete:
-      tags:
-        - Users
-      summary: Delete user by id
-      description: Delete a user by his id
-      operationId: "DeleteUserById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: users response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Users'
-
     get:
       tags:
         - Users
-      summary: Get user by id
+      summary: Users By Id
       description: Returns a user by id
       operationId: "getUserById" 
       parameters:
@@ -103,6 +61,18 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/Users'
+  
+    delete:
+      tags:
+        - Users
+      summary: Delete User By Id
+      description: Delete a user by his id
+      operationId: "DeleteUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '204':
+          description: users response
 
     put:
       tags:
@@ -127,7 +97,7 @@ paths:
     get:
       tags:
         - Editors
-      summary: Get all editors
+      summary: All Editors
       description: Returns all editors
       operationId: "getEditors" 
       responses:
@@ -140,34 +110,16 @@ paths:
                 items:
                  $ref: '#/components/schemas/Editors'
 
-    post:
-      tags:
-        - Editors
-      summary: Add editor
-      description: Add editor
-      operationId: "addEditor" 
-      requestBody:
-        $ref: '#/components/requestBodies/Editor'
-      responses:
-        '200':
-          description: editors response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Editors'
-
     put:
       tags:
         - Editors
-      summary: Update editor by id
+      summary: Update Editor
       description: Update a editor by his id
       operationId: "updateEditor"
       requestBody:
         $ref: '#/components/requestBodies/Editor'
       responses:
-        '200':
+        '201':
           description: editors response
           content:
             application/json:
@@ -177,28 +129,10 @@ paths:
                  $ref: '#/components/schemas/Editors'
 
   /editors/{id}:
-    delete:
-      tags:
-        - Editors
-      summary: Delete editor by id
-      description: Delete a editor by his id
-      operationId: "DeleteEditorById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: editors response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Editors'
-
     get:
       tags:
         - Editors
-      summary: Get user by id
+      summary: Editors By Id
       description: Returns a user by id
       operationId: "getEditorById" 
       parameters:
@@ -212,13 +146,31 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/Editors'
+                 
+    delete:
+      tags:
+        - Editors
+      summary: Delete Editor By Id
+      description: Delete a editor by his id
+      operationId: "DeleteEditorById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '204':
+          description: editors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Editors'
 
 
   /criticsEditors:
     get:
       tags:
         - Critics Editor
-      summary: get all Critics from editors
+      summary: All Critics Editors
       description: Returns all the Critics mayde by editors
       operationId: "getCriticsEditor" 
       responses:
@@ -234,13 +186,13 @@ paths:
     post:
       tags:
         - Critics Editor
-      summary: Add Critic
+      summary: Add Critics Editor
       description: Add Critic by a editor
       operationId: "addCriticEditor" 
       requestBody:
         $ref: '#/components/requestBodies/CriticsEditor'
       responses:
-        '200':
+        '201':
           description: criticsEditors response
           content:
             application/json:
@@ -252,13 +204,13 @@ paths:
     put:
       tags:
         - Critics Editor
-      summary: Update Critics by id
+      summary: Update Critics Editor
       description: Update a Critic made by a editor by his id
       operationId: "updateCriticE" 
       requestBody:
         $ref: '#/components/requestBodies/CriticsEditor'
       responses:
-        '200':
+        '201':
           description: rentals response
           content:
             application/json:
@@ -271,7 +223,7 @@ paths:
     get:
       tags:
         - Critics Editor
-      summary: Get Critic by id
+      summary: Critics Editors By Id
       description: Returns a Critic made by a editor by his id 
       operationId: "getCriticEditorById" 
       parameters:
@@ -289,27 +241,21 @@ paths:
     delete:
       tags:
         - Critics Editor
-      summary: Delete Critic by id
+      summary: Delete Critic Editors By Id
       description: Delete a Critic made by a editor by his id
       operationId: "DeleteCriticEditorById" 
       parameters:
         - $ref: '#/components/parameters/idInPath'
       responses:
-        '200':
+        '204':
           description: criticsEditors response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/CriticsEditors'
 
 
   /reviews:
     get:
       tags:
         - Reviews
-      summary: get all reviews
+      summary: All Reviews
       description: Returns all the reviews mayde by editors
       operationId: "getReviews" 
       responses:
@@ -325,13 +271,13 @@ paths:
     post:
       tags:
         - Reviews
-      summary: Add review
+      summary: Add Review
       description: Add review
       operationId: "addReview" 
       requestBody:
         $ref: '#/components/requestBodies/Review'
       responses:
-        '200':
+        '201':
           description: review response
           content:
             application/json:
@@ -343,13 +289,13 @@ paths:
     put:
       tags:
         - Reviews
-      summary: Update review by id
+      summary: Update Review
       description: Update a review by his id
       operationId: "updateReview" 
       requestBody:
         $ref: '#/components/requestBodies/Review'
       responses:
-        '200':
+        '201':
           description: review response
           content:
             application/json:
@@ -362,7 +308,7 @@ paths:
     get:
       tags:
         - Reviews
-      summary: Get review by id
+      summary: Reviews By Id
       description: Returns a review by his id
       operationId: "getreviewById" 
       parameters:
@@ -376,17 +322,17 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/Reviews'
-                 
+
     delete:
       tags:
         - Reviews
-      summary: Delete review by id
+      summary: Delete Review By Id
       description: Delete a review by his id
       operationId: "DeleteReviewById" 
       parameters:
         - $ref: '#/components/parameters/idInPath'
       responses:
-        '200':
+        '204':
           description: review response
           content:
             application/json:
@@ -400,7 +346,7 @@ paths:
     get:
       tags:
         - Critics User
-      summary: get all Critics from user
+      summary: All Critics Users
       description: Returns all the Critics mayde by user
       operationId: "getCriticsUsers" 
       responses:
@@ -416,13 +362,13 @@ paths:
     post:
       tags:
         - Critics User
-      summary: Add Critic
+      summary: Add Critics User
       description: Add Critic by a user
       operationId: "addCriticUser" 
       requestBody:
         $ref: '#/components/requestBodies/CriticsUser'
       responses:
-        '200':
+        '201':
           description: criticsUsers response
           content:
             application/json:
@@ -434,13 +380,13 @@ paths:
     put:
       tags:
         - Critics User
-      summary: Update Critics by id
+      summary: Update Critics User
       description: Update a Critic made by a user by his id
       operationId: "updateCriticUser" 
       requestBody:
         $ref: '#/components/requestBodies/CriticsUser'
       responses:
-        '200':
+        '201':
           description: criticsUsers response
           content:
             application/json:
@@ -453,7 +399,7 @@ paths:
     get:
       tags:
         - Critics User
-      summary: Get Critic by id
+      summary: Critics Users by id
       description: Returns a Critic made by a user by his id 
       operationId: "getCriticUserById" 
       parameters:
@@ -467,18 +413,17 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/CriticsUsers'
-                 
-                 
+  
     delete:
       tags:
         - Critics User
-      summary: Delete Critic by id
+      summary: Delete Critics User by id
       description: Delete a Critic made by a user by his id
       operationId: "DeleteCriticUserById" 
       parameters:
         - $ref: '#/components/parameters/idInPath'
       responses:
-        '200':
+        '204':
           description: criticsUsers response
           content:
             application/json:
@@ -488,8 +433,46 @@ paths:
                  $ref: '#/components/schemas/CriticsUsers'
 
 
+  /register/SignUp:
+    post:
+      tags:
+        - Sign Up
+      summary: Sign Up
+      description: Sign Up
+      operationId: "signUp" 
+      requestBody:
+        $ref: '#/components/requestBodies/SignUp'
+      responses:
+        '201':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/SignUp'
+    
+    
+  /register/SignIn:  
+    post:
+      tags:
+        - Sign In
+      summary: Sign In
+      description: Sign In
+      operationId: "signIn" 
+      requestBody:
+        $ref: '#/components/requestBodies/SignIn'
+      responses:
+        '200':
+          description: criticsUsers response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/SignIn'
 
-      
+
 
 
 components:
@@ -558,6 +541,28 @@ components:
           examples:
             criticsUserExample:
               $ref: '#/components/examples/CriticsUsers'
+              
+    SignUp:
+      description: A JSON object containing a sign up
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/SignUp'
+          examples:
+            criticsUserExample:
+              $ref: '#/components/examples/SignUp'
+              
+    SignIn:
+      description: A JSON object containing a sign in
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/SignIn'
+          examples:
+            criticsUserExample:
+              $ref: '#/components/examples/SignIn'
 
 
   schemas:
@@ -567,16 +572,13 @@ components:
         id:
           type: integer
           format: int64
-          example: 3
+          example: 1
         pseudo:
           type: string
-          example: johnDoe
-        hashedPassword:
-          type: string
-          example: $2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2
+          example: user_1
         email:
           type: string
-          example: johnDoe@gmail.com
+          example: user_1@gmail.com
 
     Editors:
       type: object
@@ -584,16 +586,13 @@ components:
         id:
           type: integer
           format: int64
-          example: 3
+          example: 1
         pseudo:
           type: string
-          example: johnDoe
-        hashedPassword:
-          type: string
-          example: $2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2
+          example: editor_1
         email:
           type: string
-          example: johnDoe@gmail.com
+          example: editor_1@gmail.com
 
     CriticsEditors:
       type: object
@@ -608,7 +607,7 @@ components:
         note:
           type: integer
           format: int64
-          example: 3
+          example: 8
         date:
           type: string 
           format: date
@@ -616,7 +615,7 @@ components:
         idEditor:
           type: integer
           format: int64
-          example: 3
+          example: 1
 
     Reviews:
       type: object
@@ -628,13 +627,13 @@ components:
         avg:
           type: number 
           format: int64
-          example: 4.4     
+          example: 9.8   
         description:
           type: string
-          example: bon jeu 
+          example: "Take on the role of James Bond as played by Daniel Craig in all new SKYFALL levels. Unlock three new single player levels following the storyline of the SKYFALL movie. Levels take place in Istanbul and Shanghai as the player (Bond) attempts to track down "
         title:
           type: string
-          example: the hobbit
+          example: "007 Legends: Skyfall"
         release:
           type: string
           example: 11/02/2002
@@ -653,19 +652,39 @@ components:
         idUser:
           type: integer
           format: int64
-          example: 3
+          example: 1
         comment:
           type: string
           example: il est pas bon
         note:
           type: integer
           format: int64
-          example: 3
+          example: 10
         date:
           type: string 
           format: date
-          example: 2023/12/07
-
+          example: 2023-12-26
+          
+    SignUp:
+      type: object
+      properties:
+        success:
+          type: string
+          example: true
+        message:
+          type: string
+          example: User created !
+    
+    SignIn:
+      type: object
+      properties:
+        success:
+          type: string
+          example: true
+        token:
+          type: string
+          example: eyJhbGciOiqdqdk1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM2MDU2NzQsImV4cCI6MTcwMzYwOTI3NH0.JSK5U2k-5WxCW3svHIOP4I9X4ehOUX8iWiWdcO1BQQc
+          
 
   examples:
     Reviews:
@@ -712,5 +731,17 @@ components:
         pseudo: "johnDoe"
         email: "johnDoe@gmail.com"
         hashedPassword: "$2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2"
+    SignUp:
+      summary: An example of a sign up
+      value:
+        pseudo: "user_1"
+        email: "user_1@gmail.com"
+        password: "user_mdp"
+        
+    SignIn:
+      summary: An example of a sign in
+      value:
+        email: "user_1@gmail.com"
+        password: "user_mdp"
 
 

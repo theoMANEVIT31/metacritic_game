@@ -1,5 +1,5 @@
-const { Sequelize } = require("sequelize");
-const dbConfig = require("../db.config");
+const { Sequelize } = require("sequelize")
+const dbConfig = require("../db.config")
 
 const instance = new Sequelize(
   dbConfig.database,
@@ -10,7 +10,7 @@ const instance = new Sequelize(
     port: dbConfig.port,
     dialect: "mysql",
   }
-);
+)
 
 module.exports = {
   instance,

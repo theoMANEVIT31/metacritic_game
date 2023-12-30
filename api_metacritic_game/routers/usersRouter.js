@@ -1,7 +1,7 @@
 const express = require('express'),
-      router = express.Router(),
-      usersController = require('../controllers/usersController'),
-      authMiddleware = require('../middlewares/authMiddleware');
+    router = express.Router(),
+    usersController = require('../controllers/usersController'),
+    authMiddleware = require('../middlewares/authMiddleware')
 
 
 router.get('/', authMiddleware("admin"), usersController.getUsers); // seul les administrateurs peuvent visualiser tous les utilisateurs
@@ -11,4 +11,5 @@ router.put('/role/:id', authMiddleware("admin"), usersController.updateRoleByUse
 router.get('/:id', authMiddleware("gamer"), usersController.getUserById); // tout utilisateur ayant pour rôle "gamer" peut accéder aux informations de son compte
 router.delete('/:id', authMiddleware("gamer"), usersController.deleteUserById); // tout utilisateur ayant pour rôle "gamer" peut supprimer son compte
 
-module.exports = router;
+
+module.exports = router
