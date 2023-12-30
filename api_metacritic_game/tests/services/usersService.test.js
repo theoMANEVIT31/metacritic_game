@@ -1,5 +1,5 @@
 const user = require('../../services/usersService')
-const db = require('../../models/indexModel');
+const db = require('../../models/indexModel')
 
 describe('About users...', () => {
 
