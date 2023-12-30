@@ -21,8 +21,8 @@ module.exports = {
   roles: require('./rolesModel')(instance),
 }
 
-instance.models.criticsUsers.belongsTo(instance.models.users, { foreignKey: "idUser" });
-instance.models.criticsUsers.belongsTo(instance.models.reviews, { foreignKey: "idReview" });
-instance.models.reviews.belongsTo(instance.models.criticsEditors, { foreignKey: "idCriticEditor" });
-instance.models.criticsEditors.belongsTo(instance.models.users, { foreignKey: "idEditor" });
-instance.models.users.belongsTo(instance.models.roles, { foreignKey: "roles" });
+instance.models.criticsUsers.belongsTo(instance.models.users, { foreignKey: "idUser" })
+instance.models.criticsUsers.belongsTo(instance.models.reviews, { foreignKey: "idReview" })
+instance.models.reviews.belongsTo(instance.models.criticsEditors, { foreignKey: "idCriticEditor" })
+instance.models.criticsEditors.belongsTo(instance.models.users, { foreignKey: "idEditor" })
+instance.models.users.belongsTo(instance.models.roles, { foreignKey: "roles" })
