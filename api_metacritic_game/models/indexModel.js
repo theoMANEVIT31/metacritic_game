@@ -1,5 +1,5 @@
-const { Sequelize } = require("sequelize");
-const dbConfig = require("../db.config");
+const { Sequelize } = require("sequelize")
+const dbConfig = require("../db.config")
 
 const instance = new Sequelize(
   dbConfig.database,
@@ -10,7 +10,7 @@ const instance = new Sequelize(
     port: dbConfig.port,
     dialect: "mysql",
   }
-);
+)
 
 module.exports = {
   instance,
@@ -21,7 +21,7 @@ module.exports = {
   editors: require('./editorsModel')(instance)
 }
 
-instance.models.criticsUsers.belongsTo(instance.models.users, { foreignKey: "idU" });
-instance.models.criticsUsers.belongsTo(instance.models.reviews, { foreignKey: "idR" });
-instance.models.reviews.belongsTo(instance.models.criticsEditors, { foreignKey: "idC" });
-instance.models.criticsEditors.belongsTo(instance.models.editors, { foreignKey: "idE" });
+instance.models.criticsUsers.belongsTo(instance.models.users, { foreignKey: "idU" })
+instance.models.criticsUsers.belongsTo(instance.models.reviews, { foreignKey: "idR" })
+instance.models.reviews.belongsTo(instance.models.criticsEditors, { foreignKey: "idC" })
+instance.models.criticsEditors.belongsTo(instance.models.editors, { foreignKey: "idE" })
