@@ -587,20 +587,6 @@ components:
           type: string
           example: "user_1@gmail.com"
 
-    Editors:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 1
-        pseudo:
-          type: string
-          example: "editor_1"
-        email:
-          type: string
-          example: "editor_1@gmail.com"
-
     CriticsEditors:
       type: object
       properties:
