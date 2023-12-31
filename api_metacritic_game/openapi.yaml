@@ -81,7 +81,20 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/Users'
+                 
+    delete:
+      tags:
+        - Users
+      summary: Delete User By Id
+      description: Delete a user by his id
+      operationId: "DeleteUserById" 
+      parameters:
+        - $ref: '#/components/parameters/idInPath'
+      responses:
+        '204':
+          description: users response
 
+  /users/role/{id}:
     put:
       tags:
         - Users
@@ -99,18 +112,6 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/Users'
-                 
-    delete:
-      tags:
-        - Users
-      summary: Delete User By Id
-      description: Delete a user by his id
-      operationId: "DeleteUserById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '204':
-          description: users response
           
 
   /criticsEditors:
