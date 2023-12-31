@@ -30,6 +30,24 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/Users'
+    
+    post:
+      tags:
+        - Users
+      summary: Add user
+      description: Add user
+      operationId: "addUser" 
+      requestBody:
+        $ref: '#/components/requestBodies/User'
+      responses:
+        '201':
+          description: criticsEditors response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 $ref: '#/components/schemas/Users'
 
     put:
       tags:
@@ -42,8 +60,10 @@ paths:
       responses:
         '201':
           description: users response
-
-  /users/{id}:
+          
+    
+          
+  /users/{id}:        
     get:
       tags:
         - Users
@@ -61,18 +81,6 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/Users'
-  
-    delete:
-      tags:
-        - Users
-      summary: Delete User By Id
-      description: Delete a user by his id
-      operationId: "DeleteUserById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '204':
-          description: users response
 
     put:
       tags:
@@ -91,80 +99,19 @@ paths:
                 type: array
                 items:
                  $ref: '#/components/schemas/Users'
-
-
-  /editors:
-    get:
-      tags:
-        - Editors
-      summary: All Editors
-      description: Returns all editors
-      operationId: "getEditors" 
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Editors'
-
-    put:
-      tags:
-        - Editors
-      summary: Update Editor
-      description: Update a editor by his id
-      operationId: "updateEditor"
-      requestBody:
-        $ref: '#/components/requestBodies/Editor'
-      responses:
-        '201':
-          description: editors response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Editors'
-
-  /editors/{id}:
-    get:
-      tags:
-        - Editors
-      summary: Editors By Id
-      description: Returns a user by id
-      operationId: "getEditorById" 
-      parameters:
-        - $ref: '#/components/parameters/idInPath'
-      responses:
-        '200':
-          description: editors response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Editors'
                  
     delete:
       tags:
-        - Editors
-      summary: Delete Editor By Id
-      description: Delete a editor by his id
-      operationId: "DeleteEditorById" 
+        - Users
+      summary: Delete User By Id
+      description: Delete a user by his id
+      operationId: "DeleteUserById" 
       parameters:
         - $ref: '#/components/parameters/idInPath'
       responses:
         '204':
-          description: editors response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/Editors'
-
+          description: users response
+          
 
   /criticsEditors:
     get:
@@ -395,7 +342,7 @@ paths:
                 items:
                  $ref: '#/components/schemas/CriticsUsers'
 
-  /criticsUsers/{id}:
+  /criticsUsers/{idUser}/{idReview}:
     get:
       tags:
         - Critics User
@@ -403,7 +350,8 @@ paths:
       description: Returns a Critic made by a user by his id 
       operationId: "getCriticUserById" 
       parameters:
-        - $ref: '#/components/parameters/idInPath'
+        - $ref: '#/components/parameters/idUser'
+        - $ref: '#/components/parameters/idReview'
       responses:
         '200':
           description: criticsUsers response
@@ -421,7 +369,8 @@ paths:
       description: Delete a Critic made by a user by his id
       operationId: "DeleteCriticUserById" 
       parameters:
-        - $ref: '#/components/parameters/idInPath'
+        - $ref: '#/components/parameters/idUser'
+        - $ref: '#/components/parameters/idReview'
       responses:
         '204':
           description: criticsUsers response
@@ -473,12 +422,12 @@ paths:
                  $ref: '#/components/schemas/SignIn'
 
 
-/titles :  
+  /titles :  
     get:
       tags:
         - Titles
       summary: get all titles
-      description: get a list game titles
+      description: get a list titles
       operationId: "getAllTitles" 
       responses:
         '200':
@@ -488,17 +437,17 @@ paths:
               schema:
                 type: array
                 items:
-                 $ref: '#/components/schemas/titles'
+                 $ref: '#/components/schemas/Titles'
                  
-/titles/{nameT} :
-      get:
+  /titles/{nameT} :
+    get:
       tags:
         - Titles
       summary: get title by name
-      description: get the title of a game with a name
+      description: get a title with a name
       operationId: "getTitleByName" 
-       parameters:
-        - $ref: '#/components/parameters/gameInfos'
+      parameters:
+        - $ref: '#/components/parameters/nameT'
       responses:
         '200':
           description: titles response
@@ -507,43 +456,7 @@ paths:
               schema:
                 type: array
                 items:
-                 $ref: '#/components/schemas/titles'
-
-
-  /https://api.igdb.com/v4/games/:  
-    get:
-      tags:
-        - gameInfos
-      summary: get all game name
-      description: get a list of game name
-      operationId: "getAllGameName" 
-      responses:
-        '200':
-          description: gameInfos response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/gameInfos'
-
-      get:
-      tags:
-        - gameInfos
-      summary: get game infos by name
-      description: get all the infos about a game
-      operationId: "getGameInfosByName" 
-       parameters:
-        - $ref: '#/components/parameters/title'
-      responses:
-        '200':
-          description: gameInfos response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                 $ref: '#/components/schemas/gameInfos'
+                 $ref: '#/components/schemas/Titles'
 
 
 
@@ -556,6 +469,27 @@ components:
       in: path
       schema:
         type: integer
+        
+    idUser:
+      required: true
+      name: idUser
+      in: path
+      schema:
+        type: integer
+    
+    idReview:
+      required: true
+      name: idReview
+      in: path
+      schema:
+        type: integer
+    
+    nameT:
+      required: true
+      name: nameT
+      in: path
+      schema:
+        type: string
 
 
   requestBodies:
@@ -570,17 +504,6 @@ components:
           examples:
             userExample:
               $ref: '#/components/examples/Users'
-
-    Editor:
-      description: A JSON object containing an editor
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/examples/Editors'
-          examples:
-            editorExample:
-              $ref: '#/components/examples/Editors'
 
     CriticsEditor:
       description: A JSON object containing a critic from an editor
@@ -636,6 +559,17 @@ components:
           examples:
             criticsUserExample:
               $ref: '#/components/examples/SignIn'
+              
+    Titles:
+      description: A JSON object containing a title
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/examples/Titles'
+          examples:
+            criticsUserExample:
+              $ref: '#/components/examples/Titles'
 
 
   schemas:
@@ -648,24 +582,10 @@ components:
           example: 1
         pseudo:
           type: string
-          example: user_1
+          example: "user_1"
         email:
           type: string
-          example: user_1@gmail.com
-
-    Editors:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 1
-        pseudo:
-          type: string
-          example: editor_1
-        email:
-          type: string
-          example: editor_1@gmail.com
+          example: "user_1@gmail.com"
 
     CriticsEditors:
       type: object
@@ -676,7 +596,7 @@ components:
           example: 1
         evaluation:
           type: string
-          example: il est bon
+          example: "il est bon"
         note:
           type: integer
           format: int64
@@ -684,7 +604,7 @@ components:
         date:
           type: string 
           format: date
-          example: 2023/12/07
+          example: "2023/12/07"
         idEditor:
           type: integer
           format: int64
@@ -709,7 +629,7 @@ components:
           example: "007 Legends: Skyfall"
         release:
           type: string
-          example: 11/02/2002
+          example: "11/02/2002"
         idCriticEditor:
           type: integer
           format: int64
@@ -728,7 +648,7 @@ components:
           example: 1
         comment:
           type: string
-          example: il est pas bon
+          example: "il est pas bon"
         note:
           type: integer
           format: int64
@@ -736,7 +656,7 @@ components:
         date:
           type: string 
           format: date
-          example: 2023-12-26
+          example: "2023-12-26"
           
     SignUp:
       type: object
@@ -746,7 +666,7 @@ components:
           example: true
         message:
           type: string
-          example: User created !
+          example: "User created !"
     
     SignIn:
       type: object
@@ -754,10 +674,28 @@ components:
         success:
           type: string
           example: true
+        userId:
+          type: integer
+          example: 1
         token:
           type: string
-          example: eyJhbGciOiqdqdk1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM2MDU2NzQsImV4cCI6MTcwMzYwOTI3NH0.JSK5U2k-5WxCW3svHIOP4I9X4ehOUX8iWiWdcO1BQQc
+          example: "eyJhbGciOiqdqdk1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDM2MDU2NzQsImV4cCI6MTcwMzYwOTI3NH0.JSK5U2k-5WxCW3svHIOP4I9X4ehOUX8iWiWdcO1BQQc"
           
+    Titles:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 110398
+        first_release_date:
+          type: integer
+          example: 1353369600
+        name:
+          type: string
+          example: "007 Legends: Skyfall"
+        summary:
+          type: string
+          example: "Take on the role of James Bond as played by Daniel Craig in all new SKYFALL levels. Unlock three new single player levels following the storyline of the SKYFALL movie. Levels take place in Istanbul and Shanghai as the player (Bond) attempts to track down the villain Patrice."
 
   examples:
     Reviews:
@@ -797,13 +735,6 @@ components:
         hashedPassword: "$2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2"
         roles: "user"
 
-    Editors:
-      summary: An example of a editor
-      value:
-        id: 3
-        pseudo: "johnDoe"
-        email: "johnDoe@gmail.com"
-        hashedPassword: "$2b$10$t7oxiwchWGHa/B9w0AzrYO2WH2rQbA86YSuQjSTmwIrpC/0ZXN7V2"
     SignUp:
       summary: An example of a sign up
       value:
@@ -816,5 +747,11 @@ components:
       value:
         email: "user_1@gmail.com"
         password: "user_mdp"
-
-
+        
+    Titles:
+      summary: An example of a title
+      value:
+        id: 165499
+        first_release_date: 1326499200
+        name: "^_^"
+        summary: "Julian has been turned into a werebunny and is quite cross about this! His human abilities have been replaced with only animal instincts! Bite, headbutt and shout your way as Julian in order to find a way to change back!"
