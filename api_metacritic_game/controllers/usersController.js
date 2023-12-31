@@ -45,15 +45,19 @@ exports.getUserById = async (req, res, next) => {
 
 exports.putUser = (req, res, next) => {
    const userConnected = jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SIGN_SECRET)
-   const userUpdated = usersService.putUser(userConnected.userId, req.body.pseudo, req.body.hashedPassword, req.body.email)
-   if (userUpdated) {
-      res.status(200).json({
-         success: true,
-         message: "User updated"
-      })
-   } else {
-      next(createError(400, "Error when updating this user, verify your args"))
-   }
+   bcrypt.hash(req.body.password, 10, async function(err, bcryptPassword){
+      if(bcryptPassword){
+         const userUpdated = usersService.putUser(userConnected.userId, req.body.pseudo, req.body.password, req.body.email)
+         if (userUpdated) {
+            res.status(200).json({
+               success: true,
+               message: "User updated"
+            })
+         } else {
+            next(createError(400, "Error when updating this user, verify your args"))
+         }
+      }
+    })
 }
 
 exports.updateRoleByUserId = async (req, res, next) => {

@@ -26,9 +26,9 @@ exports.getUserById = async (id) => {
   })
 }
 
-exports.putUser = async (id, pseudo, hashedPassword, email) => {
+exports.putUser = async (id, pseudo, password, email) => {
   return await db.users.update(
-    { pseudo: pseudo, hashedPassword: hashedPassword, email: email },
+    { pseudo: pseudo, hashedPassword: password, email: email },
     {
       where: {
         id,

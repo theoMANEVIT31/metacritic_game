@@ -13,7 +13,14 @@ exports.getCriticsUsers = async (req, res, next) => {
    }
 }
 
-exports.addCriticsUser = (req, res, next) => {
+exports.addCriticsUser = async (req, res, next) => {
+   if(await criticsUsersService.getCriticsUserById(req.body.idReview, req.body.idUser)){
+      res.status(400).json({
+         success: false,
+         message: "This user already have a critic for this review"
+      }).send()
+      return
+   }
    const criticsUserCreated = criticsUsersService.addCriticsUser(req.body.idReview, req.body.idUser, req.body.comment, req.body.note)
    if (criticsUserCreated) {
       res.status(201).json({idReview: criticsUserCreated.idReview, idUser: criticsUserCreated.idUser})
